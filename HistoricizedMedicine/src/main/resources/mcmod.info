@@ -1,0 +1,16 @@
+[
+{
+  "modid": "historicizedmedicine",
+  "name": "Historicized Medicine",
+  "description": "Medical items and effects from history",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Seraphaestus"],
+  "credits": "The Forge and FML guys, McJty, Shadowfacts, TheGreyGhost",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

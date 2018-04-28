@@ -1,0 +1,26 @@
+#primative
+item.Trephine.name=Trephine
+
+#classical antiquity
+item.Ebers Papyrus.name=Ebers Papyrus
+item.Honey.name=Honey
+item.Raw Meat Bandage.name=Raw Meat Bandage
+
+#middle ages
+item.Leech.name=Leech
+
+#renaissance
+item.Urine.name=Urine
+item.Sample Glass.name=Sample Glass
+item.Ammonia.name=Ammonia
+item.Nitrous Oxide.name=Nitrous Oxide
+
+#effect
+effect.poison=Poison;
+
+#entities
+entity.PlagueDoctor.name=Plague Doctor
+entity.Villager.historicizedmedicine.plaguedoctor=Plague Doctor
+
+#gui
+itemGroup.historicizedmedicine=Historicized Medicine
