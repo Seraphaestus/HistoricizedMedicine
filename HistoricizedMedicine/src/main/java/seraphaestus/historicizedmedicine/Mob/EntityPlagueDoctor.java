@@ -27,6 +27,8 @@ public class EntityPlagueDoctor extends EntityVillager  {
         super(worldIn);
         setSize(0.6F, 1.95F);
     }
+    
+    
 
     @Override
     protected void entityInit() {

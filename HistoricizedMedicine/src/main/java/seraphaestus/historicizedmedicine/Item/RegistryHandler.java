@@ -6,9 +6,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import seraphaestus.historicizedmedicine.Effect.EffectBleeding;
-import seraphaestus.historicizedmedicine.Effect.EffectInfection;
-import seraphaestus.historicizedmedicine.Effect.EffectPain;
+import seraphaestus.historicizedmedicine.Effect.RegisterEffects;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
@@ -30,7 +28,7 @@ public class RegistryHandler {
         items.add(new MedKitBase("trephine", "Trephine", 1, -1, -1, new PotionEffect[]{pain(30), bleed(30)}, new Potion[]{wither}, null, -2));
         
         //egyptian
-        items.add(new MedKitBase("meat_bandage", "Raw Meat Bandage", 64, -1, -1, new PotionEffect[]{infect(30)}, null, new Reduce[] {new Reduce(new EffectBleeding(), 100)}, 2));
+        items.add(new MedKitBase("meat_bandage", "Raw Meat Bandage", 64, -1, -1, new PotionEffect[]{infect(30)}, null, new Reduce[] {new Reduce(RegisterEffects.bleeding, 100)}, 2));
         if(Config.implementHoney) {
         	items.add(new ItemBase("honey", "Honey", 64));
         }
@@ -42,7 +40,7 @@ public class RegistryHandler {
         items.add(new ItemBase("urine", "Urine", 64));
         items.add(new SampleGlass());
         items.add(new ItemBase("ammonia", "Ammonia", 64));
-        items.add(new MedKitBase("nitrous_oxide", "Nitrous Oxide", 64, -1, -1, null, new Potion[] {new EffectPain()}, null, 0));
+        items.add(new MedKitBase("nitrous_oxide", "Nitrous Oxide", 64, -1, -1, null, new Potion[] {RegisterEffects.pain}, null, 0));
         
     }
 
@@ -83,13 +81,13 @@ public class RegistryHandler {
     }
 
     public static PotionEffect pain(float d){
-        return new PotionEffect(new EffectPain(), (int)(d * 20));
+        return new PotionEffect(RegisterEffects.pain, (int)(d * 20));
     }
     public static PotionEffect bleed(float d){
-        return new PotionEffect(new EffectBleeding(), (int)(d * 20));
+        return new PotionEffect(RegisterEffects.bleeding, (int)(d * 20));
     }
     public static PotionEffect infect(float d){
-        return new PotionEffect(new EffectInfection(), (int)(d * 20));
+        return new PotionEffect(RegisterEffects.infection, (int)(d * 20));
     }
 
     public static Potion pId(int id){

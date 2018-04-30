@@ -22,7 +22,7 @@ public class RenderPlagueDoctor extends RenderLiving<EntityPlagueDoctor> {
     public RenderPlagueDoctor(RenderManager rendermanagerIn) {
         // We use the vanilla zombie model here and we simply
         // retexture it. Of course you can make your own model
-        super(rendermanagerIn, new ModelVillager(0.8f), 0.5F);
+        super(rendermanagerIn, new ModelVillager(0.5f), 0.5F);
     }
 
     @Override

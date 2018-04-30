@@ -110,7 +110,7 @@ public class MedKitBase extends ItemBase {
     	//add associated effects
     	if(effect != null) {
 	        for(PotionEffect p : effect){
-	            entityLiving.addPotionEffect(p);
+	            entityLiving.addPotionEffect(new PotionEffect(p));
 	        }
     	}
     	//remove associated effects
@@ -153,7 +153,7 @@ public class MedKitBase extends ItemBase {
 				if(heal > 0) {
 					tooltip.add("Heals " + (float)heal / 2 + " hearts");
 				} else if(heal < 0) {
-					tooltip.add("Damages by " + (float)heal / 2 + " hearts");
+					tooltip.add("Damages by " + (float)heal / -2 + " hearts");
 				}
 			}
 			if(Config.canViewEffectsInTooltip) {
@@ -184,6 +184,12 @@ public class MedKitBase extends ItemBase {
     
     private String potionName(Potion p) {
     	String s = p.getName();
+    	if(s.contains("effect.")) {
+    		s = s.split("\\.")[1];
+    		char[] ca = s.toCharArray();
+    		ca[0] = Character.toUpperCase(ca[0]);
+    		s = new String(ca);
+    	}
     	return s;
     }
 }

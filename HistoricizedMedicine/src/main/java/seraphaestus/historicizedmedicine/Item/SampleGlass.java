@@ -21,7 +21,7 @@ public class SampleGlass extends ItemBase {
 
     @Override
     public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.NONE;
+        return EnumAction.BOW;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SampleGlass extends ItemBase {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         ItemStack itemStackHeld = playerIn.getHeldItem(hand);
-        return new ActionResult(EnumActionResult.PASS, itemStackHeld);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackHeld);
     }
 
     @Override

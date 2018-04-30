@@ -29,6 +29,7 @@ public class VillagerProfessions {
 		public static void registerProfessions(final RegistryEvent.Register<VillagerProfession> event) {
 			final IForgeRegistry<VillagerProfession> registry = event.getRegistry();
 			PlagueDoctorProfession = new VillagerProfession(HMedicineMod.MODID + ":plaguedoctor", HMedicineMod.MODID + ":textures/entity/plaguedoctor.png", HMedicineMod.MODID + ":textures/entity/zombieplaguedoctor.png");
+			
 			registry.register(PlagueDoctorProfession);
 			new VillagerCareer(PlagueDoctorProfession, HMedicineMod.MODID + ".plaguedoctor")
 			.addTrade(1, new EntityVillager.ListItemForEmeralds(new ItemStack(honey, 0, 4), new EntityVillager.PriceInfo(1, 3)));

@@ -9,10 +9,10 @@ import seraphaestus.historicizedmedicine.HMedicineMod;
 @EventBusSubscriber(modid = HMedicineMod.MODID)
 public final class RegisterEffects
 {
-    public static final Potion bleeding = new EffectBleeding();
-    public static final Potion infection = new EffectInfection();
-    public static final Potion pain = new EffectPain();
-    public static final Potion plague = new EffectPlague();
+    public static final Potion bleeding = 	new HMedPotion(true, 0, "bleed", "Blood Loss", 0);
+    public static final Potion infection = 	new HMedPotion(true, 0, "infection", "Infection", 1);
+    public static final Potion pain = 		new HMedPotion(true, 0, "pain", "Pain", 2);
+    public static final Potion plague = 	new HMedPotion(true, 0, "plague", "The Block Death", 3);
 
     @SubscribeEvent
     public static void init(RegistryEvent.Register<Potion> event)

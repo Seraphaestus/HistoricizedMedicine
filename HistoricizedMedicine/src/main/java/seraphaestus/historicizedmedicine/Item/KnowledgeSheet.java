@@ -53,14 +53,21 @@ public class KnowledgeSheet extends ItemBase {
 	
 	public void addKnowledge(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
-		float knowledge = nbt.getFloat("currentKnowledge");
-		nbt.setFloat("currentKnowledge", knowledge + 0.5f);
-		//for some reason this is called twice so the 0.5f accounts for this
+		if(nbt == null) {
+			stack.setTagCompound(new NBTTagCompound());
+			return;
+		}
+		int knowledge = nbt.getInteger("currentKnowledge");
+		nbt.setInteger("currentKnowledge", knowledge + 1);
 	}
 	
 	private int getCurrentKnowledge(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
-		return (int)nbt.getFloat("currentKnowledge");
+		if(nbt == null) {
+			stack.setTagCompound(new NBTTagCompound());
+			return 0;
+		}
+		return (int)nbt.getInteger("currentKnowledge");
 	}
 	public boolean isFull(ItemStack stack) {
 		return maxKnowledge == getCurrentKnowledge(stack);
@@ -104,11 +111,11 @@ public class KnowledgeSheet extends ItemBase {
         return stack;
     }
     
-    /*//used to give enchanted glint
+    //used to give enchanted glint
     @Override
     public boolean hasEffect(ItemStack stack) {
       NBTTagCompound nbtTagCompound = stack.getTagCompound();
-      return ((int)currentKnowledge == maxKnowledge);
-  	}*/
+      return isFull(stack);
+  	}
 	
 }
