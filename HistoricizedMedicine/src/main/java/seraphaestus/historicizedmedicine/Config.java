@@ -17,6 +17,7 @@ public class Config {
     public static String commandRunOnEbersUse = null;
     public static boolean registerRecipes = true;
     public static boolean enableCreativeTab = true;
+    public static boolean enableRecipes = true;
     public static int bleedTotalAmount = 10;
 
     // Call this from CommonProxy.preInit(). It will create our config if it doesn't
@@ -43,6 +44,7 @@ public class Config {
         canViewHealAmountInTooltip = cfg.getBoolean("tooltipHealAmount", categoryGeneral, canViewHealAmountInTooltip, "Set to false if you don't want players to be able to see what medical items do re: health");
         registerRecipes = cfg.getBoolean("registerRecipes", categoryGeneral, registerRecipes, "Set to false to disable all recipes for this mod");
         enableCreativeTab = cfg.getBoolean("enableCreativeTab", categoryGeneral, enableCreativeTab, "Set to false to disable the creative tab for this mod");
+        enableRecipes = cfg.getBoolean("enableRecipes", categoryGeneral, enableRecipes, "Set to false to disable all recipes implemented by this mod")
         bleedTotalAmount = cfg.getInt("bleedTotalAmount", categoryGeneral, bleedTotalAmount, 0, Int.MaxValue(), "The amount of half-hearts that Blood Loss will take off over the course of its effect");
     }
 

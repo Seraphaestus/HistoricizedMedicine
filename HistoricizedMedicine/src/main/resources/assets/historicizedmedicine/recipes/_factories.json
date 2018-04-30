@@ -1,0 +1,5 @@
+{
+    "conditions": {
+        "recipeToggle": "seraphaestus.historicizedmedicine.RecipeToggleHandler"
+    }
+}
