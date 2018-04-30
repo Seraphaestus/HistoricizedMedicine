@@ -9,8 +9,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityUpdate
 {
-    final int painTickUpdate = 5;
-
     @SubscribeEvent
     public void onEntityUpdate(LivingEvent.LivingUpdateEvent event)
     {
@@ -26,9 +24,9 @@ public class EntityUpdate
             if(player.isPotionActive(RegisterEffects.pain) && !player.capabilities.isCreativeMode){
                 PotionEffect pot = player.getActivePotionEffect(RegisterEffects.pain);
                 //effect here
-
-                    player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), painTickUpdate)); //slowness
-                    player.addPotionEffect(new PotionEffect(Potion.getPotionById(18), painTickUpdate)); //weakness
+                //note: this constructor allows you to set the potion effect to be ambient, as in like a beacon effect
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 5, 1, true, false)); //slowness 2
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(18), 5, 0, true, false)); //weakness
 
             }
 
