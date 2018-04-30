@@ -7,7 +7,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = HMedicineMod.MODID, version = HMedicineMod.VERSION)
+@Mod(	modid = HMedicineMod.MODID, 
+		version = HMedicineMod.VERSION)
 public class HMedicineMod
 {
     // you also need to update the modid and version in two other places as well:
@@ -15,7 +16,7 @@ public class HMedicineMod
     //  resources/mcmod.info (the name, description, and version parameters)
     public static final String MODID = "historicizedmedicine";
     public static final String VERSION = "1.12.2a";
-    public static final CreativeTab creativeTab = new CreativeTab();
+    public static CreativeTab creativeTab;
 
     // The instance of your mod that Forge uses.  Optional.
     @Mod.Instance(HMedicineMod.MODID)
@@ -28,6 +29,9 @@ public class HMedicineMod
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	if(Config.enableCreativeTab) {
+    		creativeTab = new CreativeTab();
+    	}
         proxy.preInit(event);
     }
 

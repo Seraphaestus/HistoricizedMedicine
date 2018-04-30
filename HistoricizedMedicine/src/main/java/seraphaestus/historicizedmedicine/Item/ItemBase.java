@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
 public class ItemBase extends Item {
@@ -22,7 +23,9 @@ public class ItemBase extends Item {
     public ItemBase(String id, String name){
         this.id = id;
         this.name = name;
-        setCreativeTab(HMedicineMod.creativeTab);
+        if(Config.enableCreativeTab) {
+        	setCreativeTab(HMedicineMod.creativeTab);
+        }
     }
     public ItemBase(String id, String name, int stackSize){
         this(id, name);

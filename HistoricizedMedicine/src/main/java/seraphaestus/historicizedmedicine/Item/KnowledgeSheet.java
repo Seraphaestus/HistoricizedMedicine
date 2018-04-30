@@ -85,7 +85,11 @@ public class KnowledgeSheet extends ItemBase {
 	
 	@Override
     public int getMaxItemUseDuration(ItemStack stack) {
-        return 1;
+		if((this.useCommand != null)) {
+			return 1;
+		} else {
+			return 0;
+		}
     }
 
     @Override
@@ -103,10 +107,9 @@ public class KnowledgeSheet extends ItemBase {
     {
     	if (this.useCommand != null) {
     		worldIn.getMinecraftServer().getCommandManager().executeCommand(worldIn.getMinecraftServer().getCommandSenderEntity(), this.useCommand);
-    	}
-    	
-    	if(Config.knowledgeSheetConsumed) {
-    		stack.setCount(stack.getCount() - 1);
+        	if(Config.knowledgeSheetConsumed) {
+        		stack.setCount(stack.getCount() - 1);
+        	}
     	}
         return stack;
     }
