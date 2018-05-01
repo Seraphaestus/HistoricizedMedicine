@@ -20,6 +20,7 @@ public class ItemBase extends Item {
     String id;
     String name;
     int stackSize = 64;
+    String oreDictName = null;
 
     public ItemBase(String id, String name){
         this.id = id;
@@ -34,6 +35,12 @@ public class ItemBase extends Item {
     }
     public ItemBase(String id, String name, int stackSize, String oreDictName){
         this(id, name, stackSize);
-        OreDictionary.registerOre(oreDictName, this);
+        this.oreDictName = oreDictName;
+    }
+    
+    public void init() {
+    	if(oreDictName != null) {
+    		OreDictionary.registerOre(oreDictName, this);
+    	}
     }
 }

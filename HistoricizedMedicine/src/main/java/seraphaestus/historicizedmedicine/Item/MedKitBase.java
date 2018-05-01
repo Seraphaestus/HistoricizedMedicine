@@ -110,6 +110,13 @@ public class MedKitBase extends ItemBase {
     	//add associated effects
     	if(effect != null) {
 	        for(PotionEffect p : effect){
+	        	PotionEffect pe = entityLiving.getActivePotionEffect(p.getPotion());
+	        	int dur = 0;
+	        	if(pe != null) {
+	        		dur = pe.getDuration();
+	        		entityLiving.removeActivePotionEffect(p.getPotion());
+	        	}
+	        	p = new PotionEffect(p.getPotion(), p.getDuration() + dur);
 	            entityLiving.addPotionEffect(new PotionEffect(p));
 	        }
     	}
@@ -139,10 +146,13 @@ public class MedKitBase extends ItemBase {
 
         entityLiving.setHealth(newHealth);
         extraEffects(entityLiving);
-        stack.setCount(stack.getCount() - 1);
+        consumption(stack, entityLiving);
         return stack;
     }
     
+    protected void consumption(ItemStack stack, EntityLivingBase entityIn) {
+    	stack.setCount(stack.getCount() - 1);
+    }
     protected void extraEffects(EntityLivingBase entityLiving) {
     	
     }
@@ -184,6 +194,17 @@ public class MedKitBase extends ItemBase {
 		}
 		else {
 			tooltip.add("Shift to view effects of use");
+			if(this.minHealthReq != -1 || this.maxHealthReq != -1) {
+				int min = minHealthReq;
+				int max = maxHealthReq;
+				if(min == -1) min = 0;
+				if(max == -1) {
+					tooltip.add("Usable when above " + (float)min / 2 + " hearts");
+					
+				} else {
+					tooltip.add("Usable between " + (float)min / 2 + " and " + (float)max / 2 + " hearts");				
+				}
+			}
 		}
 	}
     
