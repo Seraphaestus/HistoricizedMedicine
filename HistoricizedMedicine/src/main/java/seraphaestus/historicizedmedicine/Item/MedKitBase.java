@@ -138,8 +138,13 @@ public class MedKitBase extends ItemBase {
         }
 
         entityLiving.setHealth(newHealth);
+        extraEffects(entityLiving);
         stack.setCount(stack.getCount() - 1);
         return stack;
+    }
+    
+    protected void extraEffects(EntityLivingBase entityLiving) {
+    	
     }
     
     @Override

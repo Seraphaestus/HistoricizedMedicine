@@ -24,13 +24,14 @@ public class RegistryHandler {
 
     public static void setupItems(){
         items = new ArrayList<ItemBase>();
-        //primative
+        //primitive
         items.add(new MedKitBase("trephine", "Trephine", 1, -1, -1, new PotionEffect[]{pain(30), bleed(30)}, new Potion[]{wither}, null, -2));
+        items.add(new MedKitFood("medicinal_clay", "Medicinal Clay", 8, -1, -1, null, null, null, 1, 1, 1));
         
-        //egyptian
+        //classical antiquity
         items.add(new MedKitBase("meat_bandage", "Raw Meat Bandage", 64, -1, -1, new PotionEffect[]{infect(30)}, null, new Reduce[] {new Reduce(RegisterEffects.bleeding, 100)}, 2));
         if(Config.implementHoney) {
-        	items.add(new ItemBase("honey", "Honey", 64, "foodHoney"));
+        	items.add(new ItemBase("honey", "Honey", 64, "itemHoney"));
         }
         
         //middle ages
