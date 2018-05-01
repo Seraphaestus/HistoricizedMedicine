@@ -1,13 +1,25 @@
 #primative
 item.Trephine.name=Trephine
+item.Medicinal Clay.name=Medicinal Clay
+item.Ward Charm.name=Charm of Evil Repulsion
+item.Herbal Poultice.name = Herbal Poultice
 
-#classical antiquity
+#egyptian
 item.Ebers Papyrus.name=Ebers Papyrus
-item.Honey.name=Honey
 item.Raw Meat Bandage.name=Raw Meat Bandage
+item.Honey.name=Honey
+item.Honey Poultice.name=Honey Poultice
+item.Suture.name=Suture
+item.Ligature Set.name=Ligature Set
+
+#greek/roman
+item.Scalpel.name=Scalpel
+item.Reed Bandage.name=Reed Bandage
 
 #middle ages
 item.Leech.name=Leech
+item.Tile Cautery.name=Tile Cautery
+item.Barber's Razor.name=Barber's Razor
 
 #renaissance
 item.Urine.name=Urine
