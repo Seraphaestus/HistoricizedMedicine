@@ -25,7 +25,7 @@ public class RegistryHandler {
     public static void setupItems(){
         items = new ArrayList<ItemBase>();
         //primitive
-        items.add(new MedKitBase("trephine", "Trephine", 1, -1, -1, new PotionEffect[]{pain(30), bleed(30)}, new Potion[]{wither}, null, -2));
+        items.add(new MedKitBase("trephine", "Trephine", 1, -1, -1, new PotionEffect[]{pain(15), bleed(30, 1)}, new Potion[]{wither}, null, -2));
         items.add(new MedKitFood("medicinal_clay", "Medicinal Clay", 8, -1, -1, null, null, null, 1, 1, 1));
         
         //classical antiquity
@@ -86,6 +86,9 @@ public class RegistryHandler {
     }
     public static PotionEffect bleed(float d){
         return new PotionEffect(RegisterEffects.bleeding, (int)(d * 20));
+    }
+    public static PotionEffect bleed(float d, int level){
+        return new PotionEffect(RegisterEffects.bleeding, (int)(d * 20), level);
     }
     public static PotionEffect infect(float d){
         return new PotionEffect(RegisterEffects.infection, (int)(d * 20));

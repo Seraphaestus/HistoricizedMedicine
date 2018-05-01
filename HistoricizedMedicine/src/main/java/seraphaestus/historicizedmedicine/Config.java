@@ -45,7 +45,7 @@ public class Config {
         registerRecipes = cfg.getBoolean("registerRecipes", categoryGeneral, registerRecipes, "Set to false to disable all recipes for this mod");
         enableCreativeTab = cfg.getBoolean("enableCreativeTab", categoryGeneral, enableCreativeTab, "Set to false to disable the creative tab for this mod");
         enableRecipes = cfg.getBoolean("enableRecipes", categoryGeneral, enableRecipes, "Set to false to disable all recipes implemented by this mod");
-        bleedTotalAmount = cfg.getInt("bleedTotalAmount", categoryGeneral, bleedTotalAmount, 0, Int.MaxValue(), "The amount of half-hearts that Blood Loss will take off over the course of its effect");
+        bleedTotalAmount = cfg.getInt("bleedTotalAmount", categoryGeneral, bleedTotalAmount, 0, Int.MaxValue(), "The amount of half-hearts that Blood Loss will take off over the course of its effect, per level of the effect");
     }
 
     private static void initCompatConfig(Configuration cfg) {
