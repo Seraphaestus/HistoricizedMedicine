@@ -16,7 +16,7 @@ import seraphaestus.historicizedmedicine.HMedicineMod;
 public class SampleGlass extends ItemBase {
 
     public SampleGlass(){
-        super("sample_glass", "Sample Glass", 64);
+        super("sample_glass", 64);
     }
 
     @Override

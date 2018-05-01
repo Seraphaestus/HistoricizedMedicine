@@ -1,31 +1,31 @@
 #primative
-item.Trephine.name=Trephine
-item.Medicinal Clay.name=Medicinal Clay
-item.Ward Charm.name=Charm of Evil Repulsion
-item.Herbal Poultice.name = Herbal Poultice
+item.historicizedmedicine.trephine.name=Trephine
+item.historicizedmedicine.medicinal_clay.name=Medicinal Clay
+item.historicizedmedicine.ward_charm.name=Charm of Evil Repulsion
+item.historicizedmedicine.herbal_poultice.name = Herbal Poultice
 
 #egyptian
-item.Ebers Papyrus.name=Ebers Papyrus
-item.Raw Meat Bandage.name=Raw Meat Bandage
-item.Honey.name=Honey
-item.Honey Poultice.name=Honey Poultice
-item.Suture.name=Suture
-item.Ligature Set.name=Ligature Set
+item.historicizedmedicine.ebers_papyrus.name=Ebers Papyrus
+item.historicizedmedicine.meat_bandage.name=Raw Meat Bandage
+item.historicizedmedicine.honey.name=Honey
+item.historicizedmedicine.honey_poultice.name=Honey Poultice
+item.historicizedmedicine.suture.name=Suture
+item.historicizedmedicine.ligature.name=Ligature Set
 
 #greek/roman
-item.Scalpel.name=Scalpel
-item.Reed Bandage.name=Reed Bandage
+item.historicizedmedicine.scalpel.name=Scalpel
+item.historicizedmedicine.reed_bandage.name=Reed Bandage
 
 #middle ages
-item.Leech.name=Leech
-item.Tile Cautery.name=Tile Cautery
-item.Barber's Razor.name=Barber's Razor
+item.historicizedmedicine.leech.name=Leech
+item.historicizedmedicine.cautery.name=Tile Cautery
+item.historicizedmedicine.razor.name=Barber's Razor
 
 #renaissance
-item.Urine.name=Urine
-item.Sample Glass.name=Sample Glass
-item.Ammonia.name=Ammonia
-item.Nitrous Oxide.name=Nitrous Oxide
+item.historicizedmedicine.urine.name=Urine
+item.historicizedmedicine.sample_glass.name=Sample Glass
+item.historicizedmedicine.ammonia.name=Ammonia
+item.historicizedmedicine.nitrous_oxide.name=Nitrous Oxide
 
 #effect
 effect.poison=Poison;

@@ -1,9 +1,6 @@
 package seraphaestus.historicizedmedicine.Item;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -22,19 +19,19 @@ public class ItemBase extends Item {
     int stackSize = 64;
     String oreDictName = null;
 
-    public ItemBase(String id, String name){
+    public ItemBase(String id){
         this.id = id;
-        this.name = name;
+        this.name = HMedicineMod.MODID + "." + id;
         if(Config.enableCreativeTab) {
         	setCreativeTab(HMedicineMod.creativeTab);
         }
     }
-    public ItemBase(String id, String name, int stackSize){
-        this(id, name);
+    public ItemBase(String id, int stackSize){
+        this(id);
         this.stackSize = stackSize;
     }
-    public ItemBase(String id, String name, int stackSize, String oreDictName){
-        this(id, name, stackSize);
+    public ItemBase(String id, int stackSize, String oreDictName){
+        this(id, stackSize);
         this.oreDictName = oreDictName;
     }
     

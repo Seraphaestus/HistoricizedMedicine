@@ -1,7 +1,5 @@
 package seraphaestus.historicizedmedicine.Item;
 
-import java.io.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -34,8 +32,8 @@ public class KnowledgeSheet extends ItemBase {
 	private String useCommand;
 	
 	
-	public KnowledgeSheet(String id, String name, int maxKnowledge, Item[] knowledgeGivers, String useCmd) {
-		super(id, name, 1);
+	public KnowledgeSheet(String id, int maxKnowledge, Item[] knowledgeGivers, String useCmd) {
+		super(id, 1);
 		this.maxKnowledge = maxKnowledge;
 		this.knowledgeGivers = knowledgeGivers;
 		this.useCommand = useCmd;

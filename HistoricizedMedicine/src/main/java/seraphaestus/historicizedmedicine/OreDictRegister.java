@@ -12,11 +12,11 @@ public class OreDictRegister {
 	private static List<Item> meats = new ArrayList<Item>();
 	
 	public static void initializeConstants() {
-		meats.add(Item.getByNameOrId("beef"));
-		meats.add(Item.getByNameOrId("chicken"));
-		meats.add(Item.getByNameOrId("mutton"));
-		meats.add(Item.getByNameOrId("porkchop"));
-		meats.add(Item.getByNameOrId("rabbit"));
+		meats.add(Item.getByNameOrId("minecraft:beef"));
+		meats.add(Item.getByNameOrId("minecraft:chicken"));
+		meats.add(Item.getByNameOrId("minecraft:mutton"));
+		meats.add(Item.getByNameOrId("minecraft:porkchop"));
+		meats.add(Item.getByNameOrId("minecraft:rabbit"));
 	}
 	
 	public static void initOreDict() {

@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import seraphaestus.historicizedmedicine.HMedicineMod;
+import seraphaestus.historicizedmedicine.Util.Pair;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 
 public class VillagerProfessions {
@@ -21,6 +22,7 @@ public class VillagerProfessions {
 	
 	public static VillagerProfession PlagueDoctorProfession;
 	private static final Item honey = Item.getByNameOrId(HMedicineMod.MODID + ":honey");
+	private static final Item herbalPoultice = Item.getByNameOrId(HMedicineMod.MODID + "herbal_poultice");
 	
 	@Mod.EventBusSubscriber(modid = HMedicineMod.MODID)
 	public static class RegistrationHandler {
@@ -32,9 +34,21 @@ public class VillagerProfessions {
 			
 			registry.register(PlagueDoctorProfession);
 			new VillagerCareer(PlagueDoctorProfession, HMedicineMod.MODID + ".plaguedoctor")
-			.addTrade(1, new EntityVillager.ListItemForEmeralds(new ItemStack(honey, 0, 4), new EntityVillager.PriceInfo(1, 3)));
-			
+			.addTrade(1, trade(honey, 4, price(1,3)))
+			.addTrade(1, trade(herbalPoultice, 1, price(1,3)));
 			PROFESSIONS.add(PlagueDoctorProfession);
 		}
 	}
+	
+	private static Pair<Integer, Integer> price(int x, int y){
+		return new Pair<Integer, Integer>(x, y);
+	}
+	private static EntityVillager.ListItemForEmeralds trade(Item item, int amount, int meta, int minEm, int maxEm){
+		return new EntityVillager.ListItemForEmeralds(new ItemStack(item, amount, meta), new EntityVillager.PriceInfo(minEm, maxEm));
+	}
+	private static EntityVillager.ListItemForEmeralds trade(Item item, int amount, Pair<Integer, Integer> price){
+		return trade(item, amount, 0, price.x, price.y);
+	}	
 }
+
+

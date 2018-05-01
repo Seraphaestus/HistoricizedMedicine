@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Config;
+import seraphaestus.historicizedmedicine.Util.Pair;
+import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class MedKitBase extends ItemBase {
 
@@ -31,8 +33,8 @@ public class MedKitBase extends ItemBase {
     private Reduce[] reduce;
     private int heal = 0;
 
-    public MedKitBase(String id, String unlocName, int stackSize, int minHealth, int maxHealth, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, int heal){
-        super(id, unlocName, stackSize);
+    public MedKitBase(String id, int stackSize, int minHealth, int maxHealth, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, int heal){
+        super(id, stackSize);
         this.minHealthReq = minHealth;
         this.maxHealthReq = maxHealth;
         this.effect = effect;
@@ -129,12 +131,12 @@ public class MedKitBase extends ItemBase {
     	//reduce associated effects
     	if(reduce != null) {
 	        for(Reduce r : reduce){
-	        	PotionEffect pe = entityLiving.getActivePotionEffect(r.p);
+	        	PotionEffect pe = entityLiving.getActivePotionEffect(r.x);
 	        	if(pe != null) {
 		        	int dur = pe.getDuration();
-		            entityLiving.removeActivePotionEffect(r.p);
-		            if(dur - r.dur > 0) {
-		            	entityLiving.addPotionEffect(new PotionEffect(r.p, dur - r.dur));
+		            entityLiving.removeActivePotionEffect(r.x);
+		            if(dur - r.y > 0) {
+		            	entityLiving.addPotionEffect(new PotionEffect(r.x, dur - r.y));
 		            }
 	        	}
 	        }
@@ -181,7 +183,7 @@ public class MedKitBase extends ItemBase {
 		    	//re: reducing effects
 		    	if(reduce != null) {
 			        for(Reduce r : reduce){
-			        	tooltip.add("Reduces " + potionName(r.p) + " duration by " + (float)r.dur / 20 + " seconds");
+			        	tooltip.add("Reduces " + potionName(r.x) + " duration by " + (float)r.y / 20 + " seconds");
 			        }
 		    	}
 				//re: adding effects

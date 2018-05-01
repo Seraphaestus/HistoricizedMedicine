@@ -20,8 +20,6 @@ public class RenderPlagueDoctor extends RenderLiving<EntityPlagueDoctor> {
     public static final Factory FACTORY = new Factory();
 
     public RenderPlagueDoctor(RenderManager rendermanagerIn) {
-        // We use the vanilla zombie model here and we simply
-        // retexture it. Of course you can make your own model
         super(rendermanagerIn, new ModelVillager(0.5f), 0.5F);
     }
 
