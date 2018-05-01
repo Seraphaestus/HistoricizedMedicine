@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
@@ -31,5 +32,8 @@ public class ItemBase extends Item {
         this(id, name);
         this.stackSize = stackSize;
     }
-   
+    public ItemBase(String id, String name, int stackSize, String oreDictName){
+        this(id, name, stackSize);
+        OreDictionary.registerOre(oreDictName, this);
+    }
 }

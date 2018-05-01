@@ -30,7 +30,7 @@ public class RegistryHandler {
         //egyptian
         items.add(new MedKitBase("meat_bandage", "Raw Meat Bandage", 64, -1, -1, new PotionEffect[]{infect(30)}, null, new Reduce[] {new Reduce(RegisterEffects.bleeding, 100)}, 2));
         if(Config.implementHoney) {
-        	items.add(new ItemBase("honey", "Honey", 64));
+        	items.add(new ItemBase("honey", "Honey", 64, "foodHoney"));
         }
         
         //middle ages
