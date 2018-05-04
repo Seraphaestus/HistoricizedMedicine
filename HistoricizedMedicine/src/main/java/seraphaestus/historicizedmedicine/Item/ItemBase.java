@@ -2,6 +2,10 @@ package seraphaestus.historicizedmedicine.Item;
 
 
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,6 +22,7 @@ public class ItemBase extends Item {
     String name;
     int stackSize = 64;
     String oreDictName = null;
+    String[] tooltip = null;
 
     public ItemBase(String id){
         this.id = id;
@@ -35,9 +40,25 @@ public class ItemBase extends Item {
         this.oreDictName = oreDictName;
     }
     
+    public ItemBase(String id, int stackSize, String oreDictName, String[] tooltip) {
+    	this(id, stackSize, oreDictName);
+    	this.tooltip = tooltip;
+    }
+    
     public void init() {
     	if(oreDictName != null) {
     		OreDictionary.registerOre(oreDictName, this);
     	}
     }
+    
+    @Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+	{
+		if(this.tooltip != null) {
+			for(String s : this.tooltip) {
+				tooltip.add(s);
+			}
+		}
+	}
 }

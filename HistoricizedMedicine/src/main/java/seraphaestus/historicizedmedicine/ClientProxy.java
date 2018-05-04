@@ -5,7 +5,6 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import seraphaestus.historicizedmedicine.Item.RegistryHandler;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
 
 public class ClientProxy extends CommonProxy
@@ -17,7 +16,8 @@ public class ClientProxy extends CommonProxy
     public void preInit(FMLPreInitializationEvent e)
     {
         super.preInit(e);
-        RegistryHandler.preInitClientOnly();
+        seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitClientOnly();
+        seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitClientOnly();
         ModEntities.initModels();
     }
 

@@ -9,21 +9,17 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Config;
-import seraphaestus.historicizedmedicine.HMedicineMod;
 
 public class KnowledgeSheet extends ItemBase {
 
@@ -65,7 +61,7 @@ public class KnowledgeSheet extends ItemBase {
 			stack.setTagCompound(new NBTTagCompound());
 			return 0;
 		}
-		return (int)nbt.getInteger("currentKnowledge");
+		return nbt.getInteger("currentKnowledge");
 	}
 	public boolean isFull(ItemStack stack) {
 		return maxKnowledge == getCurrentKnowledge(stack);

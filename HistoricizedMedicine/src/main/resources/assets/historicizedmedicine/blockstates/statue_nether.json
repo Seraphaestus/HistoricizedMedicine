@@ -1,0 +1,12 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": {
+			"model": "historicizedmedicine:statue_nether"
+		},
+		"inventory": {
+			"model": "historicizedmedicine:statue_nether",
+			"transform": "forge:default-block"
+		}
+	}
+}

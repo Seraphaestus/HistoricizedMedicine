@@ -5,16 +5,15 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.StatBase;
 import net.minecraft.util.FoodStats;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import seraphaestus.historicizedmedicine.Config;
+import seraphaestus.historicizedmedicine.Block.RegistryHandler;
 
 public class EntityUpdate
 {
@@ -28,6 +27,19 @@ public class EntityUpdate
         {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 
+            //nbt tag handling
+            
+            NBTTagCompound nbt = player.getEntityData();	
+            for(String id : RegistryHandler.statues) {
+            	int cooldown = nbt.getInteger(id + "_cooldown");
+            	if(cooldown != 0) {
+            		nbt.setInteger(id + "_cooldown", cooldown - 1);	
+    			}
+            }
+		
+            
+            //potion effects implementation:
+            
             if(player.isPotionActive(RegisterEffects.bleeding) && !player.capabilities.isCreativeMode){
             //effect: reduces health by a constant amount, at even intervals over the duration of the effect
                 PotionEffect pot = player.getActivePotionEffect(RegisterEffects.bleeding);

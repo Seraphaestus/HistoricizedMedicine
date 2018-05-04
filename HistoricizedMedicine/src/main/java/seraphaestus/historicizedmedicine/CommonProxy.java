@@ -7,7 +7,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
-import seraphaestus.historicizedmedicine.Item.RegistryHandler;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
 
 public abstract class CommonProxy {
@@ -19,7 +18,8 @@ public abstract class CommonProxy {
      */
     public void preInit(FMLPreInitializationEvent e)
     {
-        RegistryHandler.preInitCommon();
+    	seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitCommon();
+    	seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitCommon();
         ModEntities.init();
         
         File directory = e.getModConfigurationDirectory();

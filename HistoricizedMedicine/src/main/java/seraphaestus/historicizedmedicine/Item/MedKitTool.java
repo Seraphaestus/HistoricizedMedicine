@@ -5,7 +5,6 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import seraphaestus.historicizedmedicine.Util.Pair;
 import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class MedKitTool extends MedKitBase {

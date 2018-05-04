@@ -3,20 +3,30 @@ package seraphaestus.historicizedmedicine.Block;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import seraphaestus.historicizedmedicine.HMedicineMod;
+import seraphaestus.historicizedmedicine.Effect.RegisterEffects;
+import seraphaestus.historicizedmedicine.Util.Reduce;
 
 
 public class RegistryHandler {
 	
 	public static List<BlockBase> blocks;
 	
+	private static final Potion fireRes = Potion.getPotionById(12);
+	public static final String[] statues = new String[] {"statue_nether", "statue_end", "statue_wise"};
+	
 	public static void setupBlocks(){
 		blocks = new ArrayList<BlockBase>();
-        
+        blocks.add(new BlockStatue("statue_nether", Material.ROCK, new PotionEffect[] {new PotionEffect(fireRes, 20 * 60)}, null, null, 0));
+        blocks.add(new BlockStatue("statue_end", Material.ROCK, null, null, null, 6));
+        blocks.add(new BlockStatue("statue_wise", Material.ROCK, null, null, new Reduce[] {new Reduce(RegisterEffects.infection, 20 * 10), new Reduce(RegisterEffects.pain, 20 * 45)}, 0));
     }
 
     public static void preInitCommon() {  	

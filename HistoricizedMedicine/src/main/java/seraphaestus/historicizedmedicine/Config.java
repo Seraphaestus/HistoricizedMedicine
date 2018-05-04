@@ -8,6 +8,7 @@ public class Config {
     public static final String categoryGeneral = "general";
     public static final String categoryCompat = "compat";
     public static final String categoryKnowledge = "knowledge";
+    public static final String categoryClient = "client";
 
     // This values below you can access elsewhere in your mod:
     public static boolean implementHoney = true;
@@ -19,6 +20,8 @@ public class Config {
     public static boolean enableCreativeTab = true;
     public static boolean enableRecipes = true;
     public static int bleedTotalAmount = 10;
+    public static int statueParticleAmount = 10;
+    public static int statueCooldown = 60 * 20;
 
     // Call this from CommonProxy.preInit(). It will create our config if it doesn't
     // exist yet and read the values if it does exist.
@@ -29,6 +32,7 @@ public class Config {
             initGeneralConfig(cfg);
             initCompatConfig(cfg);
             initKnowledgeConfig(cfg);
+            initClientConfig(cfg);
         } catch (Exception e1) {
 
         } finally {
@@ -46,6 +50,7 @@ public class Config {
         enableCreativeTab = cfg.getBoolean("enableCreativeTab", categoryGeneral, enableCreativeTab, "Set to false to disable the creative tab for this mod");
         enableRecipes = cfg.getBoolean("enableRecipes", categoryGeneral, enableRecipes, "Set to false to disable all recipes implemented by this mod");
         bleedTotalAmount = cfg.getInt("bleedTotalAmount", categoryGeneral, bleedTotalAmount, 0, Int.MaxValue(), "The amount of half-hearts that Blood Loss will take off over the course of its effect, per level of the effect");
+        statueCooldown = cfg.getInt("statueCooldown", categoryGeneral, statueCooldown, 0, Int.MaxValue(), "The duration in ticks of the cooldown of a statue after using it");
     }
 
     private static void initCompatConfig(Configuration cfg) {
@@ -58,5 +63,10 @@ public class Config {
     	cfg.addCustomCategoryComment(categoryKnowledge, "Configuration of knowledge sheets (e.g. the ebers papyrus)");
     	knowledgeSheetConsumed = cfg.getBoolean("knSheetConsumed", categoryKnowledge, knowledgeSheetConsumed, "Set to false if you want players to keep their knowledge sheet after using it to run a command");
     	commandRunOnEbersUse = cfg.getString("commandEbers", categoryKnowledge, commandRunOnEbersUse, "The command that should be run when a player uses a complete ebers parchment. (useful with game stages)");
+    }
+    
+    private static void initClientConfig(Configuration cfg) {
+    	cfg.addCustomCategoryComment(categoryClient, "Configuration of client-side things");
+    	statueParticleAmount = cfg.getInt("statueParticleAmount", categoryClient, statueParticleAmount, 0, 255, "The amount of particles that should be spawned when a statue is used");
     }
 }

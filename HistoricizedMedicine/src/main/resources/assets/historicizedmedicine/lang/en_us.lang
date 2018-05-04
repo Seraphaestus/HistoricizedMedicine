@@ -2,7 +2,7 @@
 item.historicizedmedicine.trephine.name=Trephine
 item.historicizedmedicine.medicinal_clay.name=Medicinal Clay
 item.historicizedmedicine.ward_charm.name=Charm of Evil Repulsion
-item.historicizedmedicine.herbal_poultice.name = Herbal Poultice
+item.historicizedmedicine.herbal_poultice.name=Herbal Poultice
 
 #egyptian
 item.historicizedmedicine.ebers_papyrus.name=Ebers Papyrus
@@ -26,6 +26,11 @@ item.historicizedmedicine.urine.name=Urine
 item.historicizedmedicine.sample_glass.name=Sample Glass
 item.historicizedmedicine.ammonia.name=Ammonia
 item.historicizedmedicine.nitrous_oxide.name=Nitrous Oxide
+
+#block
+tile.historicizedmedicine.statue_nether.name=Cathonis Statue
+tile.historicizedmedicine.statue_end.name=Enderion Statue
+tile.historicizedmedicine.statue_wise.name=Sophia-Onithida Statue
 
 #effect
 effect.poison=Poison;

@@ -7,7 +7,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import seraphaestus.historicizedmedicine.Effect.RegisterEffects;
-import seraphaestus.historicizedmedicine.Util.Pair;
 import seraphaestus.historicizedmedicine.Util.Reduce;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;

@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Config;
-import seraphaestus.historicizedmedicine.Util.Pair;
+import seraphaestus.historicizedmedicine.Util.PotionName;
 import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class MedKitBase extends ItemBase {
@@ -177,19 +177,19 @@ public class MedKitBase extends ItemBase {
 		    	//re: removing effects
 		    	if(cure != null) {
 			        for(Potion p : cure){
-			        	tooltip.add("Cures " + potionName(p));
+			        	tooltip.add("Cures " + PotionName.potionName(p));
 			        }
 		    	}
 		    	//re: reducing effects
 		    	if(reduce != null) {
 			        for(Reduce r : reduce){
-			        	tooltip.add("Reduces " + potionName(r.x) + " duration by " + (float)r.y / 20 + " seconds");
+			        	tooltip.add("Reduces " + PotionName.potionName(r.x) + " duration by " + (float)r.y / 20 + " seconds");
 			        }
 		    	}
 				//re: adding effects
 				if(effect != null) {
 			        for(PotionEffect p : effect){
-						tooltip.add("Gives " + potionName(p.getPotion()) + " for " + (float)p.getDuration() / 20 + " seconds");
+						tooltip.add("Gives " + PotionName.potionName(p.getPotion()) + " for " + (float)p.getDuration() / 20 + " seconds");
 			        }
 		    	}
 			}
@@ -210,15 +210,6 @@ public class MedKitBase extends ItemBase {
 		}
 	}
     
-    private String potionName(Potion p) {
-    	String s = p.getName();
-    	if(s.contains("effect.")) {
-    		s = s.split("\\.")[1];
-    		char[] ca = s.toCharArray();
-    		ca[0] = Character.toUpperCase(ca[0]);
-    		s = new String(ca);
-    	}
-    	return s;
-    }
+    
 }
 
