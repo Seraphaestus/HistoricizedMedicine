@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import mcjty.theoneprobe.api.IProbeHitData;
+import mcjty.theoneprobe.api.IProbeInfo;
+import mcjty.theoneprobe.api.ProbeMode;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,23 +18,24 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import seraphaestus.historicizedmedicine.Config;
+import seraphaestus.historicizedmedicine.Compat.TOPInfoProvider;
 import seraphaestus.historicizedmedicine.Util.PotionName;
 import seraphaestus.historicizedmedicine.Util.Reduce;
 
-public class BlockStatue extends BlockBase {
+public class BlockStatue extends BlockDirectional implements TOPInfoProvider {
 
 	private PotionEffect[] effect;
 	private Reduce[] reduce;
 	private Potion[] cure;
 	private float heal = 0;
-	private int cooldown = 0;
 	private int lastCooldownSent = 0;
 	
 	public BlockStatue(String id, Material materialIn, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, float heal) {
-		super(id, materialIn);    
+		super(id, materialIn, false);    
 		setHardness(8f);
 		setResistance(60f);
 		this.effect = effect;
@@ -128,17 +132,74 @@ public class BlockStatue extends BlockBase {
 		String[] tooltipArr = tooltip.toArray(new String[tooltip.size()]);
     	ForgeRegistries.ITEMS.register(new ItemBlockBase(this, tooltipArr).setRegistryName(this.id));
 	}
+
 	
-	@Override
-	@Deprecated
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
+	public int getCooldown(EntityPlayer player) {
+		  NBTTagCompound nbt = player.getEntityData();	
+		  return nbt.getInteger(this.id + "_cooldown");
 	}
 	
-	@Override
-	@Deprecated
-	public boolean isFullCube(IBlockState state) {
-		return false;
-	}
+  //TOP compat
+  @Override
+  public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
+	  int cooldown = this.getCooldown(player);
+	  
+	  if(cooldown != 0) {
+		  probeInfo.horizontal()
+		  .text(TextFormatting.GOLD + "Cooldown: " + cooldown / 20);
+	  
+		  probeInfo.horizontal(probeInfo.defaultLayoutStyle().borderColor(0xffff0000))
+      	  .progress(100 * cooldown / Config.statueCooldown, 100, probeInfo.defaultProgressStyle().suffix("%"));
+	  } else {
+		  probeInfo.horizontal()
+		  .text(TextFormatting.GREEN + "Ready");
+	  }
+	  if(player.isSneaking()) {
+		  boolean tooltipEmpty = true;	
+				if(Config.canViewHealAmountInTooltip) {
+					//healing
+					if(heal > 0) {
+						probeInfo.horizontal().text("Heals " + heal / 2 + " hearts");
+						tooltipEmpty = false;
+					} else if(heal < 0) {
+						probeInfo.horizontal().text("Damages by " + heal / -2 + " hearts");
+						tooltipEmpty = false;
+					}
+				}
+				if(Config.canViewEffectsInTooltip) {
+			    	//re: removing effects
+			    	if(cure != null) {
+				        for(Potion p : cure){
+				        	probeInfo.horizontal().text("Cures " + PotionName.potionName(p));
+				        }
+				        tooltipEmpty = false;
+			    	}
+			    	//re: reducing effects
+			    	if(reduce != null) {
+				        for(Reduce r : reduce){
+				        	probeInfo.horizontal().text("Reduces " + PotionName.potionName(r.x) + " duration by " + (float)r.y / 20 + " seconds");
+				        }
+				        tooltipEmpty = false;
+			    	}
+					//re: adding effects
+					if(effect != null) {
+				        for(PotionEffect p : effect){
+				        	probeInfo.horizontal().text("Gives " + PotionName.potionName(p.getPotion()) + " for " + (float)p.getDuration() / 20 + " seconds");
+				        }
+				        tooltipEmpty = false;
+			    	}
+					
+					if(tooltipEmpty) {
+						probeInfo.horizontal().text("Effect: ???");
+					}
+					
+				} else {
+					probeInfo.horizontal().text("Effect: ???");
+				}
+	  } else {
+		  probeInfo.horizontal()
+		  .text("Sneak for more info");
+	  }
+  }
 
 }

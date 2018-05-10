@@ -163,14 +163,16 @@ public class MedKitBase extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-
+    	boolean tooltipEmpty = true;
 		if(GuiScreen.isShiftKeyDown()) {	
 			if(Config.canViewHealAmountInTooltip) {
 				//healing
 				if(heal > 0) {
 					tooltip.add("Heals " + (float)heal / 2 + " hearts");
+					tooltipEmpty = false;
 				} else if(heal < 0) {
 					tooltip.add("Damages by " + (float)heal / -2 + " hearts");
+					tooltipEmpty = false;
 				}
 			}
 			if(Config.canViewEffectsInTooltip) {
@@ -179,19 +181,29 @@ public class MedKitBase extends ItemBase {
 			        for(Potion p : cure){
 			        	tooltip.add("Cures " + PotionName.potionName(p));
 			        }
+			        tooltipEmpty = false;
 		    	}
 		    	//re: reducing effects
 		    	if(reduce != null) {
 			        for(Reduce r : reduce){
 			        	tooltip.add("Reduces " + PotionName.potionName(r.x) + " duration by " + (float)r.y / 20 + " seconds");
 			        }
+			        tooltipEmpty = false;
 		    	}
 				//re: adding effects
 				if(effect != null) {
 			        for(PotionEffect p : effect){
 						tooltip.add("Gives " + PotionName.potionName(p.getPotion()) + " for " + (float)p.getDuration() / 20 + " seconds");
 			        }
+			        tooltipEmpty = false;
 		    	}
+				
+				if(tooltipEmpty) {
+					tooltip.add("Effect: ???");
+				}
+				
+			} else {
+				tooltip.add("Effect: ???");
 			}
 		}
 		else {

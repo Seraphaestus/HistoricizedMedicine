@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "historicizedMedicine:medicinal_clay"
+  },
+  "type": "minecraft:crafting_shaped",
+  
+  "pattern":[
+	" c ",
+	"chc",
+	" c "
+  ],
+  
+  "key":{
+	"c":{
+		"item": "minecraft:clay_ball"
+	},
+	"h":{
+		"item": "historicizedMedicine:herbs"
+	}
+  },
+  
+  "conditions": [
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
+}

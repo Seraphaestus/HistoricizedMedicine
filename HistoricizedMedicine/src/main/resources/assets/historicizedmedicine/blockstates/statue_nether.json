@@ -1,9 +1,11 @@
 {
 	"forge_marker": 1,
 	"variants": {
-		"normal": {
-			"model": "historicizedmedicine:statue_nether"
-		},
+		"facing=north": { "model": "historicizedmedicine:statue_nether"},
+        "facing=east": 	{ "model": "historicizedmedicine:statue_nether", "y": 90 },
+        "facing=south": { "model": "historicizedmedicine:statue_nether", "y": 180 },
+		"facing=west": 	{ "model": "historicizedmedicine:statue_nether", "y": 270 },
+		
 		"inventory": {
 			"model": "historicizedmedicine:statue_nether",
 			"transform": "forge:default-block"

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "historicizedMedicine:cautery",
+	"amount": 1
+  },
+  "top3": {
+  	"item": "minecraft:iron_ingot"
+  },
+  "mid2": {
+	"item": "minecraft:iron_ingot"
+  },
+  "mid3": {
+  	"item": "minecraft:lava_bucket"
+  },
+  "low1": {
+	"item": "minecraft:leather"
+  },
+  "knowledge": "historicizedmedicine:canon_of_medicine"
+}

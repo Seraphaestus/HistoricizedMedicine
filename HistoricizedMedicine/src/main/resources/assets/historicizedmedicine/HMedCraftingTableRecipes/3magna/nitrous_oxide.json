@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedmedicine:nitrous_oxide",
+	"amount": 1
+  },
+  "top2":{
+  	"item": "minecraft:blaze_powder"
+  },
+  "mid2": {
+	"item": "minecraft:gunpowder"
+  },
+  "low2": {
+  	"item": "historicizedmedicine:ammonia"
+  },
+  "knowledge": "historicizedmedicine:chirurgia_magna"
+}

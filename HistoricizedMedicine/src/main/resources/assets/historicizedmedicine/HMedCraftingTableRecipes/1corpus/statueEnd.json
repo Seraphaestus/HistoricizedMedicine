@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedmedicine:statue_end",
+	"amount": 1
+  },
+  "top2": {
+	"item": "minecraft:end_stone"
+  },
+  "mid2": {
+	"item": "minecraft:end_stone"
+  },
+  "low2": {
+	"item": "historicizedmedicine:statue_base"
+  },
+  "knowledge": "historicizedmedicine:hippocratic_corpus"
+}

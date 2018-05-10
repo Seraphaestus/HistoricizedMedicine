@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedMedicine:razor",
+	"amount": 1
+  },
+  "top3": {
+  	"item": "minecraft:iron_ingot"
+  },
+  "mid2": {
+	"item": "minecraft:shears"
+  },
+  "low3": {
+	"item": "minecraft:leather"
+  },
+  "knowledge": "historicizedmedicine:canon_of_medicine"
+}

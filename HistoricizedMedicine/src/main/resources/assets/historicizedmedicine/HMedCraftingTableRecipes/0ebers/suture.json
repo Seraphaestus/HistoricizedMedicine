@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedMedicine:suture",
+	"amount": 1
+  },
+  "top3": {
+	"item": "minecraft:string"
+  },
+  "mid2": {
+	"item": "minecraft:string"
+  },
+  "low1": {
+	"item": "minecraft:string"
+  },
+  "knowledge": "historicizedMedicine:ebers_papyrus"
+}

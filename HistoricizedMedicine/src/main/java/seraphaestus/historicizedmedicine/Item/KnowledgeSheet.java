@@ -26,13 +26,14 @@ public class KnowledgeSheet extends ItemBase {
 	private int maxKnowledge;
 	private Item[] knowledgeGivers;
 	private String useCommand;
+	private int tier = 0;	public int getTier() { return tier; }
 	
-	
-	public KnowledgeSheet(String id, int maxKnowledge, Item[] knowledgeGivers, String useCmd) {
+	public KnowledgeSheet(String id, int maxKnowledge, Item[] knowledgeGivers, String useCmd, int tier) {
 		super(id, 1);
 		this.maxKnowledge = maxKnowledge;
 		this.knowledgeGivers = knowledgeGivers;
 		this.useCommand = useCmd;
+		this.tier = tier;
 	}
 	
 	@Override
@@ -52,7 +53,31 @@ public class KnowledgeSheet extends ItemBase {
 			return;
 		}
 		int knowledge = nbt.getInteger("currentKnowledge");
-		nbt.setInteger("currentKnowledge", knowledge + 1);
+		if(knowledge + 1 <= this.maxKnowledge) {
+			nbt.setInteger("currentKnowledge", knowledge + 1);
+		}
+	}
+	
+	public void takeKnowledge(ItemStack stack) {
+		NBTTagCompound nbt = stack.getTagCompound();
+		if(nbt == null) {
+			stack.setTagCompound(new NBTTagCompound());
+			return;
+		}
+		int knowledge = nbt.getInteger("currentKnowledge");
+		if(knowledge - 1 >= 0) {
+			nbt.setInteger("currentKnowledge", knowledge - 1);
+		}
+	}
+	
+	public void setMaxKnowledge(ItemStack stack) {
+		NBTTagCompound nbt = stack.getTagCompound();
+		if(nbt == null) {
+			stack.setTagCompound(new NBTTagCompound());
+			return;
+		}
+		KnowledgeSheet ks = (KnowledgeSheet)stack.getItem();
+		nbt.setInteger("currentKnowledge", ks.maxKnowledge);
 	}
 	
 	private int getCurrentKnowledge(ItemStack stack) {
@@ -65,6 +90,9 @@ public class KnowledgeSheet extends ItemBase {
 	}
 	public boolean isFull(ItemStack stack) {
 		return maxKnowledge == getCurrentKnowledge(stack);
+	}
+	public boolean isEmpty(ItemStack stack) {
+		return 0 == getCurrentKnowledge(stack);
 	}
 	
 	@Override
@@ -111,7 +139,6 @@ public class KnowledgeSheet extends ItemBase {
     //used to give enchanted glint
     @Override
     public boolean hasEffect(ItemStack stack) {
-      NBTTagCompound nbtTagCompound = stack.getTagCompound();
       return isFull(stack);
   	}
 	

@@ -1,4 +1,4 @@
-package seraphaestus.historicizedmedicine.Mob;
+package seraphaestus.historicizedmedicine.Mob.PlagueDoctor;
 
 import javax.annotation.Nonnull;
 

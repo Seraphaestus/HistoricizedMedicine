@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedMedicine:reed_bandage",
+	"amount": 1
+  },
+  "top3": {
+  	"item": "minecraft:reeds"
+  },
+  "mid2": {
+	"item": "historicizedmedicine:meat_bandage"
+  },
+  "low1": {
+	"item": "minecraft:reeds"
+  },
+  "knowledge": "historicizedmedicine:hippocratic_corpus"
+}

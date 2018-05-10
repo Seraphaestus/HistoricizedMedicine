@@ -1,0 +1,10 @@
+{
+  "result": {
+    "item": "historicizedmedicine:canon_of_medicine",
+	"amount": 1
+  },
+  "mid2": {
+	"item": "minecraft:book"
+  },
+  "knowledge": "historicizedmedicine:hippocratic_corpus"
+}

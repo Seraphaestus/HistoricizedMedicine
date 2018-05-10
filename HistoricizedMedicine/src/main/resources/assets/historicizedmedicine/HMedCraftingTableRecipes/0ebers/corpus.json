@@ -1,0 +1,10 @@
+{
+  "result": {
+    "item": "historicizedmedicine:hippocratic_corpus",
+	"amount": 1
+  },
+  "mid2": {
+	"item": "minecraft:paper"
+  },
+  "knowledge": "historicizedmedicine:ebers_papyrus"
+}

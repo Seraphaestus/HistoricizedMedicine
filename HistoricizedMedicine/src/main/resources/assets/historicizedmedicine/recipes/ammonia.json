@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedMedicine:ammonia"
+  },
+  "type": "minecraft:crafting_shapeless",
+  
+  "ingredients":[
+	  { "item": "historicizedMedicine:urine" }
+  ],
+  
+  "conditions": [
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
+}

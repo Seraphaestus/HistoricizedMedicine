@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedmedicine:ligature",
+	"amount": 1
+  },
+  "top3": {
+	"item": "historicizedmedicine:suture"
+  },
+  "mid2": {
+	"item": "minecraft:iron_ingot"
+  },
+  "low1": {
+	"item": "historicizedmedicine:suture"
+  },
+  "knowledge": "historicizedmedicine:ebers_papyrus"
+}

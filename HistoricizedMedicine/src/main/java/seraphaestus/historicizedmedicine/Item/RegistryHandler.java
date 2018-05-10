@@ -1,18 +1,18 @@
 package seraphaestus.historicizedmedicine.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import seraphaestus.historicizedmedicine.Effect.RegisterEffects;
-import seraphaestus.historicizedmedicine.Util.Reduce;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
-
-import java.util.ArrayList;
-import java.util.List;
+import seraphaestus.historicizedmedicine.Effect.RegisterEffects;
+import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class RegistryHandler {
 
@@ -22,10 +22,14 @@ public class RegistryHandler {
     private static Potion poison = pId(19);
     
     public static KnowledgeSheet ebers;
+    public static KnowledgeSheet corpus;
+    public static KnowledgeSheet canon;
+    public static KnowledgeSheet magna;
 
     public static void setupItems(){
         items = new ArrayList<ItemBase>();
         //primitive
+        items.add(new ItemBase("herbs", 64, "herbs"));
         items.add(new MedKitTool("trephine", 1, -1, -1, new PotionEffect[]{pain(15), bleed(30, 1)}, new Potion[]{wither}, null, -2, 3));
         items.add(new MedKitFood("medicinal_clay", 8, -1, -1, null, null, null, 1, 1, 1));
         items.add(new MedKitBase("ward_charm", 1, -1, -1, null, null, null, 0));
@@ -54,7 +58,7 @@ public class RegistryHandler {
         items.add(new MedKitTool("cautery", 1, -1, -1, new PotionEffect[]{pain(40), infect(20)}, new Potion[] {RegisterEffects.bleeding}, null, -6, 20));
         items.add(new MedKitTool("razor", 1, -1, -1, new PotionEffect[]{pain(10), infect(20), bleed(30)}, null, null, 10, 5));
         
-        //renaissance: Chirugic Magna
+        //renaissance: Chirurgia Magna
         items.add(new ItemBase("urine", 64));
         items.add(new SampleGlass());
         items.add(new ItemBase("ammonia", 64));
@@ -75,9 +79,18 @@ public class RegistryHandler {
         
         //knowledge sheets
         List<ItemBase> sheets = new ArrayList<ItemBase>();
-        Item[] knowledge1 = {iId("trephine")};
-        ebers = new KnowledgeSheet("ebers_papyrus", 4, knowledge1, Config.commandRunOnEbersUse);
+        final Item[] knowledge1 = {iId("trephine")};
+        final Item[] knowledge2 = {iId("trephine")};
+        final Item[] knowledge3 = {iId("trephine")};
+        final Item[] knowledge4 = {iId("trephine")};
+        ebers = new KnowledgeSheet("ebers_papyrus", 4, knowledge1, Config.commandRunOnEbersUse, 1);
+        corpus = new KnowledgeSheet("hippocratic_corpus", 8, knowledge2, Config.commandRunOnCorpusUse, 2);
+        canon = new KnowledgeSheet("canon_of_medicine", 12, knowledge3, Config.commandRunOnCanonUse, 3);
+        magna = new KnowledgeSheet("chirurgia_magna", 16, knowledge4, Config.commandRunOnMagnaUse, 4);
         sheets.add(ebers);
+        sheets.add(corpus);
+        sheets.add(canon);
+        sheets.add(magna);
         //register k. sheets
         for(ItemBase item : sheets){
             ForgeRegistries.ITEMS.register(item.setRegistryName(item.id).setUnlocalizedName(item.name).setMaxStackSize(item.stackSize));
@@ -95,8 +108,18 @@ public class RegistryHandler {
             ModelLoader.setCustomModelResourceLocation(item, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
         }
         //knowledge sheets
-        ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":ebers_papyrus", "inventory");
+        ModelResourceLocation itemModelResourceLocation;
+        itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":ebers_papyrus", "inventory");
         ModelLoader.setCustomModelResourceLocation(Item.getByNameOrId(HMedicineMod.MODID + ":ebers_papyrus"), DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+        
+        itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":hippocratic_corpus", "inventory");
+        ModelLoader.setCustomModelResourceLocation(Item.getByNameOrId(HMedicineMod.MODID + ":hippocratic_corpus"), DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+        
+        itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":canon_of_medicine", "inventory");
+        ModelLoader.setCustomModelResourceLocation(Item.getByNameOrId(HMedicineMod.MODID + ":canon_of_medicine"), DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+        
+        itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":chirurgia_magna", "inventory");
+        ModelLoader.setCustomModelResourceLocation(Item.getByNameOrId(HMedicineMod.MODID + ":chirurgia_magna"), DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
 
     }
 

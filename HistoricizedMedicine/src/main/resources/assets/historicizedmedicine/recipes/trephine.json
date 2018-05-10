@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "historicizedMedicine:trephine"
+  },
+  "type": "minecraft:crafting_shaped",
+  
+  "pattern":[
+	" bb",
+	" sb",
+	"s  "
+  ],
+  
+  "key":{
+	"s":{
+		"item": "minecraft:stick"
+	},
+	"b":{
+		"item": "minecraft:bone"
+	}
+  },
+  
+  "conditions": [
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
+}

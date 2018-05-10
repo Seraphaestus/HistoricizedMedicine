@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "historicizedMedicine:crafting_table"
+  },
+  "type": "minecraft:crafting_shapeless",
+  
+  "ingredients":[
+	  { "item": "minecraft:crafting_table" },
+	  { "item": "historicizedMedicine:herbs" }
+  ],
+  
+  "conditions": [
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
+}

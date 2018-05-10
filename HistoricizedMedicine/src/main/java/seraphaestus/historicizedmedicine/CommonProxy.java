@@ -6,7 +6,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import seraphaestus.historicizedmedicine.Compat.MainCompatHandler;
 import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
+import seraphaestus.historicizedmedicine.Item.MilkOverride;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
 
 public abstract class CommonProxy {
@@ -18,13 +21,20 @@ public abstract class CommonProxy {
      */
     public void preInit(FMLPreInitializationEvent e)
     {
+    	MainCompatHandler.registerTOP();
+    	
     	seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitCommon();
     	seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitCommon();
         ModEntities.init();
+        OreDictRegister.initOreDict();
         
         File directory = e.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "historicizedMedicine.cfg"));
         Config.readConfig();
+        
+        if(Config.disableUseOfMilkBuckets) {
+        	MinecraftForge.EVENT_BUS.register(new MilkOverride());
+        }
     }
 
     /**
@@ -34,6 +44,7 @@ public abstract class CommonProxy {
     public void init()
     {
         registerEventHandlers();
+        NetworkRegistry.INSTANCE.registerGuiHandler(HMedicineMod.instance,  new GUIProxy());
     }
 
     /**

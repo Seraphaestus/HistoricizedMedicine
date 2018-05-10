@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "historicizedmedicine:honey_poultice",
+	"amount": 1
+  },
+  "top2": {
+	"item": "minecraft:paper"
+  },
+  "mid1": {
+	"item": "minecraft:paper"
+  },
+  "mid2": {
+	"ore": "itemHoney"
+  },
+  "mid3": {
+	"item": "minecraft:paper"
+  },
+  "low2": {
+	"item": "minecraft:paper"
+  },
+  "knowledge": "historicizedmedicine:ebers_papyrus"
+}

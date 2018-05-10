@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(	modid = HMedicineMod.MODID, 
 		version = HMedicineMod.VERSION)
@@ -45,6 +46,11 @@ public class HMedicineMod
     public void postInit(FMLPostInitializationEvent event)
     {
         proxy.postInit();
+    }
+    
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new FillKnowledgeCommand());
     }
 
     public static String prependModID(String name) {return MODID + ":" + name;}

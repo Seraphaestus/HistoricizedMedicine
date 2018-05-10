@@ -2,6 +2,7 @@ package seraphaestus.historicizedmedicine.Block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -14,10 +15,12 @@ public class BlockBase extends Block {
 
 	public String id;
 	private String oreDictName = null;
+	private boolean fullBlock = true;
 	
-	public BlockBase(String id, Material materialIn) {
+	public BlockBase(String id, Material materialIn, boolean fullBlock) {
 		super(materialIn);
 		this.id = id;
+		this.fullBlock = fullBlock;
 		setUnlocalizedName(HMedicineMod.MODID + "." + id);     // Used for localization (en_US.lang)
         setRegistryName(id);    
         if(Config.enableCreativeTab) {
@@ -31,6 +34,18 @@ public class BlockBase extends Block {
     	}
     	registerItemBlock();
     }
+	
+	@Override
+	@Deprecated
+	public boolean isOpaqueCube(IBlockState state) {
+		return fullBlock;
+	}
+	
+	@Override
+	@Deprecated
+	public boolean isFullCube(IBlockState state) {
+		return fullBlock;
+	}
 	
 	public void registerItemBlock() {
     	ForgeRegistries.ITEMS.register(new ItemBlock(this).setRegistryName(this.id));

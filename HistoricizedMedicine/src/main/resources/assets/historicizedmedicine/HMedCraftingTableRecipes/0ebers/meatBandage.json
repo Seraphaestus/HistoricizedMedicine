@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "historicizedMedicine:meat_bandage",
+	"amount": 1
+  },
+  "top3": {
+	"item": "minecraft:paper"
+  },
+  "mid2": {
+	"ore": "itemMeatRaw"
+  },
+  "low1": {
+	"item": "minecraft:paper"
+  },
+  "knowledge": "historicizedmedicine:ebers_papyrus"
+}

@@ -1,5 +1,5 @@
 {
     "conditions": {
-        "recipeToggle": "seraphaestus.historicizedmedicine.RecipeToggleHandler"
+        "recipeToggle": "seraphaestus.historicizedmedicine.Recipe.RecipeToggleHandler"
     }
 }

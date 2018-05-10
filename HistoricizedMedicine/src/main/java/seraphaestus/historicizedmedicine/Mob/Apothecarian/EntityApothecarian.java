@@ -1,29 +1,21 @@
-package seraphaestus.historicizedmedicine.Mob;
+package seraphaestus.historicizedmedicine.Mob.Apothecarian;
 
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import seraphaestus.historicizedmedicine.HMedicineMod;
+import seraphaestus.historicizedmedicine.Mob.VillagerProfessions;
 
-public class EntityPlagueDoctor extends EntityVillager  {
+public class EntityApothecarian extends EntityVillager  {
 
 
-    public static final ResourceLocation LOOT = new ResourceLocation(HMedicineMod.MODID, "entities/plague_doctor");
+    public static final ResourceLocation LOOT = new ResourceLocation(HMedicineMod.MODID, "entities/apothecarian");
 
-    public EntityPlagueDoctor(World worldIn) {
+    public EntityApothecarian(World worldIn) {
         super(worldIn);
         setSize(0.6F, 1.95F);
     }
@@ -64,7 +56,7 @@ public class EntityPlagueDoctor extends EntityVillager  {
 	@Override
     public IEntityLivingData finalizeMobSpawn(DifficultyInstance p_190672_1_, @Nullable IEntityLivingData p_190672_2_, boolean p_190672_3_)
     {
-        this.setProfession(VillagerProfessions.PlagueDoctorProfession);
+        this.setProfession(VillagerProfessions.ApothecarianProfession);
         return super.finalizeMobSpawn(p_190672_1_, p_190672_2_, false);
     }
 }
