@@ -1,5 +1,10 @@
 {
 	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"particle":"historicizedmedicine:block/statue_base"
+		}
+	},
 	"variants": {
 		"facing=north": { "model": "historicizedmedicine:statue_wise"},
         "facing=east": 	{ "model": "historicizedmedicine:statue_wise", "y": 90 },
