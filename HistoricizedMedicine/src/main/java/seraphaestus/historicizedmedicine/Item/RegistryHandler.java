@@ -40,7 +40,7 @@ public class RegistryHandler {
         if(Config.implementHoney) {
         	items.add(new ItemBase("honey", 64, "itemHoney"));
         }
-        items.add(new MedKitBase("honey_poultice", 8, -1, -1, null, null, null, 0));
+        items.add(new MedKitBase("honey_poultice", 8, -1, -1, null, null, new Reduce[] {new Reduce(RegisterEffects.pain, 300)}, 0));
         //speed charm (ocelot claw) //made from bone and leather
         //strength charm (wolf fang)
         //resistance charm (eye of horus)
