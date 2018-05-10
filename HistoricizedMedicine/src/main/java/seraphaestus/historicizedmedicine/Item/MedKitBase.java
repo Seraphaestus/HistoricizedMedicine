@@ -95,11 +95,11 @@ public class MedKitBase extends ItemBase {
         if (minHealthReq == -1 || playerIn.getHealth() > minHealthReq){
             if (maxHealthReq == -1 || playerIn.getHealth() < maxHealthReq){
                 playerIn.setActiveHand(hand);
-                return new ActionResult(EnumActionResult.PASS, itemStackHeld);
+                return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackHeld);
             }
         }
 
-        return new ActionResult(EnumActionResult.FAIL, itemStackHeld);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackHeld);
     }
 
     @Override

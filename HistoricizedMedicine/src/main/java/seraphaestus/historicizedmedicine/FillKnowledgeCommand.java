@@ -19,7 +19,7 @@ import seraphaestus.historicizedmedicine.Item.KnowledgeSheet;
 public class FillKnowledgeCommand extends CommandBase {
 	
 	public FillKnowledgeCommand() { 
-		aliases = new ArrayList();
+		aliases = new ArrayList<String>();
 		aliases.add("knowledgeFill");
 	}
 	

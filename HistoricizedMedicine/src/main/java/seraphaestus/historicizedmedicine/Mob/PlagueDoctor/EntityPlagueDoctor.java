@@ -38,9 +38,9 @@ public class EntityPlagueDoctor extends EntityVillager  {
     	super.initEntityAI();
     }
 
-    private void applyEntityAI() {
+    //private void applyEntityAI() {
         //this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-    }
+    //}
 
     @Override
     @Nullable

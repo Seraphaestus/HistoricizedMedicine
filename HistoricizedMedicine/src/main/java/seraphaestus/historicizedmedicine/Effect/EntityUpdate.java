@@ -60,7 +60,7 @@ public class EntityUpdate
 
             if(player.isPotionActive(RegisterEffects.pain) && !player.capabilities.isCreativeMode){
             //effect: gives you weakness and slowness 2 while in effect
-                PotionEffect pot = player.getActivePotionEffect(RegisterEffects.pain);
+                //PotionEffect pot = player.getActivePotionEffect(RegisterEffects.pain);
                 //note: this constructor allows you to set the potion effect to be ambient, as in like a beacon effect
                 player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 5, 1, true, false)); //slowness 2
                 player.addPotionEffect(new PotionEffect(Potion.getPotionById(18), 5, 0, true, false)); //weakness
@@ -70,7 +70,7 @@ public class EntityUpdate
             if(player.isPotionActive(RegisterEffects.infection) && !player.capabilities.isCreativeMode){
             //effect: disable natural health regeneration while the effect is active
             //does not work on peaceful difficulty
-                PotionEffect pot = player.getActivePotionEffect(RegisterEffects.infection);
+                //PotionEffect pot = player.getActivePotionEffect(RegisterEffects.infection);
                 //effect here
                 resetFoodTimer(player.getFoodStats());
             }

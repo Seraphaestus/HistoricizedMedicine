@@ -6,11 +6,10 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.util.ResourceLocation;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
-public class HMedRecipeCategory implements IRecipeCategory{
+public class HMedRecipeCategory implements IRecipeCategory<HMedRecipeWrapper>{
 
 	public final static String uid = "HMedCrafting";
 	private final String title = "Medical Crafting";
@@ -50,7 +49,7 @@ public class HMedRecipeCategory implements IRecipeCategory{
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, HMedRecipeWrapper recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 		guiItemStacks.init(craftOutputSlot, false, 94, 18);
 
@@ -65,14 +64,12 @@ public class HMedRecipeCategory implements IRecipeCategory{
 		
 		guiItemStacks.init(craftKnowledgeSlot, true, 120, 36);
 		
-		if (recipeWrapper instanceof HMedRecipeWrapper) {
-			HMedRecipeWrapper hMedRecipeWrapper = (HMedRecipeWrapper)recipeWrapper;
-			for(int i = 0; i < 9; i++) {
-				recipeLayout.getItemStacks().set(craftInputSlot1 + i, hMedRecipeWrapper.inputs.get(i));
-			}
-			recipeLayout.getItemStacks().set(craftOutputSlot, hMedRecipeWrapper.output);
-			recipeLayout.getItemStacks().set(craftKnowledgeSlot, hMedRecipeWrapper.knowledge);
-		} 
+		HMedRecipeWrapper hMedRecipeWrapper = recipeWrapper;
+		for(int i = 0; i < 9; i++) {
+			recipeLayout.getItemStacks().set(craftInputSlot1 + i, hMedRecipeWrapper.inputs.get(i));
+		}
+		recipeLayout.getItemStacks().set(craftOutputSlot, hMedRecipeWrapper.output);
+		recipeLayout.getItemStacks().set(craftKnowledgeSlot, hMedRecipeWrapper.knowledge);
 	}
 
 

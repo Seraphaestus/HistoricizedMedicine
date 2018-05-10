@@ -119,9 +119,9 @@ public class KnowledgeSheet extends ItemBase {
     {
         ItemStack itemStackHeld = playerIn.getHeldItem(hand);
         if(this.isFull(itemStackHeld)) {
-        	return new ActionResult(EnumActionResult.PASS, itemStackHeld);
+        	return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackHeld);
         }
-        return new ActionResult(EnumActionResult.FAIL, itemStackHeld);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackHeld);
     }
 
     @Override

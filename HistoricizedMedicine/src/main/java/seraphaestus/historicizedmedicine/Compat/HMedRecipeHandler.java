@@ -2,7 +2,6 @@ package seraphaestus.historicizedmedicine.Compat;
 
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.util.Log;
 import seraphaestus.historicizedmedicine.CraftingTable.Recipe;
 
 @SuppressWarnings("deprecation")
@@ -26,7 +25,7 @@ public class HMedRecipeHandler implements IRecipeHandler<Recipe>{
 	@Override
 	public boolean isRecipeValid(Recipe recipe) {
 		if (recipe.getRecipeOutput() == null) {
-			Log.get().error("Recipe has no outputs. {}", "");
+			//Recipe has no outputs
 			return false;
 		}
 		int inputCount = 0;
@@ -38,11 +37,11 @@ public class HMedRecipeHandler implements IRecipeHandler<Recipe>{
 			}
 		}
 		if (inputCount > 9) {
-			Log.get().error("Recipe has too many inputs. {}", "");
+			//Recipe has too many inputs
 			return false;
 		}
 		if (inputCount == 0) {
-			Log.get().error("Recipe has no inputs. {}", "");
+			//Recipe has no inputs
 			return false;
 		}
 		return true;
