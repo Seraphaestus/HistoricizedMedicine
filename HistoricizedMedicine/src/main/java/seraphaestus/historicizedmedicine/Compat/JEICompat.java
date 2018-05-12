@@ -1,12 +1,10 @@
 package seraphaestus.historicizedmedicine.Compat;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.io.FileUtils;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -22,6 +20,7 @@ import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
+import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.CraftingTable.CraftingTableGUI;
 import seraphaestus.historicizedmedicine.CraftingTable.Recipe;
 
@@ -38,7 +37,14 @@ public class JEICompat implements IModPlugin{
 		
 		registry.addRecipeClickArea(CraftingTableGUI.class, 88, 32, 28, 23, HMedRecipeCategory.uid);
 		
-		registry.addRecipes(getRecipes(), HMedRecipeCategory.uid);
+		List<Recipe> toAdd = new ArrayList<Recipe>();
+		try {
+			toAdd = getRecipes();
+		} catch(IOException e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		System.out.println("Adding " + toAdd.size() + " recipes for Medical Crafting table (JEI viewer)");
+		registry.addRecipes(toAdd, HMedRecipeCategory.uid);
 		
 		if(Config.implementHoney) {
 			registry.addIngredientInfo(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":honey")), ItemStack.class, "Obtain via trading with Apothecarian villagers");
@@ -60,33 +66,32 @@ public class JEICompat implements IModPlugin{
 		ingredientBlacklist.addIngredientToBlacklist(new ItemStack(Items.SKULL, 1, 3));
 	}
 	
-	private final String dir = "/src/main/resources/assets/historicizedmedicine/HMedCraftingTableRecipes";
-	private List<Recipe> getRecipes() {
-		File base = new File(System.getProperty("user.dir"));
-		base = base.getParentFile();
-		File dir = new File(base.toString() + this.dir);
-		File[] directoryListing = dir.listFiles();
-		return getRecipes(directoryListing);
-	}
-	private List<Recipe> getRecipes(File[] directoryListing) {
+	private List<Recipe> getRecipes() throws IOException{
 		List<Recipe> output = new ArrayList<Recipe>();
-		if (directoryListing != null) {
-		    for (File child : directoryListing) {
-		    	File[] childDir = child.listFiles();
-				if(childDir != null) {
-					output.addAll(getRecipes(childDir));
-				} else {
-					output.add(getFromJson(child));
+		
+		List<String> files = HardCodedValues.getRecipeFilePaths();
+
+	  	for (String path : files) {
+			BufferedReader readIn = new BufferedReader(
+					new InputStreamReader(
+							getClass().getClassLoader().getResourceAsStream(
+									"assets/historicizedmedicine/textures/hmedcraftingtablerecipes/" + path + ".json"),
+							"UTF-8"));
+			String contents = "";
+			String line = "first line, woo";
+			while (line != null) {
+				line = readIn.readLine();
+				if(line != null) {
+					contents = contents + line;
 				}
-		    }		    
-	    }
+			} 
+			output.add(getFromJson(contents));
+		}
 		return output;
-	}	
-	private Recipe getFromJson(File file) {
-		Charset chr = null;
-		String contents;
+	}
+
+	private Recipe getFromJson(String contents) {
 		try {
-			contents = FileUtils.readFileToString(file, chr);
 			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
 			Recipe output = new Recipe();
 			NBTTagCompound outputTag = nbt.getCompoundTag("result");
@@ -99,12 +104,9 @@ public class JEICompat implements IModPlugin{
 			}
 			return output;
 
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (NBTException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
 }

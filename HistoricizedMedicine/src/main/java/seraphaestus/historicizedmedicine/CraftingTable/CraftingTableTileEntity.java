@@ -1,11 +1,9 @@
 package seraphaestus.historicizedmedicine.CraftingTable;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.io.InputStreamReader;
 import java.util.List;
-
-import org.apache.commons.io.FileUtils;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -19,6 +17,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 import seraphaestus.historicizedmedicine.Config;
+import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.Item.KnowledgeSheet;
 
 public class CraftingTableTileEntity extends TileEntity{
@@ -26,7 +25,8 @@ public class CraftingTableTileEntity extends TileEntity{
 	public final static int size = 11;
 	final static int outputSlot = 10;
 	final static int knowledgeSlot = 9;
-	private final String dir = "/src/main/resources/assets/historicizedmedicine/HMedCraftingTableRecipes";
+	private final String dir = "/assets/historicizedmedicine/hmedcraftingtablerecipes";
+	//private final String dir = "/src/main/resources/assets/historicizedmedicine/hmedcraftingtablerecipes";
 	
 	
 	//handler for crafting table slots + output + knowledge input
@@ -34,7 +34,11 @@ public class CraftingTableTileEntity extends TileEntity{
 		
 		@Override
 		protected void onContentsChanged(int slot) {
-			goThroughRecipes();
+			try {
+				goThroughRecipes();
+			} catch (IOException e) {
+				System.out.println(e.getLocalizedMessage());
+			}
 			if(slot == outputSlot) {
 				//removed from output
 				if(Config.craftingConsumesKnowledge) {
@@ -51,142 +55,92 @@ public class CraftingTableTileEntity extends TileEntity{
 						itemStackHandlerMain.setStackInSlot(i, new ItemStack(is.getItem(),is.getCount() - 1), false);
 					}
 				}
-				goThroughRecipes();
+				try {
+					goThroughRecipes();
+				} catch (IOException e) {
+					System.out.println(e.getLocalizedMessage());
+				}
 
 			}
 			CraftingTableTileEntity.this.markDirty();
 		}
 	};
 	
-	private boolean goThroughRecipes() {
-		File base = new File(System.getProperty("user.dir"));
-		base = base.getParentFile();
-		File dir = new File(base.toString() + this.dir);
-		File[] directoryListing = dir.listFiles();
-		return goThroughRecipes(directoryListing);
-	}
-	private boolean goThroughRecipes(File[] directoryListing) {
-		if (directoryListing != null) {
-		    for (File child : directoryListing) {
-		    	if(verifyIfRecipe(child)) {
-		    		return true;
-		    	}
-		    }		    
-	    }
-		return false;
+	private boolean goThroughRecipes() throws IOException {
+		List<String> files = HardCodedValues.getRecipeFilePaths();
+	  	for (String path : files) {
+			BufferedReader readIn = new BufferedReader(
+					new InputStreamReader(
+							getClass().getClassLoader().getResourceAsStream(
+									"assets/historicizedmedicine/textures/hmedcraftingtablerecipes/" + path + ".json"),
+							"UTF-8"));
+			String contents = "";
+			String line = "first line, woo";
+			while (line != null) {
+				line = readIn.readLine();
+				if(line != null) {
+					contents = contents + line;
+				}
+			} 
+			if(verifyIfRecipe(contents)) {
+				return true;
+			}
+	  	}
+	  	return false;
 	}
 	
-	private boolean verifyIfRecipe(File f) {
-		File[] directoryListing = f.listFiles();
-		if(directoryListing != null) {
-			return goThroughRecipes(directoryListing);
-		} else {
-			Recipe r = getFromJson(f);
-	    	//reset output slotstack
-	    	itemStackHandlerMain.setStackInSlot(outputSlot, ItemStack.EMPTY, false);
-			if(itemCheck(r.grid[0][0], 0) &&
-			   itemCheck(r.grid[0][1], 1) &&
-			   itemCheck(r.grid[0][2], 2) &&
-			   itemCheck(r.grid[1][0], 3) &&
-			   itemCheck(r.grid[1][1], 4) &&
-			   itemCheck(r.grid[1][2], 5) &&
-		       itemCheck(r.grid[2][0], 6) &&
-		       itemCheck(r.grid[2][1], 7) &&
-		       itemCheck(r.grid[2][2], 8)) {
-				//on match
-				boolean checkKnowledge = false;
-				if(r.requiredSheet == null) {
-					checkKnowledge = true;
-				} else {
-					ItemStack sheet = itemStackHandlerMain.getStackInSlot(knowledgeSlot);
-					if(!sheet.isEmpty()) {
-						boolean knowledgeSheetCheck;
-						if(Config.requireExactTier) {
-							knowledgeSheetCheck = sheet.getItem().getRegistryName() == r.requiredSheet.getRegistryName();
-						} else {		
-							KnowledgeSheet ks = (KnowledgeSheet)sheet.getItem();
-							KnowledgeSheet ks2 = (KnowledgeSheet)r.requiredSheet;
-							knowledgeSheetCheck = ks.getTier() >= ks2.getTier();
-						}
-						if(knowledgeSheetCheck) {			
-							KnowledgeSheet knSheet = (KnowledgeSheet)sheet.getItem();
-							if (Config.fullKnowledgeRequired == false) {
-								if(!knSheet.isEmpty(sheet)) {
-									checkKnowledge = true;
-								}
-							} else {
-								if(knSheet.isFull(sheet)) {
-									checkKnowledge = true;
-								}
+	private boolean verifyIfRecipe(String contents) {		
+	Recipe r = getFromJson(contents);
+	//reset output slotstack
+	itemStackHandlerMain.setStackInSlot(outputSlot, ItemStack.EMPTY, false);
+	if(itemCheck(r.grid[0][0], 0) &&
+	   itemCheck(r.grid[0][1], 1) &&
+	   itemCheck(r.grid[0][2], 2) &&
+	   itemCheck(r.grid[1][0], 3) &&
+	   itemCheck(r.grid[1][1], 4) &&
+	   itemCheck(r.grid[1][2], 5) &&
+       itemCheck(r.grid[2][0], 6) &&
+       itemCheck(r.grid[2][1], 7) &&
+       itemCheck(r.grid[2][2], 8)) {
+			//on match
+			boolean checkKnowledge = false;
+			if(r.requiredSheet == null) {
+				checkKnowledge = true;
+			} else {
+				ItemStack sheet = itemStackHandlerMain.getStackInSlot(knowledgeSlot);
+				if(!sheet.isEmpty()) {
+					boolean knowledgeSheetCheck;
+					if(Config.requireExactTier) {
+						knowledgeSheetCheck = sheet.getItem().getRegistryName() == r.requiredSheet.getRegistryName();
+					} else {		
+						KnowledgeSheet ks = (KnowledgeSheet)sheet.getItem();
+						KnowledgeSheet ks2 = (KnowledgeSheet)r.requiredSheet;
+						knowledgeSheetCheck = ks.getTier() >= ks2.getTier();
+					}
+					if(knowledgeSheetCheck) {			
+						KnowledgeSheet knSheet = (KnowledgeSheet)sheet.getItem();
+						if (Config.fullKnowledgeRequired == false) {
+							if(!knSheet.isEmpty(sheet)) {
+								checkKnowledge = true;
+							}
+						} else {
+							if(knSheet.isFull(sheet)) {
+								checkKnowledge = true;
 							}
 						}
 					}
 				}
-				if(r.requiredSheet == null || checkKnowledge) {
-					itemStackHandlerMain.setStackInSlot(outputSlot, r.output, false);
-					return true;
-				}
+			}
+			if(r.requiredSheet == null || checkKnowledge) {
+				itemStackHandlerMain.setStackInSlot(outputSlot, r.output, false);
+				return true;
 			}
 		}
 		return false;
 	}
-	
-	/*private boolean verifyIfRecipe() {
-		File base = new File(System.getProperty("user.dir"));
-		base = base.getParentFile();
-		File dir = new File(base.toString() + "/src/main/resources/assets/historicizedmedicine/recipes/HMedCraftingTable");
-		File[] directoryListing = dir.listFiles();
-		if (directoryListing != null) {
-		    for (File child : directoryListing) {
-		    	Recipe r = getFromJson(child);
-		    	//reset output slotstack
-		    	itemStackHandlerMain.setStackInSlot(9, ItemStack.EMPTY, false);
-				if(itemCheck(r.grid[0][0], 0) &&
-				   itemCheck(r.grid[0][1], 1) &&
-				   itemCheck(r.grid[0][2], 2) &&
-				   itemCheck(r.grid[1][0], 3) &&
-				   itemCheck(r.grid[1][1], 4) &&
-				   itemCheck(r.grid[1][2], 5) &&
-			       itemCheck(r.grid[2][0], 6) &&
-			       itemCheck(r.grid[2][1], 7) &&
-			       itemCheck(r.grid[2][2], 8)) {
-					//on match
-					boolean checkKnowledge = false;
-					if(r.requiredSheet == null) {
-						checkKnowledge = true;
-					} else {
-						ItemStack sheet = itemStackHandlerMain.getStackInSlot(10);
-						if(!sheet.isEmpty()) {
-							if(sheet.getItem().getRegistryName() == r.requiredSheet.getRegistryName()) {			
-								KnowledgeSheet knSheet = (KnowledgeSheet)sheet.getItem();
-								if (Config.fullKnowledgeRequired == false) {
-									if(!knSheet.isEmpty(sheet)) {
-										checkKnowledge = true;
-									}
-								} else {
-									if(knSheet.isFull(sheet)) {
-										checkKnowledge = true;
-									}
-								}
-							}
-						}
-					}
-					if(r.requiredSheet == null || checkKnowledge) {
-						itemStackHandlerMain.setStackInSlot(9, r.output, false);
-						return true;
-					}
-				}
-		    }
-		}
-		
-		return false;
-	}*/
-	
-	private Recipe getFromJson(File file) {
-		Charset chr = null;
-		String contents;
+
+	private Recipe getFromJson(String contents) {
 		try {
-			contents = FileUtils.readFileToString(file, chr);
 			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
 			Recipe output = new Recipe();
 			NBTTagCompound outputTag = nbt.getCompoundTag("result");
@@ -199,8 +153,6 @@ public class CraftingTableTileEntity extends TileEntity{
 			}
 			return output;
 
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (NBTException e) {
 			e.printStackTrace();
 		}
