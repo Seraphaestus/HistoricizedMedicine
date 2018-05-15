@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
+import seraphaestus.historicizedmedicine.Mob.PlagueDoctor.EntityPlagueDoctor;
 import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
 public class HardCodedValues {
@@ -37,7 +38,7 @@ public class HardCodedValues {
 	}
 
 	public static boolean catchesPlague(Entity entityIn) {
-		if(!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving)) {
+		if(!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving) && !(entityIn instanceof EntityPlagueDoctor)) {
 			return false;
 		}
 		if(entityIn instanceof EntityRat) {

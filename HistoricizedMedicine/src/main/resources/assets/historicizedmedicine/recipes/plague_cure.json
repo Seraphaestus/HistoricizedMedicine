@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "historicizedmedicine:plague_cure"
+  },
+  "type": "minecraft:crafting_shapeless",
+  
+  "ingredients":[
+	  { "item": "historicizedmedicine:theriac",
+	  	"data": 0},
+	  { "item": "historicizedmedicine:unicorn_powder",
+	  	"data": 0},
+	  { "item": "minecraft:bowl" }
+  ],
+  
+  "conditions": [
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
+}

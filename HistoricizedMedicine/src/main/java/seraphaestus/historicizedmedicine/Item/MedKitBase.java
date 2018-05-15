@@ -26,12 +26,12 @@ import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class MedKitBase extends ItemBase {
 
-    private int minHealthReq = -1;
-    private int maxHealthReq = -1;
-    private PotionEffect[] effect;
-    private Potion[] cure;
-    private Reduce[] reduce;
-    private int heal = 0;
+    protected int minHealthReq = -1;
+    protected int maxHealthReq = -1;
+    protected PotionEffect[] effect;
+    protected Potion[] cure;
+    protected Reduce[] reduce;
+    protected int heal = 0;
 
     public MedKitBase(String id, int stackSize, int minHealth, int maxHealth, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, int heal){
         super(id, stackSize);

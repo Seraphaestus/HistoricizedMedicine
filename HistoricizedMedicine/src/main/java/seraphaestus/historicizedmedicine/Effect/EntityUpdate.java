@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
+import seraphaestus.historicizedmedicine.Mob.PlagueDoctor.EntityPlagueDoctor;
 import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
 public class EntityUpdate
@@ -89,7 +90,7 @@ public class EntityUpdate
             	//spreading plague
             	for(Entity entity : player.getEntityWorld().loadedEntityList) {
             		if(HardCodedValues.catchesPlague(entity) && entity instanceof EntityLiving) {
-            			if(!((EntityLiving) entity).isPotionActive(RegisterEffects.plague)) {
+            			if(!((EntityLiving) entity).isPotionActive(RegisterEffects.plague) && !((EntityLiving) entity).isPotionActive(RegisterEffects.plagueImmunity)) {
                         	if(player.getDistanceToEntity(entity) <= Config.plagueRange){
                         		((EntityLiving) entity).addPotionEffect(new PotionEffect(RegisterEffects.plague, Config.plagueDuration));       		
                         		if(entity.hasCustomName() && !player.getEntityWorld().isRemote) {
@@ -112,6 +113,9 @@ public class EntityUpdate
         	EntityLiving entity = (EntityLiving) event.getEntityLiving();
         	if(entity.isPotionActive(RegisterEffects.plague) && Config.enablePlague) {
         		int plagueDuration = entity.getActivePotionEffect(RegisterEffects.plague).getDuration();
+        		if(entity instanceof EntityPlagueDoctor) {
+        			entity.removeActivePotionEffect(RegisterEffects.plague);
+        		}
         		if(plagueDuration != 0) {
         			if(plagueDuration == 1 && !(entity instanceof EntityRat)) {
         				//death

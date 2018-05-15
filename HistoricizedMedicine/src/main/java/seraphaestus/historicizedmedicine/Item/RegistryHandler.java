@@ -57,6 +57,10 @@ public class RegistryHandler {
         items.add(new MedKitBase("leech", 64, -1, -1, new PotionEffect[] {bleed(10)}, new Potion[] {poison}, null, -1));
         items.add(new MedKitTool("cautery", 1, -1, -1, new PotionEffect[]{pain(40), infect(20)}, new Potion[] {RegisterEffects.bleeding}, null, -6, 20));
         items.add(new MedKitTool("razor", 1, -1, -1, new PotionEffect[]{pain(10), infect(20), bleed(30)}, null, null, 10, 5));
+        items.add(new ItemBase("theriac", 1));
+        items.add(new ItemBase("unicorn_powder", 64));
+        items.add(new PlagueCure());
+        
         
         //renaissance: Chirurgia Magna
         items.add(new ItemBase("urine", 64));

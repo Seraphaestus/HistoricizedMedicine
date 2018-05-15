@@ -32,6 +32,8 @@ public class VillagerProfessions {
 	private static final ItemStack orchid = new ItemStack(Item.getByNameOrId("minecraft:red_flower"), 1, 1);
 	private static final Item wart = Item.getByNameOrId("minecraft:nether_wart");
 	private static final Item foot = Item.getByNameOrId("minecraft:rabbit_foot");
+	private static final Item unicorn = Item.getByNameOrId(HMedicineMod.MODID + ":unicorn_powder");
+	private static final Item theriac = Item.getByNameOrId(HMedicineMod.MODID + ":theriac");
 	
 	@Mod.EventBusSubscriber(modid = HMedicineMod.MODID)
 	public static class RegistrationHandler {
@@ -47,7 +49,8 @@ public class VillagerProfessions {
 			.addTrade(2, trade(cautery, 1, price(6,18)))
 			.addTrade(2, trade(razor, 1, price(6,18)))
 			.addTrade(2, trade(wardCharm, 1, price(1,64)))
-			.addTrade(1, trade(wart, 8, price(2,6)));
+			.addTrade(1, trade(wart, 8, price(2,6)))
+			.addTrade(3, trade(unicorn, 1, price(16, 64)));
 			PROFESSIONS.add(PlagueDoctorProfession);
 			
 			ApothecarianProfession = new VillagerProfession(HMedicineMod.MODID + ":apothecarian", HMedicineMod.MODID + ":textures/entity/apothecarian.png", HMedicineMod.MODID + ":textures/entity/zombieapothecarian.png");
@@ -65,7 +68,8 @@ public class VillagerProfessions {
 			.addTrade(1, trade(herbalPoultice, 1, price(1,3)))
 			.addTrade(2, trade(allium, 3, price(1,3)))
 			.addTrade(2, trade(orchid, 3, price(1,3)))
-			.addTrade(3, trade(foot, 1, price(6,24)));
+			.addTrade(3, trade(foot, 1, price(6,24)))
+			.addTrade(3, trade(theriac, 1, price(2, 12)));
 			PROFESSIONS.add(ApothecarianProfession);
 		}
 	}

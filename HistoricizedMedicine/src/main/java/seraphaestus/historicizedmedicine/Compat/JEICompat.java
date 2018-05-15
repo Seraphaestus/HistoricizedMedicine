@@ -51,6 +51,8 @@ public class JEICompat implements IModPlugin{
 		}
 		registry.addIngredientInfo(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":leech")), ItemStack.class, "Obtain via trading with Plague Doctor villagers");
 		registry.addIngredientInfo(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":urine")), ItemStack.class, "Obtain by using the sample glass");
+		registry.addIngredientInfo(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":theriac")), ItemStack.class, "Obtain via trading with Apothecarian villagers");
+		registry.addIngredientInfo(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":unicorn_powder")), ItemStack.class, "Obtain via trading with Plague Doctor villagers");
 		
 		registry.addRecipeCategoryCraftingItem(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":crafting_table")), HMedRecipeCategory.uid);
 		
