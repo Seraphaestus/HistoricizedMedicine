@@ -42,7 +42,7 @@ tile.historicizedmedicine.statue_base.name=Empty Statue Pedestal
 tile.historicizedmedicine.crafting_table.name=Medical Crafting Table
 
 #entities
-entity.historicizedmedicine.plagueDoctor.name=Plague Doctor
+entity.historicizedmedicine.plaguedoctor.name=Plague Doctor
 entity.Villager.historicizedmedicine.plaguedoctor=Plague Doctor
 entity.historicizedmedicine.apothecarian.name=Apothecarian
 entity.Villager.historicizedmedicine.apothecarian=Apothecarian
