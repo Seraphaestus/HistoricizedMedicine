@@ -93,10 +93,11 @@ public abstract class AnimationHandler {
 			} catch(NoSuchElementException e) {
 				return;
 			}
-			float prevFrame = animCurrentFrame.get(anim.name);
+
 			boolean animStatus = updateAnimation(animatedEntity, anim, animPrevTime, animCurrentFrame);
 			if(animCurrentFrame != null)
 			{
+				float prevFrame = animCurrentFrame.get(anim.name);
 				if(animCurrentFrame.get(anim.name) != null) {
 					fireAnimationEvent(anim, prevFrame, animCurrentFrame.get(anim.name));
 				}
