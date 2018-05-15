@@ -7,7 +7,7 @@ public class AIRatAttackPlayer extends EntityAINearestAttackableTarget<EntityPla
 {
     public AIRatAttackPlayer(EntityRat rat)
     {
-        super(rat, EntityPlayer.class, 80, true, true, null);
+        super(rat, EntityPlayer.class, 3, true, true, null);
     }
 
     /**
