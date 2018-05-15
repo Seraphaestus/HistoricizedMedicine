@@ -21,16 +21,15 @@ public abstract class CommonProxy {
      */
     public void preInit(FMLPreInitializationEvent e)
     {
+    	File directory = e.getModConfigurationDirectory();
+        config = new Configuration(new File(directory.getPath(), "historicizedMedicine.cfg"));
+        Config.readConfig();
+        
     	MainCompatHandler.registerTOP();
     	
     	seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitCommon();
     	seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitCommon();
-        OreDictRegister.initOreDict();
-        (new ModEntities()).preInit();
-        
-        File directory = e.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "historicizedMedicine.cfg"));
-        Config.readConfig();
+        (new ModEntities()).preInit();       
         
         if(Config.disableUseOfMilkBuckets) {
         	MinecraftForge.EVENT_BUS.register(new MilkOverride());
@@ -44,6 +43,7 @@ public abstract class CommonProxy {
     public void init()
     {
         registerEventHandlers();
+        OreDictRegister.initOreDict();
         NetworkRegistry.INSTANCE.registerGuiHandler(HMedicineMod.instance,  new GUIProxy());
     }
 
