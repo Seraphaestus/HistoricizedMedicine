@@ -76,7 +76,9 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		}
 		//
 		if(!initializedPlague) {
-			this.addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			if(this.rand.nextInt(100) < Config.plagueChance) {
+				this.addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));		
+			}
 			this.initializedPlague = true;
 		}
 		if(this.rand.nextInt(30) == 0) {

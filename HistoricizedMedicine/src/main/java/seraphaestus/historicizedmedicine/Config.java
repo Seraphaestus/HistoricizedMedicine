@@ -28,7 +28,7 @@ public class Config {
     public static int statueCooldown = 60 * 20;
     public static boolean disableUseOfMilkBuckets = true;
     public static String plagueName = "The Block Death";
-    public static float plagueChance = 20f;
+    public static float plagueChance = 40f;
     
     public static boolean fullKnowledgeRequired = true;
     public static boolean craftingConsumesKnowledge = false;
@@ -73,7 +73,7 @@ public class Config {
         plagueRange = cfg.getFloat("plagueRange", categoryGeneral, plagueRange, 0, 16, "The range within which entites will catch the plague from the player.");
         plagueDuration = cfg.getInt("plagueDuration", categoryGeneral, plagueDuration, 1, Int.MaxValue(), "How many ticks it takes until an entity with the plague dies.");
         plagueName = cfg.getString("plagueName", categoryGeneral, plagueName, "Display name for the plague effect.");
-        plagueChance = cfg.getFloat("plagueChance", categoryGeneral, plagueChance, 0, 100, "The chance (percentage) that a player will catch the plague effect from a rat when attacked.");
+        plagueChance = cfg.getFloat("plagueChance", categoryGeneral, plagueChance, 0, 100, "The chance (percentage) that a carrier will carry the plague.");
     }
 
     private static void initCompatConfig(Configuration cfg) {
