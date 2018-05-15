@@ -5,7 +5,7 @@
   "description": "Medical items and effects from history",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/historicized-medicine",
   "updateUrl": "",
   "authorList": ["Seraphaestus"],
   "credits": "The Forge and FML guys, McJty, Shadowfacts, TheGreyGhost, copygirl, rwtema, Blusunrize",
