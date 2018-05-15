@@ -23,6 +23,9 @@ item.historicizedmedicine.canon_of_medicine.name=Canon of Medicine
 item.historicizedmedicine.leech.name=Leech
 item.historicizedmedicine.cautery.name=Tile Cautery
 item.historicizedmedicine.razor.name=Barber's Razor
+item.historicizedmedicine.theriac.name=Theriac
+item.historicizedmedicine.unicorn_powder.name=Unicorn Powder
+item.historicizedmedicine.plague_cure.name=Death's Denial
 
 #renaissance
 item.historicizedmedicine.chirurgia_magna.name=Chirurgia Magna
@@ -39,11 +42,11 @@ tile.historicizedmedicine.statue_base.name=Empty Statue Pedestal
 tile.historicizedmedicine.crafting_table.name=Medical Crafting Table
 
 #entities
-entity.PlagueDoctor.name=Plague Doctor
+entity.historicizedmedicine.plagueDoctor.name=Plague Doctor
 entity.Villager.historicizedmedicine.plaguedoctor=Plague Doctor
-entity.Apothecarian.name=Apothecarian
+entity.historicizedmedicine.apothecarian.name=Apothecarian
 entity.Villager.historicizedmedicine.apothecarian=Apothecarian
-entity.Rat.name=Rat
+entity.historicizedmedicine.rat.name=Rat
 
 #gui
 itemGroup.historicizedmedicine=Historicized Medicine
