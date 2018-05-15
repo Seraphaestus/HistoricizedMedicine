@@ -25,9 +25,6 @@ public class CraftingTableTileEntity extends TileEntity{
 	public final static int size = 11;
 	final static int outputSlot = 10;
 	final static int knowledgeSlot = 9;
-	private final String dir = "/assets/historicizedmedicine/hmedcraftingtablerecipes";
-	//private final String dir = "/src/main/resources/assets/historicizedmedicine/hmedcraftingtablerecipes";
-	
 	
 	//handler for crafting table slots + output + knowledge input
 	UnrecursiveItemStackHandler itemStackHandlerMain = new UnrecursiveItemStackHandler(size) {

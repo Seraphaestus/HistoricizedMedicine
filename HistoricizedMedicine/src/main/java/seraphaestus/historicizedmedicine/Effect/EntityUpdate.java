@@ -2,22 +2,32 @@ package seraphaestus.historicizedmedicine.Effect;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.FoodStats;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import seraphaestus.historicizedmedicine.Config;
+import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
+import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
 public class EntityUpdate
 {
-	
+	private static final int plagueParticleEveryXTicks = 6;
 	private static HashMap<UUID, Integer> currentBleedDur = new HashMap<UUID, Integer>();
 	
     @SubscribeEvent
@@ -74,6 +84,53 @@ public class EntityUpdate
                 //effect here
                 resetFoodTimer(player.getFoodStats());
             }
+            
+            if(player.isPotionActive(RegisterEffects.plague) && !player.capabilities.isCreativeMode){
+            	//spreading plague
+            	for(Entity entity : player.getEntityWorld().loadedEntityList) {
+            		if(HardCodedValues.catchesPlague(entity) && entity instanceof EntityLiving) {
+            			if(!((EntityLiving) entity).isPotionActive(RegisterEffects.plague)) {
+                        	if(player.getDistanceToEntity(entity) <= Config.plagueRange){
+                        		((EntityLiving) entity).addPotionEffect(new PotionEffect(RegisterEffects.plague, Config.plagueDuration));       		
+                        		if(entity.hasCustomName() && !player.getEntityWorld().isRemote) {
+                        			TextComponentString message = new TextComponentString(entity.getCustomNameTag() + " has caught " + Config.plagueName);
+                        			List<EntityPlayer> players = player.getEntityWorld().playerEntities;
+                        			for(EntityPlayer p : players) {
+                        				p.sendMessage(message);
+                        			}
+                        		}
+                        	}
+            			}
+            		}
+
+            	}
+
+            }
+            
+        } else {
+        	//not instance of player
+        	EntityLiving entity = (EntityLiving) event.getEntityLiving();
+        	if(entity.isPotionActive(RegisterEffects.plague) && Config.enablePlague) {
+        		int plagueDuration = entity.getActivePotionEffect(RegisterEffects.plague).getDuration();
+        		if(plagueDuration != 0) {
+        			if(plagueDuration == 1 && !(entity instanceof EntityRat)) {
+        				//death
+        				entity.attackEntityFrom(new DamageSource("HMedPlague"), entity.getHealth() + 1);
+        				if(entity.hasCustomName() && !entity.getEntityWorld().isRemote) {
+                			TextComponentString message = new TextComponentString(entity.getCustomNameTag() + " succumbed to " + Config.plagueName);
+                			List<EntityPlayer> players = entity.getEntityWorld().playerEntities;
+                			for(EntityPlayer p : players) {
+                				p.sendMessage(message);
+                			}
+                		}
+        			}
+        			Random rnd = entity.getRNG();
+        			if(plagueDuration % plagueParticleEveryXTicks == 0) {
+        				AxisAlignedBB box = entity.getEntityBoundingBox();
+        				Minecraft.getMinecraft().effectRenderer.addEffect(new PlagueEffect(entity.getEntityWorld(), entity.posX + (box.maxX - box.minX) * (rnd.nextFloat() - 0.5f), entity.posY + (box.maxY - box.minY) * (rnd.nextFloat()), entity.posZ + (box.maxZ - box.minZ) * (rnd.nextFloat() - 0.5f), 0.0f, 0.0f, 0.0f));   
+        			}
+    			}
+        	}
         }
     }
 

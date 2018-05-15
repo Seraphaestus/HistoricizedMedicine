@@ -43,6 +43,7 @@ entity.PlagueDoctor.name=Plague Doctor
 entity.Villager.historicizedmedicine.plaguedoctor=Plague Doctor
 entity.Apothecarian.name=Apothecarian
 entity.Villager.historicizedmedicine.apothecarian=Apothecarian
+entity.Rat.name=Rat
 
 #gui
 itemGroup.historicizedmedicine=Historicized Medicine

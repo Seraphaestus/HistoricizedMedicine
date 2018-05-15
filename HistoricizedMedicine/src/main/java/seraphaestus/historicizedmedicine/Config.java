@@ -19,10 +19,16 @@ public class Config {
     public static boolean registerRecipes = true;
     public static boolean enableCreativeTab = true;
     public static boolean enableRecipes = true;
+    public static boolean enablePlague = true;
+    public static boolean plagueCarriers = true;
+    public static float plagueRange = 2f;
+    public static int plagueDuration = 20  * 60 * 5;	//5 minutes
     public static int bleedTotalAmount = 10;
     public static int statueParticleAmount = 10;
     public static int statueCooldown = 60 * 20;
     public static boolean disableUseOfMilkBuckets = true;
+    public static String plagueName = "The Block Death";
+    public static float plagueChance = 20f;
     
     public static boolean fullKnowledgeRequired = true;
     public static boolean craftingConsumesKnowledge = false;
@@ -62,6 +68,12 @@ public class Config {
         bleedTotalAmount = cfg.getInt("bleedTotalAmount", categoryGeneral, bleedTotalAmount, 0, Int.MaxValue(), "The amount of half-hearts that Blood Loss will take off over the course of its effect, per level of the effect");
         statueCooldown = cfg.getInt("statueCooldown", categoryGeneral, statueCooldown, 0, Int.MaxValue(), "The duration in ticks of the cooldown of a statue after using it");
         disableUseOfMilkBuckets = cfg.getBoolean("disableUseOfMilkBuckets", categoryGeneral, disableUseOfMilkBuckets, "Disable to restore milk bucket use.");
+        enablePlague = cfg.getBoolean("enablePlague", categoryGeneral, enablePlague, "Set to false to disable the effects of plague.");
+        plagueCarriers = cfg.getBoolean("plagueCarriers", categoryGeneral, plagueCarriers, "Whether rats carry plague.");
+        plagueRange = cfg.getFloat("plagueRange", categoryGeneral, plagueRange, 0, 16, "The range within which entites will catch the plague from the player.");
+        plagueDuration = cfg.getInt("plagueDuration", categoryGeneral, plagueDuration, 1, Int.MaxValue(), "How many ticks it takes until an entity with the plague dies.");
+        plagueName = cfg.getString("plagueName", categoryGeneral, plagueName, "Display name for the plague effect.");
+        plagueChance = cfg.getFloat("plagueChance", categoryGeneral, plagueChance, 0, 100, "The chance (percentage) that a player will catch the plague effect from a rat when attacked.");
     }
 
     private static void initCompatConfig(Configuration cfg) {

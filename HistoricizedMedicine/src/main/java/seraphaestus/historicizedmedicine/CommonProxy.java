@@ -25,8 +25,8 @@ public abstract class CommonProxy {
     	
     	seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitCommon();
     	seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitCommon();
-        ModEntities.init();
         OreDictRegister.initOreDict();
+        (new ModEntities()).preInit();
         
         File directory = e.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "historicizedMedicine.cfg"));
