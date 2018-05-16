@@ -1,4 +1,4 @@
-package seraphaestus.historicizedmedicine.Compat;
+package seraphaestus.historicizedmedicine.Compat.JEI;
 
 import java.io.BufferedReader;
 import java.io.IOException;

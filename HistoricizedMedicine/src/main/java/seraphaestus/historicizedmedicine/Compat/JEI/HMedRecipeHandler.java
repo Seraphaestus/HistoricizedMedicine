@@ -1,4 +1,4 @@
-package seraphaestus.historicizedmedicine.Compat;
+package seraphaestus.historicizedmedicine.Compat.JEI;
 
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
