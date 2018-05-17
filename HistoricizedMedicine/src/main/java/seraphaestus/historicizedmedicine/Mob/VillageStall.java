@@ -3,12 +3,14 @@ package seraphaestus.historicizedmedicine.Mob;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -54,6 +56,7 @@ public class VillageStall extends Village {
 		//Clear Space
 		this.fillWithBlocks(world, box, 0,0,0, 3,2,2, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		this.fillWithBlocks(world, box, 0,1,0, 3,1,2, Blocks.TRIPWIRE.getDefaultState(), Blocks.TRIPWIRE.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 1,1,1, 2,1,1, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		//roof
 		this.fillWithBlocks(world, box, 0,2,0, 0,2,2, Blocks.CARPET.getStateFromMeta(7), Blocks.CARPET.getStateFromMeta(7), false);
 		this.fillWithBlocks(world, box, 1,2,0, 1,2,2, Blocks.CARPET.getStateFromMeta(8), Blocks.CARPET.getStateFromMeta(8), false);
@@ -66,7 +69,10 @@ public class VillageStall extends Village {
 		this.fillWithBlocks(world, box, 1,1,0, 2,1,0, Blocks.CARPET.getStateFromMeta(12), Blocks.CARPET.getStateFromMeta(12), false);
 		this.fillWithBlocks(world, box, 0,0,0, 0,0,0, stair, stair, false);
 		this.setBlockState(world, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(HMedicineMod.MODID, "crafting_table")).getDefaultState(), 1,0,0, box);
-		this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2,0,0, box);
+		
+		placeChest(world, box, rand, 2, 0, 0);
+		//this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2,0,0, box);
+		
 		this.setBlockState(world, Blocks.CRAFTING_TABLE.getDefaultState(), 3,0,0, box);
 		
 		//pillars
@@ -94,6 +100,24 @@ public class VillageStall extends Village {
 		}
 			return VillagerProfessions.ApothecarianProfession;
 	}
+	
+	protected boolean placeChest(World world, StructureBoundingBox box, Random rand, int x, int y, int z)
+	{
+		int i1 = this.getXWithOffset(x, z);
+		int j1 = this.getYWithOffset(y);
+		int k1 = this.getZWithOffset(x, z);
+		BlockPos pos = new BlockPos(i1,j1,k1);
+		if(box.isVecInside(pos) && (world.getBlockState(pos)!=Blocks.CHEST.getDefaultState()))
+		{
+			world.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
+			TileEntity tile = world.getTileEntity(pos);
+			if(tile instanceof TileEntityChest)
+				((TileEntityChest)tile).setLootTable(new ResourceLocation(HMedicineMod.MODID, "village_stall"), i1 | j1 | k1);
+			return true;
+		}
+		else
+			return false;
+}
 
 	public static class VillageManager implements IVillageCreationHandler
 	{
@@ -106,7 +130,7 @@ public class VillageStall extends Village {
 		@Override
 		public PieceWeight getVillagePieceWeight(Random random, int i)
 		{
-			return new PieceWeight(VillageStall.class, 15, MathHelper.getInt(random, 0 + i, 1 + i));
+			return new PieceWeight(VillageStall.class, 30, MathHelper.getInt(random, 0 + i, 1 + i));
 		}
 		@Override
 		public Class<?> getComponentClass()
