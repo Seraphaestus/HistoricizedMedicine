@@ -7,7 +7,7 @@
 	"item": "minecraft:paper"
   },
   "mid2": {
-	"ore": "itemMeatRaw"
+	"ore": "listAllmeatraw"
   },
   "low1": {
 	"item": "minecraft:paper"
