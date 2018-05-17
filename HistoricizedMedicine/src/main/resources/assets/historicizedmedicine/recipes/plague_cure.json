@@ -1,6 +1,7 @@
 {
   "result": {
-    "item": "historicizedmedicine:plague_cure"
+    "item": "historicizedmedicine:plague_cure",
+    "amount": 3
   },
   "type": "minecraft:crafting_shapeless",
   

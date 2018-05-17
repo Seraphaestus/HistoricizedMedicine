@@ -11,6 +11,7 @@ import seraphaestus.historicizedmedicine.Compat.MainCompatHandler;
 import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
 import seraphaestus.historicizedmedicine.Item.MilkOverride;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
+import seraphaestus.historicizedmedicine.Mob.RegisterVillagePieces;
 
 public abstract class CommonProxy {
 
@@ -30,6 +31,7 @@ public abstract class CommonProxy {
     	seraphaestus.historicizedmedicine.Item.RegistryHandler.preInitCommon();
     	seraphaestus.historicizedmedicine.Block.RegistryHandler.preInitCommon();
         (new ModEntities()).preInit();       
+        RegisterVillagePieces.init();
         
         if(Config.disableUseOfMilkBuckets) {
         	MinecraftForge.EVENT_BUS.register(new MilkOverride());

@@ -31,7 +31,7 @@ public class ModEntities {
 		ResourceLocation plagueDoctorName = new ResourceLocation(HMedicineMod.MODID, "PlagueDoctor");
 		ResourceLocation apothecarianName = new ResourceLocation(HMedicineMod.MODID, "Apothecarian");
 		ResourceLocation ratName = new ResourceLocation(HMedicineMod.MODID, "Rat");
-		
+
 		event.getRegistry().registerAll(
 				EntityEntryBuilder.create().entity(EntityPlagueDoctor.class).id(plagueDoctorName.getResourcePath(), 0).name(plagueDoctorName.getResourceDomain() + "." + plagueDoctorName.getResourcePath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
 				EntityEntryBuilder.create().entity(EntityApothecarian.class).id(apothecarianName.getResourcePath(), 1).name(apothecarianName.getResourceDomain() + "." + apothecarianName.getResourcePath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
