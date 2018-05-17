@@ -15,9 +15,6 @@ import mezz.jei.api.ingredients.IIngredientBlacklist;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.JsonToNBT;
-import net.minecraft.nbt.NBTException;
-import net.minecraft.nbt.NBTTagCompound;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 import seraphaestus.historicizedmedicine.HardCodedValues;
@@ -87,28 +84,9 @@ public class JEICompat implements IModPlugin{
 					contents = contents + line;
 				}
 			} 
-			output.add(getFromJson(contents));
+			output.add(Recipe.getFromJson(contents));
 		}
 		return output;
 	}
 
-	private Recipe getFromJson(String contents) {
-		try {
-			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
-			Recipe output = new Recipe();
-			NBTTagCompound outputTag = nbt.getCompoundTag("result");
-			output.output = new ItemStack(Item.getByNameOrId(outputTag.getString("item")), outputTag.getInteger("amount"));
-			output.requiredSheet = Item.getByNameOrId(nbt.getString("knowledge"));
-			for(int i = 0; i < 3; i++) {
-				output.grid[0][i] = nbt.getCompoundTag("top" + (i + 1));
-				output.grid[1][i] = nbt.getCompoundTag("mid" + (i + 1));
-				output.grid[2][i] = nbt.getCompoundTag("low" + (i + 1));
-			}
-			return output;
-
-		} catch (NBTException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

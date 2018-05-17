@@ -31,8 +31,12 @@ public class HMedRecipeHandler implements IRecipeHandler<Recipe>{
 		int inputCount = 0;
 		for(int i = 0; i < 3; i++) {
 			for(int ii = 0; ii < 3; ii++) {
-				if(recipe.grid[i][ii].getString("item") != "" || recipe.grid[i][ii].getString("ore") != "") {
-					inputCount++;
+				try {
+					if(recipe.grid[i][ii].getString("item") != "" || recipe.grid[i][ii].getString("ore") != "") {
+						inputCount++;
+					}
+				} catch (Exception e) {
+					//invalid recipe format
 				}
 			}
 		}

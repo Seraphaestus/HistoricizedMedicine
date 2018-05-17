@@ -48,10 +48,10 @@ public class EntityPlagueDoctor extends EntityVillager  {
         return LOOT;
     }
 
-    @Override
+    /*@Override
     public int getMaxSpawnedInChunk() {
         return 1;
-    }
+    }*/
     
 	@Override
     public IEntityLivingData finalizeMobSpawn(DifficultyInstance p_190672_1_, @Nullable IEntityLivingData p_190672_2_, boolean p_190672_3_)

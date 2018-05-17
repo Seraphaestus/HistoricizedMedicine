@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -43,6 +42,7 @@ public abstract class AnimationHandler {
 	}
 
 	public void activateAnimation(HashMap<String, Channel> animChannels, String name, float startingFrame) {
+		try {
 		if(animChannels.get(name) != null)
 		{
 			Channel selectedChannel = animChannels.get(name);
@@ -61,11 +61,15 @@ public abstract class AnimationHandler {
 		} else {
 			System.out.println("The animation called "+name+" doesn't exist!");
 		}
+		} catch(Exception e) {
+			
+		}
 	}
 
 	public abstract void activateAnimation(String name, float startingFrame);
 
 	public void stopAnimation(HashMap<String, Channel> animChannels, String name) {
+		try {
 		Channel selectedChannel = animChannels.get(name);
 		if(selectedChannel != null)
 		{
@@ -80,6 +84,9 @@ public abstract class AnimationHandler {
 		} else {
 			System.out.println("The animation called "+name+" doesn't exist!");
 		}
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public abstract void stopAnimation(String name);
@@ -87,12 +94,8 @@ public abstract class AnimationHandler {
 	public void animationsUpdate() {
 		for(Iterator<Channel> it = animCurrentChannels.iterator(); it.hasNext();)
 		{
-			Channel anim;
 			try {
-				anim = it.next();
-			} catch(NoSuchElementException e) {
-				return;
-			}
+			Channel anim = it.next();
 
 			boolean animStatus = updateAnimation(animatedEntity, anim, animPrevTime, animCurrentFrame);
 			if(animCurrentFrame != null)
@@ -109,10 +112,14 @@ public abstract class AnimationHandler {
 				animCurrentFrame.remove(anim.name);
 				animationEvents.get(anim.name).clear();
 			}
+			} catch (Exception e) {
+				
+			}
 		}
 	}
 
 	public boolean isAnimationActive(String name) {
+		try {
 		boolean animAlreadyUsed = false;
 		for(Channel anim : animatedEntity.getAnimationHandler().animCurrentChannels)
 		{
@@ -124,6 +131,9 @@ public abstract class AnimationHandler {
 		}
 
 		return animAlreadyUsed;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 	private void fireAnimationEvent(Channel anim, float prevFrame, float frame)
@@ -162,6 +172,7 @@ public abstract class AnimationHandler {
 	/** Update animation values. Return false if the animation should stop. */
 	public static boolean updateAnimation(IMCAnimatedEntity entity, Channel channel, HashMap<String, Long> prevTimeAnim, HashMap<String, Float> prevFrameAnim)
 	{
+		try {
 		if(FMLCommonHandler.instance().getEffectiveSide().isServer() || (FMLCommonHandler.instance().getEffectiveSide().isClient() && !isGamePaused()))
 		{
 			if(!(channel.mode == Channel.CUSTOM))
@@ -197,6 +208,9 @@ public abstract class AnimationHandler {
 			prevTimeAnim.put(channel.name, currentTime);
 			return true;
 		}
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -211,6 +225,7 @@ public abstract class AnimationHandler {
 	@SideOnly(Side.CLIENT)
 	public static void performAnimationInModel(HashMap<String, MCAModelRenderer> parts, IMCAnimatedEntity entity)
 	{
+		try {
 		for (Map.Entry<String, MCAModelRenderer> entry : parts.entrySet()) {
 			String boxName = entry.getKey();
 			MCAModelRenderer box = entry.getValue();
@@ -316,6 +331,9 @@ public abstract class AnimationHandler {
 			{
 				box.resetRotationPoint();				
 			}
+		}
+		} catch (Exception e) {
+			
 		}
 	}
 

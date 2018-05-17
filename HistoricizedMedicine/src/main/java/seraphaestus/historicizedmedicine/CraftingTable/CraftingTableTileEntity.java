@@ -8,8 +8,6 @@ import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.JsonToNBT;
-import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -87,7 +85,7 @@ public class CraftingTableTileEntity extends TileEntity{
 	}
 	
 	private boolean verifyIfRecipe(String contents) {		
-	Recipe r = getFromJson(contents);
+	Recipe r = Recipe.getFromJson(contents);
 	//reset output slotstack
 	itemStackHandlerMain.setStackInSlot(outputSlot, ItemStack.EMPTY, false);
 	if(itemCheck(r.grid[0][0], 0) &&
@@ -134,26 +132,6 @@ public class CraftingTableTileEntity extends TileEntity{
 			}
 		}
 		return false;
-	}
-
-	private Recipe getFromJson(String contents) {
-		try {
-			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
-			Recipe output = new Recipe();
-			NBTTagCompound outputTag = nbt.getCompoundTag("result");
-			output.output = new ItemStack(Item.getByNameOrId(outputTag.getString("item")), outputTag.getInteger("amount"));
-			output.requiredSheet = Item.getByNameOrId(nbt.getString("knowledge"));
-			for(int i = 0; i < 3; i++) {
-				output.grid[0][i] = nbt.getCompoundTag("top" + (i + 1));
-				output.grid[1][i] = nbt.getCompoundTag("mid" + (i + 1));
-				output.grid[2][i] = nbt.getCompoundTag("low" + (i + 1));
-			}
-			return output;
-
-		} catch (NBTException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
 	private boolean itemCheck (NBTTagCompound nbt, int slot) {
