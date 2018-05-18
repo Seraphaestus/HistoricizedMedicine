@@ -2,6 +2,7 @@ package seraphaestus.historicizedmedicine.Effect;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -10,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
+import seraphaestus.historicizedmedicine.Item.ItemMask;
 import seraphaestus.historicizedmedicine.Mob.PlagueDoctor.EntityPlagueDoctor;
 import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
@@ -37,7 +40,19 @@ public class EntityUpdate
         if(event.getEntityLiving() instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-
+            
+            Iterator<ItemStack> armor = player.getArmorInventoryList().iterator();
+            boolean wearingMask = false;
+            while(armor.hasNext()) {
+            	if(armor.next().getItem() instanceof ItemMask) {
+            		wearingMask = true;
+            		break;
+            	}
+            }
+            if(wearingMask) {
+        		player.addPotionEffect(new PotionEffect(RegisterEffects.plagueImmunity, 10, 0, true, false));
+            }
+            
             //nbt tag handling
             
             NBTTagCompound nbt = player.getEntityData();	

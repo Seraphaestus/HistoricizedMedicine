@@ -4,9 +4,12 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 import seraphaestus.historicizedmedicine.Mob.VillagerProfessions;
 
@@ -20,7 +23,12 @@ public class EntityPlagueDoctor extends EntityVillager  {
         setSize(0.6F, 1.95F);
     }
     
-    
+    @Override
+    protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+    	if(source.getImmediateSource() instanceof EntityPlayer && !source.isCreativePlayer()) {
+        	this.dropItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(HMedicineMod.MODID, "plague_mask")), 1);
+    	}
+    }
 
     @Override
     protected void entityInit() {

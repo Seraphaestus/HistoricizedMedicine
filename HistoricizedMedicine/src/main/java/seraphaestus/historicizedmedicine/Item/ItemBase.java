@@ -16,11 +16,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
-public class ItemBase extends Item {
+public class ItemBase extends Item implements IItemBaseData {
 
-    String id;
-    String name;
-    int stackSize = 64;
+    String id; 				public String getId() { return this.id; }
+    String name;			public String getName() { return this.name; } 
+    int stackSize = 64;		public int getStackSize() { return this.stackSize; } 
     String oreDictName = null;
     String[] tooltip = null;
 

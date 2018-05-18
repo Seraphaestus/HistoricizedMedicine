@@ -38,6 +38,7 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 	private static final int grayChance = 5;
 	private static final int blackChance = 2;
 	private boolean initializedPlague = false;
+	private boolean isFriendly = false;
 	
 	public EntityRat(World par1World) {
 		super(par1World);
@@ -114,7 +115,10 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 	
 	@Override
     public boolean attackEntityAsMob(Entity entityIn) {
-        if(entityIn instanceof EntityPlayer && Config.plagueCarriers) {
+		if(this.isFriendly) {
+			return false;
+		}
+        if(entityIn instanceof EntityPlayer && Config.plagueCarriers && ((EntityPlayer) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
         	//apply plague
         	((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
         	((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(Potion.getPotionById(9), 1));

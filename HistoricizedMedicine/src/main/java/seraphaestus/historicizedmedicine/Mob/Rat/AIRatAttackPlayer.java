@@ -25,6 +25,6 @@ public class AIRatAttackPlayer extends EntityAINearestAttackableTarget<EntityPla
 
     protected double getTargetDistance()
     {
-        return super.getTargetDistance() * 1.0D;
+        return super.getTargetDistance() * 0.5D;
     }
 }

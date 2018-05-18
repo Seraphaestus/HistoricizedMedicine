@@ -16,7 +16,7 @@ import seraphaestus.historicizedmedicine.Util.Reduce;
 
 public class RegistryHandler {
 
-    public static List<ItemBase> items; // this holds the unique instance of your block
+    public static List<IItemBaseData> items; // this holds the unique instance of your block
 
     private static Potion wither = pId(20);
     private static Potion poison = pId(19);
@@ -27,7 +27,7 @@ public class RegistryHandler {
     public static KnowledgeSheet magna;
 
     public static void setupItems(){
-        items = new ArrayList<ItemBase>();
+        items = new ArrayList<IItemBaseData>();
         //primitive
         items.add(new ItemBase("herbs", 64, "herbs"));
         items.add(new MedKitTool("trephine", 1, -1, -1, new PotionEffect[]{pain(15), bleed(30, 1)}, new Potion[]{wither}, null, -2, 3));
@@ -60,6 +60,7 @@ public class RegistryHandler {
         items.add(new ItemBase("theriac", 1));
         items.add(new ItemBase("unicorn_powder", 64));
         items.add(new PlagueCure());
+        items.add(new ItemMask());
         
         
         //renaissance: Chirurgia Magna
@@ -76,9 +77,14 @@ public class RegistryHandler {
         if(items == null){
             setupItems();
         }
-        for(ItemBase item : items){
-            ForgeRegistries.ITEMS.register(item.setRegistryName(item.id).setUnlocalizedName(item.name).setMaxStackSize(item.stackSize));
-            item.init();
+        for(IItemBaseData item : items){
+        	if(item instanceof Item) {
+        		Item item2 = (Item)item;
+        		ForgeRegistries.ITEMS.register(item2.setRegistryName(item.getId()).setUnlocalizedName(item.getName()).setMaxStackSize(item.getStackSize()));
+        	}
+            if(item instanceof ItemBase) {
+                ((ItemBase)item).init();
+            }
         }
         
         //knowledge sheets
@@ -107,9 +113,12 @@ public class RegistryHandler {
         if(items == null){
             setupItems();
         }
-        for(ItemBase item : items){
-            ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":" + item.id, "inventory");
-            ModelLoader.setCustomModelResourceLocation(item, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+        for(IItemBaseData item : items){
+            ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(HMedicineMod.MODID + ":" + item.getId(), "inventory");
+            if(item instanceof Item) {
+            	Item item2 = (Item)item;
+                ModelLoader.setCustomModelResourceLocation(item2, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+            }  
         }
         //knowledge sheets
         ModelResourceLocation itemModelResourceLocation;
