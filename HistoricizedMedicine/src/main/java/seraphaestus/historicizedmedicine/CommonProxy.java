@@ -12,6 +12,7 @@ import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
 import seraphaestus.historicizedmedicine.Item.MilkOverride;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
 import seraphaestus.historicizedmedicine.Mob.RegisterVillagePieces;
+import seraphaestus.historicizedmedicine.Mob.MobChangesHandler;
 
 public abstract class CommonProxy {
 
@@ -54,6 +55,7 @@ public abstract class CommonProxy {
      */
     public void postInit()
     {
+    	MobChangesHandler.postInit();
     	if (config.hasChanged()) {
             config.save();
         }
