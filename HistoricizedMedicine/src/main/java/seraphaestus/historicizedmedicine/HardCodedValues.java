@@ -1,8 +1,5 @@
 package seraphaestus.historicizedmedicine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +7,9 @@ import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
 import seraphaestus.historicizedmedicine.Mob.PlagueDoctor.EntityPlagueDoctor;
 import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HardCodedValues {
 
@@ -38,21 +38,19 @@ public class HardCodedValues {
 	}
 
 	public static boolean catchesPlague(Entity entityIn) {
-		if(!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving) && !(entityIn instanceof EntityPlagueDoctor)) {
+		if (!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving) && !(entityIn instanceof EntityPlagueDoctor)) {
 			return false;
 		}
-		if(entityIn instanceof EntityRat) {
+		if (entityIn instanceof EntityRat) {
 			return false;
-		} 
-		else if(entityIn instanceof EntityLiving) {
-			EntityLiving living = (EntityLiving)entityIn;
-			if(entityIn.getIsInvulnerable() || living.isEntityUndead() || !entityIn.isNonBoss()) {
+		} else if (entityIn instanceof EntityLiving) {
+			EntityLiving living = (EntityLiving) entityIn;
+			if (entityIn.getIsInvulnerable() || living.isEntityUndead() || !entityIn.isNonBoss()) {
 				return false;
 			}
-		} 
-		else if(entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityIn;
-			if(player.isCreative()) {
+		} else if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			if (player.isCreative()) {
 				return false;
 			}
 		}

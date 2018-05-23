@@ -3,18 +3,22 @@
     "item": "historicizedMedicine:herbs"
   },
   "type": "minecraft:crafting_shapeless",
-  
-  "ingredients":[
-	  { "item": "minecraft:red_flower",
-	  	"data": 0},
-	  { "item": "minecraft:yellow_flower",
-	  	"data": 0},
-	  { "item": "minecraft:bowl" }
+  "ingredients": [
+    {
+      "item": "minecraft:red_flower",
+      "data": 0
+    },
+    {
+      "item": "minecraft:yellow_flower",
+      "data": 0
+    },
+    {
+      "item": "minecraft:bowl"
+    }
   ],
-  
   "conditions": [
-        {
-            "type": "historicizedMedicine:recipeToggle"
-        }
-    ]
+    {
+      "type": "historicizedMedicine:recipeToggle"
+    }
+  ]
 }

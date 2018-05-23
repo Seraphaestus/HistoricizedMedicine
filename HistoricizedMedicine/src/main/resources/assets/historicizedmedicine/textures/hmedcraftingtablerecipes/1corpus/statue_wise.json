@@ -1,19 +1,19 @@
 {
   "result": {
     "item": "historicizedMedicine:statue_wise",
-	"amount": 1
+    "amount": 1
   },
-  "top1":{
-  	"item": "minecraft:experience_bottle"
+  "top1": {
+    "item": "minecraft:experience_bottle"
   },
   "top2": {
-	"item": "minecraft:end_rod"
+    "item": "minecraft:end_rod"
   },
   "mid2": {
-	"item": "minecraft:end_rod"
+    "item": "minecraft:end_rod"
   },
- "low2": {
-	"item": "historicizedmedicine:statue_base"
+  "low2": {
+    "item": "historicizedmedicine:statue_base"
   },
   "knowledge": "historicizedmedicine:hippocratic_corpus"
 }

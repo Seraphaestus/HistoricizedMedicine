@@ -2,18 +2,22 @@
   "forge_marker": 1,
   "defaults": {
     "model": "cube_all",
-    "textures": { 
-		"particle": "historicizedmedicine:block/crafting_table_bottom",
-		"down":		"historicizedmedicine:block/crafting_table_bottom",
-		"up":		"historicizedmedicine:block/crafting_table_top",
-		"east":		"historicizedmedicine:block/crafting_table_side",
-		"west":		"historicizedmedicine:block/crafting_table_side",
-		"north":	"historicizedmedicine:block/crafting_table_side2",
-		"south":	"historicizedmedicine:block/crafting_table_side2"
-	}
+    "textures": {
+      "particle": "historicizedmedicine:block/crafting_table_bottom",
+      "down": "historicizedmedicine:block/crafting_table_bottom",
+      "up": "historicizedmedicine:block/crafting_table_top",
+      "east": "historicizedmedicine:block/crafting_table_side",
+      "west": "historicizedmedicine:block/crafting_table_side",
+      "north": "historicizedmedicine:block/crafting_table_side2",
+      "south": "historicizedmedicine:block/crafting_table_side2"
+    }
   },
   "variants": {
-    "normal": [{}],
-    "inventory": [{}]
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ]
   }
 }

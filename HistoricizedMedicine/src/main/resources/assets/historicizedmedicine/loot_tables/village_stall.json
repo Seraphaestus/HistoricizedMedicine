@@ -1,64 +1,64 @@
 {
-    "pools": [
+  "pools": [
+    {
+      "name": "village_stall_1",
+      "conditions": [],
+      "entries": [
         {
-        	"name": "village_stall_1",
-            "conditions": [],
-            "entries": [
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:nitrous_oxide",
-                    "functions": [],
-                    "weight": 1,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:ligature",
-                    "functions": [],
-                    "weight": 4,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:honey_poultice",
-                    "functions": [],
-                    "weight": 6,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "minecraft:golden_apple",
-                    "functions": [],
-                    "weight": 2,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "minecraft:potion",
-                    "functions": [
-                        {
-                            "conditions": [],
-                            "function": "set_nbt",
-                            "tag": "{Potion:\"minecraft:healing\"}"
-                        }
-                    ],
-                    "weight": 5,
-                    "quality": 0
-                }
-            ],
-            "rolls": {
-                "min": 0,
-                "max": 5
-            },
-            "bonus_rolls": {
-                "min": 0,
-                "max": 0
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:nitrous_oxide",
+          "functions": [],
+          "weight": 1,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:ligature",
+          "functions": [],
+          "weight": 4,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:honey_poultice",
+          "functions": [],
+          "weight": 6,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "functions": [],
+          "weight": 2,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "conditions": [],
+              "function": "set_nbt",
+              "tag": "{Potion:\"minecraft:healing\"}"
             }
+          ],
+          "weight": 5,
+          "quality": 0
         }
-    ]
+      ],
+      "rolls": {
+        "min": 0,
+        "max": 5
+      },
+      "bonus_rolls": {
+        "min": 0,
+        "max": 0
+      }
+    }
+  ]
 }

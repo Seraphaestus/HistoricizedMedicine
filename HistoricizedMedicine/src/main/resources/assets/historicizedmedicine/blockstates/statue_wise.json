@@ -1,19 +1,29 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"particle":"historicizedmedicine:block/statue_base"
-		}
-	},
-	"variants": {
-		"facing=north": { "model": "historicizedmedicine:statue_wise"},
-        "facing=east": 	{ "model": "historicizedmedicine:statue_wise", "y": 90 },
-        "facing=south": { "model": "historicizedmedicine:statue_wise", "y": 180 },
-		"facing=west": 	{ "model": "historicizedmedicine:statue_wise", "y": 270 },
-		
-		"inventory": {
-			"model": "historicizedmedicine:statue_wise",
-			"transform": "forge:default-block"
-		}
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "historicizedmedicine:block/statue_base"
+    }
+  },
+  "variants": {
+    "facing=north": {
+      "model": "historicizedmedicine:statue_wise"
+    },
+    "facing=east": {
+      "model": "historicizedmedicine:statue_wise",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "historicizedmedicine:statue_wise",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "historicizedmedicine:statue_wise",
+      "y": 270
+    },
+    "inventory": {
+      "model": "historicizedmedicine:statue_wise",
+      "transform": "forge:default-block"
+    }
+  }
 }

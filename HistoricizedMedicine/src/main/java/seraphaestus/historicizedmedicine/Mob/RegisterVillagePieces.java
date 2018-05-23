@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
 public class RegisterVillagePieces {
-	
+
 	public static void init() {
 		VillagerRegistry villageRegistry = VillagerRegistry.instance();
 		villageRegistry.registerVillageCreationHandler(new VillageStall.VillageManager());
