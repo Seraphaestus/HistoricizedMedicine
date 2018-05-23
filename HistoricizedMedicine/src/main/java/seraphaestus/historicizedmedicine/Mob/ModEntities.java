@@ -34,8 +34,8 @@ public class ModEntities {
 
 		event.getRegistry().registerAll(
 				EntityEntryBuilder.create().entity(EntityPlagueDoctor.class).id(plagueDoctorName.getResourcePath(), 0).name(plagueDoctorName.getResourceDomain() + "." + plagueDoctorName.getResourcePath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
-				EntityEntryBuilder.create().entity(EntityApothecarian.class).id(apothecarianName.getResourcePath(), 1).name(apothecarianName.getResourceDomain() + "." + apothecarianName.getResourcePath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
-				EntityEntryBuilder.create().entity(EntityRat.class).id(ratName.getResourcePath(), 2).name(ratName.getResourceDomain() + "." + ratName.getResourcePath()).tracker(18, 3, true).egg(0x000000, 0x588f30).spawn(EnumCreatureType.MONSTER, 100, 3, 5, HardCodedValues.overworldBiomes()).build()			
+				EntityEntryBuilder.create().entity(EntityApothecarian.class).id(apothecarianName.getResourcePath(), 1).name(apothecarianName.getResourceDomain() + "." + apothecarianName.getResourcePath()).tracker(64, 3, true).egg(0xffffcc, 0xccff99).build(),
+				EntityEntryBuilder.create().entity(EntityRat.class).id(ratName.getResourcePath(), 2).name(ratName.getResourceDomain() + "." + ratName.getResourcePath()).tracker(18, 3, true).egg(0x333333, 0x666666).spawn(EnumCreatureType.MONSTER, 100, 3, 5, HardCodedValues.overworldBiomes()).build()			
 		);
 	}
 

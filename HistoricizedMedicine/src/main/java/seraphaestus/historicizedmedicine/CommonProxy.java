@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import seraphaestus.historicizedmedicine.Compat.MainCompatHandler;
 import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
 import seraphaestus.historicizedmedicine.Item.MilkOverride;
+import seraphaestus.historicizedmedicine.Mob.MobChangesHandler;
 import seraphaestus.historicizedmedicine.Mob.ModEntities;
 import seraphaestus.historicizedmedicine.Mob.RegisterVillagePieces;
 
@@ -36,6 +37,7 @@ public abstract class CommonProxy {
         if(Config.disableUseOfMilkBuckets) {
         	MinecraftForge.EVENT_BUS.register(new MilkOverride());
         }
+        MinecraftForge.EVENT_BUS.register(new MobChangesHandler());
     }
 
     /**

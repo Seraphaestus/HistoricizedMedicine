@@ -50,6 +50,11 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		super.entityInit();
 	}
 	
+	public boolean hasPlague() {
+		System.out.println(this.getActivePotionEffect(RegisterEffects.plague));
+		return this.getActivePotionEffect(RegisterEffects.plague) != null;
+	}
+	
 	public String generateColour(UUID uuid) {
 		Random rnd = new Random(uuid.getMostSignificantBits() | uuid.getLeastSignificantBits());
 		int select = rnd.nextInt(whiteChance + brownChance + grayChance + blackChance);
