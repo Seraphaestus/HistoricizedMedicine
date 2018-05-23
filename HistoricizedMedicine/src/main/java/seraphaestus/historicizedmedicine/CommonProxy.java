@@ -7,8 +7,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Compat.MainCompatHandler;
 import seraphaestus.historicizedmedicine.Effect.EntityUpdate;
 import seraphaestus.historicizedmedicine.Item.MilkOverride;
@@ -73,7 +71,6 @@ public abstract class CommonProxy {
      */
     abstract public boolean isDedicatedServer();
 
-    @SideOnly(Side.CLIENT)
     protected void registerEventHandlers(){
         MinecraftForge.EVENT_BUS.register(new EntityUpdate());
     }
