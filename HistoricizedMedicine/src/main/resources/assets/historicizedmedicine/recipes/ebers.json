@@ -3,23 +3,17 @@
     "item": "historicizedmedicine:ebers_papyrus"
   },
   "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:paper"
-    },
-    {
-      "item": "minecraft:paper"
-    },
-    {
-      "item": "minecraft:paper"
-    },
-    {
-      "item": "historicizedmedicine:herbs"
-    }
+  
+  "ingredients":[
+	  { "item": "minecraft:paper" },
+	  { "item": "minecraft:paper" },
+	  { "item": "minecraft:paper" },
+	  { "item": "historicizedmedicine:herbs" }
   ],
+  
   "conditions": [
-    {
-      "type": "historicizedMedicine:recipeToggle"
-    }
-  ]
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
 }

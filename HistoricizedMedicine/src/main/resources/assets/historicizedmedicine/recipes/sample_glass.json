@@ -3,21 +3,18 @@
     "item": "historicizedMedicine:sample_glass",
     "amount": 3
   },
+
   "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:glass_bottle"
-    },
-    {
-      "item": "minecraft:glass_bottle"
-    },
-    {
-      "item": "minecraft:glass_bottle"
-    }
+  
+  "ingredients":[
+	  { "item": "minecraft:glass_bottle" },
+	  { "item": "minecraft:glass_bottle" },
+	  { "item": "minecraft:glass_bottle" }
   ],
+  
   "conditions": [
-    {
-      "type": "historicizedMedicine:recipeToggle"
-    }
-  ]
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
 }

@@ -1,10 +1,10 @@
 {
   "result": {
     "item": "historicizedmedicine:chirurgia_magna",
-    "amount": 1
+	"amount": 1
   },
   "mid2": {
-    "item": "minecraft:book"
+	"item": "minecraft:book"
   },
   "knowledge": "historicizedmedicine:canon_of_medicine"
 }

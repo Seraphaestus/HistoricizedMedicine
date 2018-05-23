@@ -1,6 +1,8 @@
+
 {
+
   "parent": "item/generated",
-  "textures": {
-    "layer0": "historicizedmedicine:item/canon_of_medicine"
-  }
+    "textures": {
+        "layer0": "historicizedmedicine:item/canon_of_medicine"
+    }
 }

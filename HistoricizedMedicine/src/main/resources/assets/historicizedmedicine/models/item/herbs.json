@@ -1,6 +1,8 @@
+
 {
+
   "parent": "item/generated",
-  "textures": {
-    "layer0": "historicizedmedicine:item/herbs"
-  }
+    "textures": {
+        "layer0": "historicizedmedicine:item/herbs"
+    }
 }

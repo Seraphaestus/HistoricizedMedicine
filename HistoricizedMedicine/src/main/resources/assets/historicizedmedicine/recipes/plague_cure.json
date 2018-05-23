@@ -4,22 +4,18 @@
     "amount": 3
   },
   "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "historicizedmedicine:theriac",
-      "data": 0
-    },
-    {
-      "item": "historicizedmedicine:unicorn_powder",
-      "data": 0
-    },
-    {
-      "item": "minecraft:bowl"
-    }
+  
+  "ingredients":[
+	  { "item": "historicizedmedicine:theriac",
+	  	"data": 0},
+	  { "item": "historicizedmedicine:unicorn_powder",
+	  	"data": 0},
+	  { "item": "minecraft:bowl" }
   ],
+  
   "conditions": [
-    {
-      "type": "historicizedMedicine:recipeToggle"
-    }
-  ]
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
 }

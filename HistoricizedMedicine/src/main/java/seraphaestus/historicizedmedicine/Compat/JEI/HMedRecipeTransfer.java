@@ -1,11 +1,11 @@
 package seraphaestus.historicizedmedicine.Compat.JEI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mezz.jei.api.recipe.transfer.IRecipeTransferInfo;
 import net.minecraft.inventory.Slot;
 import seraphaestus.historicizedmedicine.CraftingTable.CraftingTableContainer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HMedRecipeTransfer implements IRecipeTransferInfo<CraftingTableContainer> {
 
@@ -17,7 +17,7 @@ public class HMedRecipeTransfer implements IRecipeTransferInfo<CraftingTableCont
 	private final int inventorySlotCount;
 
 	public HMedRecipeTransfer(Class<CraftingTableContainer> containerClass, String recipeCategoryUid, int recipeSlotStart, int recipeSlotCount,
-	                          int inventorySlotStart, int inventorySlotCount) {
+			int inventorySlotStart, int inventorySlotCount) {
 		this.containerClass = containerClass;
 		this.recipeCategoryUid = recipeCategoryUid;
 		this.recipeSlotStart = recipeSlotStart;
@@ -25,11 +25,10 @@ public class HMedRecipeTransfer implements IRecipeTransferInfo<CraftingTableCont
 		this.inventorySlotStart = inventorySlotStart;
 		this.inventorySlotCount = inventorySlotCount;
 	}
-
 	public HMedRecipeTransfer() {
 		this(CraftingTableContainer.class, HMedRecipeCategory.uid, 0, 10, 10, 9 * 4);
 	}
-
+	
 	@Override
 	public Class<CraftingTableContainer> getContainerClass() {
 		return containerClass;
@@ -63,7 +62,7 @@ public class HMedRecipeTransfer implements IRecipeTransferInfo<CraftingTableCont
 			slots.add(slot);
 		}
 		return slots;
-	}
-
+}
+	
 
 }

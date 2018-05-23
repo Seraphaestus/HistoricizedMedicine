@@ -32,7 +32,7 @@ public class ChannelWalk extends Channel {
 		frame3.modelRenderersTranslations.put("leg F R", new Vector3f(7.0F, 0.0F, 4.0F));
 		frame3.modelRenderersTranslations.put("leg B L", new Vector3f(0.0F, -1.0F, 2.0F));
 		keyFrames.put(3, frame3);
-
+		
 		KeyFrame frame4 = new KeyFrame();
 		frame4.modelRenderersTranslations.put("leg F R", new Vector3f(7.0F, 0.0F, 3.0F));
 		frame4.modelRenderersTranslations.put("leg B L", new Vector3f(0.0F, -1.0F, 1.0F));

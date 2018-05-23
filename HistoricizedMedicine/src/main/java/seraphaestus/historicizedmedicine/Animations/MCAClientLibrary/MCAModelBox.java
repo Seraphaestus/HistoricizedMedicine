@@ -8,14 +8,10 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/**
- * Coords values are set following a right-handed system with no transformations(ie. a default one, with +Z which goes out of the screen).
- */
+/** Coords values are set following a right-handed system with no transformations(ie. a default one, with +Z which goes out of the screen). */
 public class MCAModelBox extends ModelBox {
 
-	/**
-	 * Same as superclass, but it was PRIVATE.
-	 */
+	/** Same as superclass, but it was PRIVATE. */
 	private TexturedQuad[] MCAquadList;
 
 	public MCAModelBox(ModelRenderer par1ModelRenderer, int textureX, int textureY, float posX, float posY, float posZ, int sizeX, int sizeY, int sizeZ, float scaleFactor) {
@@ -33,7 +29,8 @@ public class MCAModelBox extends ModelBox {
 		endY += scaleFactor;
 		endZ += scaleFactor;
 
-		if (par1ModelRenderer.mirror) {
+		if (par1ModelRenderer.mirror)
+		{
 			float tempValueForSwitch = endX;
 			endX = posX;
 			posX = tempValueForSwitch;
@@ -51,20 +48,22 @@ public class MCAModelBox extends ModelBox {
 		//...
 		/** Create the TexturedQuads. The constructor of each quad defines the order of the PTV (counterclockwise) and fixes their UV. */
 		//Right quad (TODO fix texture)
-		this.MCAquadList[0] = new TexturedQuad(new PositionTextureVertex[]{PTV_back_right_top, PTV_front_right_top, PTV_front_right_bottom, PTV_back_right_bottom}, textureX + sizeZ + sizeX, textureY + sizeZ, textureX + sizeZ + sizeX + sizeZ, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[0] = new TexturedQuad(new PositionTextureVertex[] {PTV_back_right_top, PTV_front_right_top, PTV_front_right_bottom, PTV_back_right_bottom}, textureX + sizeZ + sizeX, textureY + sizeZ, textureX + sizeZ + sizeX + sizeZ, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 		//Left quad (TODO fix texture)
-		this.MCAquadList[1] = new TexturedQuad(new PositionTextureVertex[]{PTV_front_left_top, PTV_back_left_top, PTV_back_left_bottom, PTV_front_left_bottom}, textureX, textureY + sizeZ, textureX + sizeZ, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[1] = new TexturedQuad(new PositionTextureVertex[] {PTV_front_left_top, PTV_back_left_top, PTV_back_left_bottom, PTV_front_left_bottom}, textureX, textureY + sizeZ, textureX + sizeZ, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 		//Bottom quad
-		this.MCAquadList[2] = new TexturedQuad(new PositionTextureVertex[]{PTV_front_right_bottom, PTV_front_left_bottom, PTV_back_left_bottom, PTV_back_right_bottom}, textureX + sizeZ + sizeX, textureY, textureX + sizeZ + sizeX + sizeX, textureY + sizeZ, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[2] = new TexturedQuad(new PositionTextureVertex[] {PTV_front_right_bottom, PTV_front_left_bottom, PTV_back_left_bottom, PTV_back_right_bottom}, textureX + sizeZ + sizeX, textureY, textureX + sizeZ + sizeX + sizeX, textureY + sizeZ, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 		//Top quad
-		this.MCAquadList[3] = new TexturedQuad(new PositionTextureVertex[]{PTV_back_right_top, PTV_back_left_top, PTV_front_left_top, PTV_front_right_top}, textureX + sizeZ, textureY, textureX + sizeZ + sizeX, textureY + sizeZ, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[3] = new TexturedQuad(new PositionTextureVertex[] {PTV_back_right_top, PTV_back_left_top, PTV_front_left_top, PTV_front_right_top}, textureX + sizeZ, textureY, textureX + sizeZ + sizeX, textureY + sizeZ, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 		//Back quad 
-		this.MCAquadList[4] = new TexturedQuad(new PositionTextureVertex[]{PTV_back_left_top, PTV_back_right_top, PTV_back_right_bottom, PTV_back_left_bottom}, textureX + sizeZ + sizeX + sizeZ, textureY + sizeZ, textureX + sizeZ + sizeX + sizeZ + sizeX, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[4] = new TexturedQuad(new PositionTextureVertex[] {PTV_back_left_top, PTV_back_right_top, PTV_back_right_bottom, PTV_back_left_bottom}, textureX + sizeZ + sizeX + sizeZ, textureY + sizeZ, textureX + sizeZ + sizeX + sizeZ + sizeX, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 		//Front quad 
-		this.MCAquadList[5] = new TexturedQuad(new PositionTextureVertex[]{PTV_front_right_top, PTV_front_left_top, PTV_front_left_bottom, PTV_front_right_bottom}, textureX + sizeZ, textureY + sizeZ, textureX + sizeZ + sizeX, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
+		this.MCAquadList[5] = new TexturedQuad(new PositionTextureVertex[] {PTV_front_right_top, PTV_front_left_top, PTV_front_left_bottom, PTV_front_right_bottom}, textureX + sizeZ, textureY + sizeZ, textureX + sizeZ + sizeX, textureY + sizeZ + sizeY, par1ModelRenderer.textureWidth, par1ModelRenderer.textureHeight);
 
-		if (par1ModelRenderer.mirror) {
-			for (int j1 = 0; j1 < this.MCAquadList.length; ++j1) {
+		if (par1ModelRenderer.mirror)
+		{
+			for (int j1 = 0; j1 < this.MCAquadList.length; ++j1)
+			{
 				this.MCAquadList[j1].flipFace();
 			}
 		}
@@ -73,8 +72,10 @@ public class MCAModelBox extends ModelBox {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void render(BufferBuilder renderer, float textureX) {
-		for (int i = 0; i < this.MCAquadList.length; ++i) {
+	public void render(BufferBuilder renderer, float textureX)
+	{
+		for (int i = 0; i < this.MCAquadList.length; ++i)
+		{
 			this.MCAquadList[i].draw(renderer, textureX);
 		}
 	}

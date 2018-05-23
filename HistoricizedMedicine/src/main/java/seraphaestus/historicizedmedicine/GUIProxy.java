@@ -11,24 +11,24 @@ import seraphaestus.historicizedmedicine.CraftingTable.CraftingTableTileEntity;
 
 public class GUIProxy implements IGuiHandler {
 
-	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos pos = new BlockPos(x, y, z);
-		TileEntity te = world.getTileEntity(pos);
-		if (te instanceof CraftingTableTileEntity) {
-			return new CraftingTableContainer(player.inventory, (CraftingTableTileEntity) te);
-		}
-		return null;
-	}
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        BlockPos pos = new BlockPos(x, y, z);
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof CraftingTableTileEntity) {
+            return new CraftingTableContainer(player.inventory, (CraftingTableTileEntity) te);
+        }
+        return null;
+    }
 
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos pos = new BlockPos(x, y, z);
-		TileEntity te = world.getTileEntity(pos);
-		if (te instanceof CraftingTableTileEntity) {
-			CraftingTableTileEntity containerTileEntity = (CraftingTableTileEntity) te;
-			return new CraftingTableGUI(containerTileEntity, new CraftingTableContainer(player.inventory, containerTileEntity));
-		}
-		return null;
-	}
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        BlockPos pos = new BlockPos(x, y, z);
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof CraftingTableTileEntity) {
+        	CraftingTableTileEntity containerTileEntity = (CraftingTableTileEntity) te;
+            return new CraftingTableGUI(containerTileEntity, new CraftingTableContainer(player.inventory, containerTileEntity));
+        }
+        return null;
+    }
 }

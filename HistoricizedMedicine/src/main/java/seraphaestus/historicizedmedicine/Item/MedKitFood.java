@@ -12,29 +12,29 @@ public class MedKitFood extends MedKitBase {
 
 	public int hunger = 0;
 	public int saturation = 0;
-
-	public MedKitFood(String id, int stackSize, int minHealth, int maxHealth, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, int heal, int hunger, int saturation) {
-		super(id, stackSize, minHealth, maxHealth, effect, cure, reduce, heal);
-		this.hunger = hunger;
-		this.saturation = saturation;
+	
+	public MedKitFood(String id, int stackSize, int minHealth, int maxHealth, PotionEffect[] effect, Potion[] cure, Reduce[] reduce, int heal, int hunger, int saturation){
+        super(id, stackSize, minHealth, maxHealth, effect, cure, reduce, heal);
+        this.hunger = hunger;
+        this.saturation = saturation;
 	}
-
+	
 	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.EAT;
-	}
-
+    public EnumAction getItemUseAction(ItemStack stack) {
+        return EnumAction.EAT;
+    }
+	
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 20;
-	}
-
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 20;
+    }
+	
 	@Override
 	protected void extraEffects(EntityLivingBase entityLiving) {
 		EntityPlayer player;
-		if (entityLiving instanceof EntityPlayer) {
-			player = (EntityPlayer) entityLiving;
-			player.getFoodStats().addStats(hunger, saturation);
-		}
-	}
+		if(entityLiving instanceof EntityPlayer) {
+        	player = (EntityPlayer)entityLiving;
+        	player.getFoodStats().addStats(hunger, saturation);
+    	}
+    }
 }

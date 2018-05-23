@@ -3,22 +3,25 @@
     "item": "historicizedMedicine:herbal_poultice"
   },
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " p ",
-    "php",
-    " p "
+  
+  "pattern":[
+	" p ",
+	"php",
+	" p "
   ],
-  "key": {
-    "p": {
-      "item": "minecraft:paper"
-    },
-    "h": {
-      "item": "historicizedMedicine:herbs"
-    }
+  
+  "key":{
+	"p":{
+		"item": "minecraft:paper"
+	},
+	"h":{
+		"item": "historicizedMedicine:herbs"
+	}
   },
+  
   "conditions": [
-    {
-      "type": "historicizedMedicine:recipeToggle"
-    }
-  ]
+        {
+            "type": "historicizedMedicine:recipeToggle"
+        }
+    ]
 }
