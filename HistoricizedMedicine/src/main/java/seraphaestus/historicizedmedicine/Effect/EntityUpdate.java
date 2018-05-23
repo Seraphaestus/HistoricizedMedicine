@@ -15,6 +15,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HardCodedValues;
@@ -25,6 +27,7 @@ import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 import java.lang.reflect.Field;
 import java.util.*;
 
+@SideOnly(Side.CLIENT)
 public class EntityUpdate {
 	private static final int plagueParticleEveryXTicks = 6;
 	private static HashMap<UUID, Integer> currentBleedDur = new HashMap<UUID, Integer>();
