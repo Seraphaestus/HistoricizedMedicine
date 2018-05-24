@@ -127,6 +127,9 @@ public class EntityUpdate
             
         } else {
         	//not instance of player
+        	if(!(event.getEntityLiving() instanceof EntityLiving)) {
+        		return;
+        	}
         	EntityLiving entity = (EntityLiving) event.getEntityLiving();
         	if(entity.isPotionActive(RegisterEffects.plague) && Config.enablePlague) {
         		int plagueDuration = entity.getActivePotionEffect(RegisterEffects.plague).getDuration();
