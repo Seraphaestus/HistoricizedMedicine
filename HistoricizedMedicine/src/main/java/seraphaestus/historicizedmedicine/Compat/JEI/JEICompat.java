@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 import seraphaestus.historicizedmedicine.HardCodedValues;
+import seraphaestus.historicizedmedicine.ServerProxy;
 import seraphaestus.historicizedmedicine.CraftingTable.CraftingTableGUI;
 import seraphaestus.historicizedmedicine.CraftingTable.Recipe;
 
@@ -87,6 +88,7 @@ public class JEICompat implements IModPlugin{
 			} 
 			output.add(Recipe.getFromJson(contents));
 		}
+	  	output.addAll(ServerProxy.getCustomRecipes());
 		return output;
 	}
 

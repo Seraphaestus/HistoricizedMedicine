@@ -24,6 +24,16 @@ public class Recipe implements IRecipe {
 		}
 	}
 	
+	public Recipe(Recipe base) {
+		for(int i = 0; i < 3; i++) {
+			for (int ii = 0; ii < 3; ii++) {
+				grid[i][ii] = base.grid[i][ii].copy();
+			}
+		}
+		this.output = base.output.copy();
+		this.requiredSheet = base.requiredSheet;
+	}
+	
 	public Recipe(NBTTagCompound[][] grid, ItemStack output) {
 		this.grid = grid;
 		this.output = output;
