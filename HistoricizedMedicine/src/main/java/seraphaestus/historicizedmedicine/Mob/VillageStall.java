@@ -34,7 +34,11 @@ public class VillageStall extends Village {
 	public VillageStall(Start villagePiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, EnumFacing facing)
 	{
 		super(villagePiece, par2);
-		this.facing = facing;
+		if(this.facing == null) {
+			this.facing = EnumFacing.NORTH;
+		} else {
+			this.facing = facing;
+		}
 		this.setCoordBaseMode(facing);
 		this.rand = par3Random;
 		this.boundingBox = par4StructureBoundingBox;
