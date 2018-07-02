@@ -110,4 +110,24 @@ public class HardCodedValues {
 		output.add(Biomes.TAIGA_HILLS);
 		return output.toArray(new Biome[output.size()]);
 	}
+	
+	public final static String exampleRecipe = "{\r\n" + 
+			"  \"result\": {\r\n" + 
+			"    \"item\": \"minecraft:diamond\",\r\n" + 
+			"	\"amount\": 1\r\n" + 
+			"  },\r\n" + 
+			"  \"top3\": {	//supports the 9 crafting slots, top1, top2, top3, etc.\r\n" + 
+			"	\"item\": \"minecraft:paper\"\r\n" + 
+			"  },\r\n" + 
+			"  \"mid2\": {\r\n" + 
+			"	\"ore\": \"listAllmeatraw\"	//ore dictionary entry\r\n" + 
+			"  },\r\n" + 
+			"  \"low1\": {\r\n" + 
+			"	\"item\": \"minecraft:stone\",	//metadata (in this case, for granite)\r\n" + 
+			"	\"meta\": 1\r\n" + 
+			"  },\r\n" + 
+			"  \"knowledge\": \"historicizedmedicine:ebers_papyrus\"\r\n" + 
+			"  //must be a valid knowledge sheet from the mod. other items will not work\r\n" + 
+			"  //NOTE: comments are not supported in actual recipe files, do not include them.\r\n" + 
+			"}";
 }

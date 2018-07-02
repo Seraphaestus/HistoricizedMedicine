@@ -101,6 +101,19 @@ public class CraftingTableContainer extends Container{
     public boolean canInteractWith(EntityPlayer playerIn) {
         return te.canInteractWith(playerIn);
     }
+    
+    @Override
+    public void onContainerClosed(EntityPlayer playerIn)
+    {
+    	for(int i = 0; i < 9; i++) {
+        	Slot slot = this.inventorySlots.get(i);
+        	if(!slot.getStack().isEmpty()) {
+        		playerIn.dropItem(slot.getStack(), false);
+        		slot.putStack(ItemStack.EMPTY);
+        	}
+        }
+    	super.onContainerClosed(playerIn);
+    }
 	
     private class SlotUninsertable extends SlotItemHandler {
 

@@ -16,6 +16,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HardCodedValues;
+import seraphaestus.historicizedmedicine.ServerProxy;
 import seraphaestus.historicizedmedicine.Item.KnowledgeSheet;
 
 public class CraftingTableTileEntity extends TileEntity{
@@ -59,6 +60,7 @@ public class CraftingTableTileEntity extends TileEntity{
 			}
 			CraftingTableTileEntity.this.markDirty();
 		}
+	
 	};
 	
 	private boolean goThroughRecipes() throws IOException {
@@ -81,57 +83,65 @@ public class CraftingTableTileEntity extends TileEntity{
 				return true;
 			}
 	  	}
+	  	for(Recipe r : ServerProxy.getCustomRecipes()) {
+	  		if(verifyIfRecipe(r)) {
+	  			return true;
+	  		}
+	  	}
 	  	return false;
 	}
 	
 	private boolean verifyIfRecipe(String contents) {		
-	Recipe r = Recipe.getFromJson(contents);
-	//reset output slotstack
-	itemStackHandlerMain.setStackInSlot(outputSlot, ItemStack.EMPTY, false);
-	if(itemCheck(r.grid[0][0], 0) &&
-	   itemCheck(r.grid[0][1], 1) &&
-	   itemCheck(r.grid[0][2], 2) &&
-	   itemCheck(r.grid[1][0], 3) &&
-	   itemCheck(r.grid[1][1], 4) &&
-	   itemCheck(r.grid[1][2], 5) &&
-       itemCheck(r.grid[2][0], 6) &&
-       itemCheck(r.grid[2][1], 7) &&
-       itemCheck(r.grid[2][2], 8)) {
-			//on match
-			boolean checkKnowledge = false;
-			if(r.requiredSheet == null) {
-				checkKnowledge = true;
-			} else {
-				ItemStack sheet = itemStackHandlerMain.getStackInSlot(knowledgeSlot);
-				if(!sheet.isEmpty()) {
-					boolean knowledgeSheetCheck;
-					if(Config.requireExactTier) {
-						knowledgeSheetCheck = sheet.getItem().getRegistryName() == r.requiredSheet.getRegistryName();
-					} else {		
-						KnowledgeSheet ks = (KnowledgeSheet)sheet.getItem();
-						KnowledgeSheet ks2 = (KnowledgeSheet)r.requiredSheet;
-						knowledgeSheetCheck = ks.getTier() >= ks2.getTier();
-					}
-					if(knowledgeSheetCheck) {			
-						KnowledgeSheet knSheet = (KnowledgeSheet)sheet.getItem();
-						if (Config.fullKnowledgeRequired == false) {
-							if(!knSheet.isEmpty(sheet)) {
-								checkKnowledge = true;
-							}
-						} else {
-							if(knSheet.isFull(sheet)) {
-								checkKnowledge = true;
+		Recipe r = Recipe.getFromJson(contents);
+		return verifyIfRecipe(r);
+	}	
+	private boolean verifyIfRecipe(Recipe r) {
+		//reset output slotstack
+		itemStackHandlerMain.setStackInSlot(outputSlot, ItemStack.EMPTY, false);
+		if(itemCheck(r.grid[0][0], 0) &&
+		   itemCheck(r.grid[0][1], 1) &&
+		   itemCheck(r.grid[0][2], 2) &&
+		   itemCheck(r.grid[1][0], 3) &&
+		   itemCheck(r.grid[1][1], 4) &&
+		   itemCheck(r.grid[1][2], 5) &&
+	       itemCheck(r.grid[2][0], 6) &&
+	       itemCheck(r.grid[2][1], 7) &&
+	       itemCheck(r.grid[2][2], 8)) {
+				//on match
+				boolean checkKnowledge = false;
+				if(r.requiredSheet == null) {
+					checkKnowledge = true;
+				} else {
+					ItemStack sheet = itemStackHandlerMain.getStackInSlot(knowledgeSlot);
+					if(!sheet.isEmpty()) {
+						boolean knowledgeSheetCheck;
+						if(Config.requireExactTier) {
+							knowledgeSheetCheck = sheet.getItem().getRegistryName() == r.requiredSheet.getRegistryName();
+						} else {		
+							KnowledgeSheet ks = (KnowledgeSheet)sheet.getItem();
+							KnowledgeSheet ks2 = (KnowledgeSheet)r.requiredSheet;
+							knowledgeSheetCheck = ks.getTier() >= ks2.getTier();
+						}
+						if(knowledgeSheetCheck) {			
+							KnowledgeSheet knSheet = (KnowledgeSheet)sheet.getItem();
+							if (Config.fullKnowledgeRequired == false) {
+								if(!knSheet.isEmpty(sheet)) {
+									checkKnowledge = true;
+								}
+							} else {
+								if(knSheet.isFull(sheet)) {
+									checkKnowledge = true;
+								}
 							}
 						}
 					}
 				}
+				if(r.requiredSheet == null || checkKnowledge) {
+					itemStackHandlerMain.setStackInSlot(outputSlot, r.output, false);
+					return true;
+				}
 			}
-			if(r.requiredSheet == null || checkKnowledge) {
-				itemStackHandlerMain.setStackInSlot(outputSlot, r.output, false);
-				return true;
-			}
-		}
-		return false;
+			return false;
 	}
 	
 	private boolean itemCheck (NBTTagCompound nbt, int slot) {

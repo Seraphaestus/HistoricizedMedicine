@@ -22,6 +22,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Config;
 import seraphaestus.historicizedmedicine.HardCodedValues;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
@@ -125,6 +127,9 @@ public class EntityUpdate
             
         } else {
         	//not instance of player
+        	if(!(event.getEntityLiving() instanceof EntityLiving)) {
+        		return;
+        	}
         	EntityLiving entity = (EntityLiving) event.getEntityLiving();
         	if(entity.isPotionActive(RegisterEffects.plague) && Config.enablePlague) {
         		int plagueDuration = entity.getActivePotionEffect(RegisterEffects.plague).getDuration();
@@ -145,12 +150,17 @@ public class EntityUpdate
         			}
         			Random rnd = entity.getRNG();
         			if(plagueDuration % plagueParticleEveryXTicks == 0) {
-        				AxisAlignedBB box = entity.getEntityBoundingBox();
-        				Minecraft.getMinecraft().effectRenderer.addEffect(new PlagueEffect(entity.getEntityWorld(), entity.posX + (box.maxX - box.minX) * (rnd.nextFloat() - 0.5f), entity.posY + (box.maxY - box.minY) * (rnd.nextFloat()), entity.posZ + (box.maxZ - box.minZ) * (rnd.nextFloat() - 0.5f), 0.0f, 0.0f, 0.0f));   
+        				renderParticles(entity, rnd);
         			}
     			}
         	}
         }
+    }
+    
+    @SideOnly(Side.CLIENT)
+    private void renderParticles(Entity entity, Random rnd) {
+    	AxisAlignedBB box = entity.getEntityBoundingBox();
+		Minecraft.getMinecraft().effectRenderer.addEffect(new PlagueEffect(entity.getEntityWorld(), entity.posX + (box.maxX - box.minX) * (rnd.nextFloat() - 0.5f), entity.posY + (box.maxY - box.minY) * (rnd.nextFloat()), entity.posZ + (box.maxZ - box.minZ) * (rnd.nextFloat() - 0.5f), 0.0f, 0.0f, 0.0f));   
     }
 
     private static Field foodTimerField = null;
