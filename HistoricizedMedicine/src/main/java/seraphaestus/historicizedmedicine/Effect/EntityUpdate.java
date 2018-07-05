@@ -19,6 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -148,8 +149,9 @@ public class EntityUpdate
                 			}
                 		}
         			}
+        			World world = entity.getEntityWorld();
         			Random rnd = entity.getRNG();
-        			if(plagueDuration % plagueParticleEveryXTicks == 0) {
+        			if(world.isRemote && plagueDuration % plagueParticleEveryXTicks == 0) {
         				renderParticles(entity, rnd);
         			}
     			}
