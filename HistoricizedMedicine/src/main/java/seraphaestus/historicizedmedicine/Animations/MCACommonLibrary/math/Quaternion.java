@@ -1,14 +1,12 @@
 package seraphaestus.historicizedmedicine.Animations.MCACommonLibrary.math;
 
-import java.lang.Math;
-
 /**
  * A 4 element unit quaternion represented by single precision floating
  * point x,y,z,w coordinates. The quaternion is always normalized.
  */
 public class Quaternion implements java.io.Serializable {
 
-	public static final Quaternion EMPTY = new Quaternion(0,0,0,0);
+	public static final Quaternion EMPTY = new Quaternion(0, 0, 0, 0);
 	final static double EPS = 0.000001;
 
 	public float x;
@@ -16,69 +14,68 @@ public class Quaternion implements java.io.Serializable {
 	public float z;
 	public float w;
 
-	public Quaternion(float x, float y, float z, float w)
-	{
+	public Quaternion(float x, float y, float z, float w) {
 		float mag;
-		mag = (float)(1.0/Math.sqrt( x*x + y*y + z*z + w*w ));
-		this.x =  x*mag;
-		this.y =  y*mag;
-		this.z =  z*mag;
-		this.w =  w*mag;
+		mag = (float) (1.0 / Math.sqrt(x * x + y * y + z * z + w * w));
+		this.x = x * mag;
+		this.y = y * mag;
+		this.z = z * mag;
+		this.w = w * mag;
 	}
 
-	public Quaternion()
-	{
+	public Quaternion() {
 		this(0F, 0F, 0F, 1F);
 	}
 
-	public Quaternion(Quaternion q1)
-	{
+	public Quaternion(Quaternion q1) {
 		this.x = q1.x;
 		this.y = q1.y;
 		this.z = q1.z;
 		this.w = q1.w;
 	}
 
-	/** Assumes axis is already normalised. Angle must be in radians. */
+	/**
+	 * Assumes axis is already normalised. Angle must be in radians.
+	 */
 	public Quaternion(Vector3f axis, float angle) {
-		double s = Math.sin(angle/2);
+		double s = Math.sin(angle / 2);
 		x = (float) (axis.x * s);
 		y = (float) (axis.y * s);
 		z = (float) (axis.z * s);
-		w = (float) Math.cos(angle/2);
+		w = (float) Math.cos(angle / 2);
 	}
 
-	/** Sets quaternion from the given matrix. */
-	public Quaternion(Matrix4f mat)
-	{
+	/**
+	 * Sets quaternion from the given matrix.
+	 */
+	public Quaternion(Matrix4f mat) {
 		double T = 1 + mat.m00 + mat.m11 + mat.m22;
-		if( T > 0.00000001 ) //to avoid large distortions!
+		if (T > 0.00000001) //to avoid large distortions!
 		{
 			double S = Math.sqrt(T) * 2;
-			this.x = (float) (( mat.m12 - mat.m21 ) / S);
-			this.y = (float) (( mat.m02 - mat.m20 ) / S);
-			this.z = (float) (( mat.m10 - mat.m01 ) / S);
+			this.x = (float) ((mat.m12 - mat.m21) / S);
+			this.y = (float) ((mat.m02 - mat.m20) / S);
+			this.z = (float) ((mat.m10 - mat.m01) / S);
 			this.w = (float) (0.25 * S);
-		} else if(T == 0)
-		{
-			if ( mat.m00 > mat.m11 && mat.m00 > mat.m22 )  {	// Column 0: 
-				double S  = Math.sqrt( 1.0 + mat.m00 - mat.m11 - mat.m22 ) * 2;
+		} else if (T == 0) {
+			if (mat.m00 > mat.m11 && mat.m00 > mat.m22) {    // Column 0:
+				double S = Math.sqrt(1.0 + mat.m00 - mat.m11 - mat.m22) * 2;
 				this.x = (float) (0.25 * S);
-				this.y = (float) ((mat.m10 + mat.m01 ) / S);
-				this.z = (float) ((mat.m02 + mat.m20 ) / S);
-				this.w = (float) ((mat.m21 - mat.m12 ) / S);
-			} else if ( mat.m11 > mat.m22 ) {			// Column 1: 
-				double S  = Math.sqrt( 1.0 + mat.m11 - mat.m00 - mat.m22 ) * 2;
-				this.x = (float) ((mat.m10 + mat.m01 ) / S);
+				this.y = (float) ((mat.m10 + mat.m01) / S);
+				this.z = (float) ((mat.m02 + mat.m20) / S);
+				this.w = (float) ((mat.m21 - mat.m12) / S);
+			} else if (mat.m11 > mat.m22) {            // Column 1:
+				double S = Math.sqrt(1.0 + mat.m11 - mat.m00 - mat.m22) * 2;
+				this.x = (float) ((mat.m10 + mat.m01) / S);
 				this.y = (float) (0.25 * S);
-				this.z = (float) ((mat.m21 + mat.m12 ) / S);
-				this.w = (float) ((mat.m02 - mat.m20 ) / S);
-			} else {						// Column 2:
-				double S  = Math.sqrt( 1.0 + mat.m22 - mat.m00 - mat.m11 ) * 2;
-				this.x = (float) ((mat.m02 + mat.m20 ) / S);
-				this.y = (float) ((mat.m21 + mat.m12 ) / S);
+				this.z = (float) ((mat.m21 + mat.m12) / S);
+				this.w = (float) ((mat.m02 - mat.m20) / S);
+			} else {                        // Column 2:
+				double S = Math.sqrt(1.0 + mat.m22 - mat.m00 - mat.m11) * 2;
+				this.x = (float) ((mat.m02 + mat.m20) / S);
+				this.y = (float) ((mat.m21 + mat.m12) / S);
 				this.z = (float) (0.25 * S);
-				this.w = (float) ((mat.m10 - mat.m01 ) / S);
+				this.w = (float) ((mat.m10 - mat.m01) / S);
 			}
 		}
 	}
@@ -88,8 +85,7 @@ public class Quaternion implements java.io.Serializable {
 	 * passed <code>Quaternion</code> object. The values are copied producing
 	 * a new object.
 	 *
-	 * @param q
-	 *            The Quaternion to copy values from.
+	 * @param q The Quaternion to copy values from.
 	 * @return this
 	 */
 	public Quaternion set(Quaternion q) {
@@ -100,48 +96,51 @@ public class Quaternion implements java.io.Serializable {
 		return this;
 	}
 
-	/** Sets the value of this quaternion to the conjugate of quaternion q1 */
-	public final void conjugate(Quaternion q1)
-	{
+	/**
+	 * Sets the value of this quaternion to the conjugate of quaternion q1
+	 */
+	public final void conjugate(Quaternion q1) {
 		this.x = -q1.x;
 		this.y = -q1.y;
 		this.z = -q1.z;
 		this.w = q1.w;
 	}
 
-	/** Sets the value of this quaternion to the conjugate of itself */
-	public final void conjugate()
-	{
+	/**
+	 * Sets the value of this quaternion to the conjugate of itself
+	 */
+	public final void conjugate() {
 		this.x = -this.x;
 		this.y = -this.y;
 		this.z = -this.z;
 	}
 
-	/** Sets the value of this quaternion to the quaternion product of this and q1. */
+	/**
+	 * Sets the value of this quaternion to the quaternion product of this and q1.
+	 */
 	public final void mul(Quaternion q1) {
 		this.mul(this, q1);
 	}
 
 	/**
 	 * Sets the value of this quaternion to the quaternion product of
-	 * quaternions q1 and q2 (this = q1 * q2). 
+	 * quaternions q1 and q2 (this = q1 * q2).
 	 * Note that this is safe for aliasing (e.g. this can be q1 or q2).
 	 * This operation is used for adding the 2 orientations.
 	 */
-	public final void mul(Quaternion q1, Quaternion q2)
-	{
+	public final void mul(Quaternion q1, Quaternion q2) {
 		if (this != q1 && this != q2) {
-			this.w = q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z;
-			this.x = q1.w*q2.x + q2.w*q1.x + q1.y*q2.z - q1.z*q2.y;
-			this.y = q1.w*q2.y + q2.w*q1.y - q1.x*q2.z + q1.z*q2.x;
-			this.z = q1.w*q2.z + q2.w*q1.z + q1.x*q2.y - q1.y*q2.x;
+			this.w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+			this.x = q1.w * q2.x + q2.w * q1.x + q1.y * q2.z - q1.z * q2.y;
+			this.y = q1.w * q2.y + q2.w * q1.y - q1.x * q2.z + q1.z * q2.x;
+			this.z = q1.w * q2.z + q2.w * q1.z + q1.x * q2.y - q1.y * q2.x;
 		} else {
 			float x, y, w;
 
-			w = q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z;
-			x = q1.w*q2.x + q2.w*q1.x + q1.y*q2.z - q1.z*q2.y;
-			y = q1.w*q2.y + q2.w*q1.y - q1.x*q2.z + q1.z*q2.x;
-			this.z = q1.w*q2.z + q2.w*q1.z + q1.x*q2.y - q1.y*q2.x;
+			w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+			x = q1.w * q2.x + q2.w * q1.x + q1.y * q2.z - q1.z * q2.y;
+			y = q1.w * q2.y + q2.w * q1.y - q1.x * q2.z + q1.z * q2.x;
+			this.z = q1.w * q2.z + q2.w * q1.z + q1.x * q2.y - q1.y * q2.x;
 			this.w = w;
 			this.x = x;
 			this.y = y;
@@ -153,9 +152,8 @@ public class Quaternion implements java.io.Serializable {
 	 * the value into this quaternion.  The value of both argument quaternions
 	 * is preservered (this = q1 * q2^-1)
 	 */
-	public final void mulInverse(Quaternion q1, Quaternion q2)
-	{  
-		Quaternion  tempQuat = new Quaternion(q2); 
+	public final void mulInverse(Quaternion q1, Quaternion q2) {
+		Quaternion tempQuat = new Quaternion(q2);
 
 		tempQuat.inverse();
 		this.mul(q1, tempQuat);
@@ -163,28 +161,27 @@ public class Quaternion implements java.io.Serializable {
 
 	/**
 	 * Sets the value of this quaternion to quaternion inverse of quaternion q1.
+	 *
 	 * @param q1 the quaternion to be inverted
 	 */
-	public final void inverse(Quaternion q1)
-	{
+	public final void inverse(Quaternion q1) {
 		float norm;
 
-		norm = 1.0f/(q1.w*q1.w + q1.x*q1.x + q1.y*q1.y + q1.z*q1.z);
-		this.w =  norm*q1.w;
-		this.x = -norm*q1.x;
-		this.y = -norm*q1.y;
-		this.z = -norm*q1.z;
+		norm = 1.0f / (q1.w * q1.w + q1.x * q1.x + q1.y * q1.y + q1.z * q1.z);
+		this.w = norm * q1.w;
+		this.x = -norm * q1.x;
+		this.y = -norm * q1.y;
+		this.z = -norm * q1.z;
 	}
 
 	/**
 	 * Sets the value of this quaternion to the quaternion inverse of itself.
 	 */
-	public final void inverse()
-	{
-		float norm; 
+	public final void inverse() {
+		float norm;
 
-		norm = 1.0f/(this.w*this.w + this.x*this.x + this.y*this.y + this.z*this.z);
-		this.w *=  norm;
+		norm = 1.0f / (this.w * this.w + this.x * this.x + this.y * this.y + this.z * this.z);
+		this.w *= norm;
 		this.x *= -norm;
 		this.y *= -norm;
 		this.z *= -norm;
@@ -193,20 +190,20 @@ public class Quaternion implements java.io.Serializable {
 	/**
 	 * Sets the value of this quaternion to the normalized value
 	 * of quaternion q1.
+	 *
 	 * @param q1 the quaternion to be normalized.
 	 */
-	public final void normalize(Quaternion q1)
-	{
+	public final void normalize(Quaternion q1) {
 		float norm;
 
-		norm = (q1.x*q1.x + q1.y*q1.y + q1.z*q1.z + q1.w*q1.w);
+		norm = (q1.x * q1.x + q1.y * q1.y + q1.z * q1.z + q1.w * q1.w);
 
 		if (norm > 0.0f) {
-			norm = 1.0f/(float)Math.sqrt(norm);
-			this.x = norm*q1.x;
-			this.y = norm*q1.y;
-			this.z = norm*q1.z;
-			this.w = norm*q1.w;
+			norm = 1.0f / (float) Math.sqrt(norm);
+			this.x = norm * q1.x;
+			this.y = norm * q1.y;
+			this.z = norm * q1.z;
+			this.w = norm * q1.w;
 		} else {
 			this.x = (float) 0.0;
 			this.y = (float) 0.0;
@@ -219,14 +216,13 @@ public class Quaternion implements java.io.Serializable {
 	/**
 	 * Normalizes the value of this quaternion in place.
 	 */
-	public final void normalize()
-	{
+	public final void normalize() {
 		float norm;
 
-		norm = (this.x*this.x + this.y*this.y + this.z*this.z + this.w*this.w);
+		norm = (this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
 
 		if (norm > 0.0f) {
-			norm = 1.0f / (float)Math.sqrt(norm);
+			norm = 1.0f / (float) Math.sqrt(norm);
 			this.x *= norm;
 			this.y *= norm;
 			this.z *= norm;
@@ -243,8 +239,7 @@ public class Quaternion implements java.io.Serializable {
 	 * Adds the values of this quaternion to those of the
 	 * parameter quaternion. The result is stored in this Quaternion.
 	 *
-	 * @param q
-	 *            the quaternion to add to this.
+	 * @param q the quaternion to add to this.
 	 * @return This Quaternion after addition.
 	 */
 	public Quaternion add(Quaternion q) {
@@ -259,8 +254,7 @@ public class Quaternion implements java.io.Serializable {
 	 * Subtracts the values of the parameter quaternion
 	 * from those of this quaternion. The result is stored in this Quaternion.
 	 *
-	 * @param q
-	 *            the quaternion to subtract from this.
+	 * @param q the quaternion to subtract from this.
 	 * @return This Quaternion after subtraction.
 	 */
 	public Quaternion subtract(Quaternion q) {
@@ -275,8 +269,7 @@ public class Quaternion implements java.io.Serializable {
 	 * Calculates and returns the dot product of this
 	 * quaternion with that of the parameter quaternion.
 	 *
-	 * @param q
-	 *            the quaternion to calculate the dot product of.
+	 * @param q the quaternion to calculate the dot product of.
 	 * @return the dot product of this and the parameter quaternion.
 	 */
 	public float dot(Quaternion q) {
@@ -292,30 +285,27 @@ public class Quaternion implements java.io.Serializable {
 	public float norm() {
 		return w * w + x * x + y * y + z * z;
 	}
-	
-    /**
-     * Normalizes the current <code>Quaternion</code>.
-     * The result is stored internally.
-     */
-    public Quaternion normalizeLocal() {
-        float n = FastMath.invSqrt(norm());
-        x *= n;
-        y *= n;
-        z *= n;
-        w *= n;
-        return this;
-    }
+
+	/**
+	 * Normalizes the current <code>Quaternion</code>.
+	 * The result is stored internally.
+	 */
+	public Quaternion normalizeLocal() {
+		float n = FastMath.invSqrt(norm());
+		x *= n;
+		y *= n;
+		z *= n;
+		w *= n;
+		return this;
+	}
 
 	/**
 	 * <code>slerp</code> sets this quaternion's value as an interpolation
 	 * between two other quaternions.
 	 *
-	 * @param q1
-	 *            the first quaternion.
-	 * @param q2
-	 *            the second quaternion.
-	 * @param t
-	 *            the amount to interpolate between the two quaternions.
+	 * @param q1 the first quaternion.
+	 * @param q2 the second quaternion.
+	 * @param t  the amount to interpolate between the two quaternions.
 	 */
 	public Quaternion slerp(Quaternion q1, Quaternion q2, float t) {
 		// Create a local quaternion to store the interpolated quaternion
@@ -369,10 +359,8 @@ public class Quaternion implements java.io.Serializable {
 	 * Sets the values of this quaternion to the slerp from itself to q2 by
 	 * changeAmnt
 	 *
-	 * @param q2
-	 *            Final interpolation value
-	 * @param changeAmnt
-	 *            The amount diffrence
+	 * @param q2         Final interpolation value
+	 * @param changeAmnt The amount diffrence
 	 */
 	public void slerp(Quaternion q2, float changeAmnt) {
 		if (this.x == q2.x && this.y == q2.y && this.z == q2.z
@@ -421,6 +409,7 @@ public class Quaternion implements java.io.Serializable {
 
 	/**
 	 * Sets the values of this quaternion to the nlerp from itself to q2 by blend.
+	 *
 	 * @param q2
 	 * @param blend
 	 */

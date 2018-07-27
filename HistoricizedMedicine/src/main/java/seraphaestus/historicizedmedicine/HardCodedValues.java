@@ -1,8 +1,5 @@
 package seraphaestus.historicizedmedicine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +8,30 @@ import net.minecraft.world.biome.Biome;
 import seraphaestus.historicizedmedicine.Mob.PlagueDoctor.EntityPlagueDoctor;
 import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HardCodedValues {
+
+	public final static String exampleRecipe = "{\r\n" +
+			"  \"result\": {\r\n" +
+			"    \"item\": \"minecraft:diamond\",\r\n" +
+			"	\"amount\": 1\r\n" +
+			"  },\r\n" +
+			"  \"top3\": {	//supports the 9 crafting slots, top1, top2, top3, etc.\r\n" +
+			"	\"item\": \"minecraft:paper\"\r\n" +
+			"  },\r\n" +
+			"  \"mid2\": {\r\n" +
+			"	\"ore\": \"listAllmeatraw\"	//ore dictionary entry\r\n" +
+			"  },\r\n" +
+			"  \"low1\": {\r\n" +
+			"	\"item\": \"minecraft:stone\",	//metadata (in this case, for granite)\r\n" +
+			"	\"meta\": 1\r\n" +
+			"  },\r\n" +
+			"  \"knowledge\": \"historicizedmedicine:ebers_papyrus\"\r\n" +
+			"  //must be a valid knowledge sheet from the mod. other items will not work\r\n" +
+			"  //NOTE: comments are not supported in actual recipe files, do not include them.\r\n" +
+			"}";
 
 	public static List<String> getRecipeFilePaths() {
 		List<String> output = new ArrayList<String>();
@@ -38,21 +58,19 @@ public class HardCodedValues {
 	}
 
 	public static boolean catchesPlague(Entity entityIn) {
-		if(!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving) && !(entityIn instanceof EntityPlagueDoctor)) {
+		if (!(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityLiving) && !(entityIn instanceof EntityPlagueDoctor)) {
 			return false;
 		}
-		if(entityIn instanceof EntityRat) {
+		if (entityIn instanceof EntityRat) {
 			return false;
-		} 
-		else if(entityIn instanceof EntityLiving) {
-			EntityLiving living = (EntityLiving)entityIn;
-			if(entityIn.getIsInvulnerable() || living.isEntityUndead() || !entityIn.isNonBoss()) {
+		} else if (entityIn instanceof EntityLiving) {
+			EntityLiving living = (EntityLiving) entityIn;
+			if (entityIn.getIsInvulnerable() || living.isEntityUndead() || !entityIn.isNonBoss()) {
 				return false;
 			}
-		} 
-		else if(entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityIn;
-			if(player.isCreative()) {
+		} else if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			if (player.isCreative()) {
 				return false;
 			}
 		}
@@ -110,24 +128,4 @@ public class HardCodedValues {
 		output.add(Biomes.TAIGA_HILLS);
 		return output.toArray(new Biome[output.size()]);
 	}
-	
-	public final static String exampleRecipe = "{\r\n" + 
-			"  \"result\": {\r\n" + 
-			"    \"item\": \"minecraft:diamond\",\r\n" + 
-			"	\"amount\": 1\r\n" + 
-			"  },\r\n" + 
-			"  \"top3\": {	//supports the 9 crafting slots, top1, top2, top3, etc.\r\n" + 
-			"	\"item\": \"minecraft:paper\"\r\n" + 
-			"  },\r\n" + 
-			"  \"mid2\": {\r\n" + 
-			"	\"ore\": \"listAllmeatraw\"	//ore dictionary entry\r\n" + 
-			"  },\r\n" + 
-			"  \"low1\": {\r\n" + 
-			"	\"item\": \"minecraft:stone\",	//metadata (in this case, for granite)\r\n" + 
-			"	\"meta\": 1\r\n" + 
-			"  },\r\n" + 
-			"  \"knowledge\": \"historicizedmedicine:ebers_papyrus\"\r\n" + 
-			"  //must be a valid knowledge sheet from the mod. other items will not work\r\n" + 
-			"  //NOTE: comments are not supported in actual recipe files, do not include them.\r\n" + 
-			"}";
 }

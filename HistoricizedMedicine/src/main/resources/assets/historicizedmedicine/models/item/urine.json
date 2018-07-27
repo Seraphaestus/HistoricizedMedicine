@@ -1,8 +1,6 @@
-
 {
-
   "parent": "item/generated",
-    "textures": {
-        "layer0": "historicizedmedicine:item/urine"
-    }
+  "textures": {
+    "layer0": "historicizedmedicine:item/urine"
+  }
 }

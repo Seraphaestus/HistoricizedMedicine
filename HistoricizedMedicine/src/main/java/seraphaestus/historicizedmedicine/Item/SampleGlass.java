@@ -13,40 +13,37 @@ import seraphaestus.historicizedmedicine.HMedicineMod;
 
 public class SampleGlass extends ItemBase {
 
-    public SampleGlass(){
-        super("sample_glass", 64);
-    }
+	public SampleGlass() {
+		super("sample_glass", 64);
+	}
 
-    @Override
-    public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BOW;
-    }
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BOW;
+	}
 
-    @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 40;
-    }
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 40;
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-        ItemStack itemStackHeld = playerIn.getHeldItem(hand);
-        playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackHeld);
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		ItemStack itemStackHeld = playerIn.getHeldItem(hand);
+		playerIn.setActiveHand(hand);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackHeld);
+	}
 
-    @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
-    {
-    	try {
-    		EntityPlayer player = (EntityPlayer)entityLiving;
-    		player.addItemStackToInventory(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":" + "urine")));
-    	}
-    	catch(Exception e) {
-    		
-    	}
-        stack.setCount(stack.getCount() - 1);
-        return stack;
-    }
+	@Override
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+		try {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			player.addItemStackToInventory(new ItemStack(Item.getByNameOrId(HMedicineMod.MODID + ":" + "urine")));
+		} catch (Exception e) {
+
+		}
+		stack.setCount(stack.getCount() - 1);
+		return stack;
+	}
 }
 
