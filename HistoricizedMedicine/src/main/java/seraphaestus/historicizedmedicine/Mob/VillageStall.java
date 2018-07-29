@@ -66,7 +66,7 @@ public class VillageStall extends Village {
 		//
 		this.fillWithBlocks(world, box, 0, 0, 0, 3, 0, 2, Blocks.OAK_FENCE.getDefaultState(), Blocks.OAK_FENCE.getDefaultState(), false);
 		this.fillWithBlocks(world, box, 1, 0, 1, 2, 0, 1, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
-		IBlockState stair = Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, this.facing);
+		IBlockState stair = Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
 		this.fillWithBlocks(world, box, 1, 1, 0, 2, 1, 0, Blocks.CARPET.getStateFromMeta(12), Blocks.CARPET.getStateFromMeta(12), false);
 		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 0, stair, stair, false);
 		this.setBlockState(world, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(HMedicineMod.MODID, "crafting_table")).getDefaultState(), 1, 0, 0, box);
