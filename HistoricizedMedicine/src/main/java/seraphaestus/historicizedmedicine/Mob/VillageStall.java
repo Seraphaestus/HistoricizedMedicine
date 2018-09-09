@@ -95,7 +95,7 @@ public class VillageStall extends Village {
 
 	@Override
 	protected VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof) {
-		if (rand.nextBoolean() == true) {
+		if (rand.nextBoolean()) {
 			return VillagerProfessions.PlagueDoctorProfession;
 		}
 		return VillagerProfessions.ApothecarianProfession;
