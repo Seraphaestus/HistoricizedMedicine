@@ -23,6 +23,14 @@
         {
           "conditions": [],
           "type": "item",
+          "name": "historicizedmedicine:suture",
+          "functions": [],
+          "weight": 4,
+          "quality": 0
+        },		
+        {
+          "conditions": [],
+          "type": "item",
           "name": "historicizedmedicine:honey",
           "functions": [],
           "weight": 4,
