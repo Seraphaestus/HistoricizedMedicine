@@ -23,11 +23,43 @@
         {
           "conditions": [],
           "type": "item",
+          "name": "historicizedmedicine:honey",
+          "functions": [],
+          "weight": 4,
+          "quality": 0
+        },		
+        {
+          "conditions": [],
+          "type": "item",
           "name": "historicizedmedicine:honey_poultice",
           "functions": [],
           "weight": 6,
           "quality": 0
         },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:plague_mask",
+          "functions": [],
+          "weight": 3,
+          "quality": 0
+        },	
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:web",
+          "functions": [],
+          "weight": 3,
+          "quality": 0
+        },	
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:book",
+          "functions": [],
+          "weight": 3,
+          "quality": 0
+        },		
         {
           "conditions": [],
           "type": "item",
@@ -57,7 +89,7 @@
       },
       "bonus_rolls": {
         "min": 0,
-        "max": 0
+        "max": 2
       }
     }
   ]
