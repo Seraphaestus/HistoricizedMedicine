@@ -1,5 +1,6 @@
 package seraphaestus.historicizedmedicine.Mob;
 
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -73,7 +74,7 @@ public class VillageStall2 extends Village {
 		this.setBlockState(world, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(HMedicineMod.MODID, "crafting_table")).getDefaultState(), 1, 0, 0, box);
 
 		placeChest(world, box, rand, 2, 0, 0);
-		//this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2,0,0, box);
+		this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2,0,0, box);
 
 		this.setBlockState(world, Blocks.CRAFTING_TABLE.getDefaultState(), 3, 0, 0, box);
 
