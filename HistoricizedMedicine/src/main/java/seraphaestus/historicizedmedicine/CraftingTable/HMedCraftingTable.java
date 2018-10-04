@@ -12,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,19 +55,19 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 	}
 
 	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileEntity te = worldIn.getTileEntity(pos);
+	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		TileEntity te = world.getTileEntity(pos);
 		CraftingTableTileEntity ctte = (CraftingTableTileEntity) te;
 		for (int i = 0; i < 11; i++) {
 			ItemStack is = ctte.itemStackHandlerMain.getStackInSlot(i);
 			if (is != null && i != CraftingTableTileEntity.outputSlot) {
-				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), is));
+				world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), is));
 			}
 		}
-		worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
+		world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
 
 		if (hasTileEntity(state)) {
-			worldIn.removeTileEntity(pos);
+			world.removeTileEntity(pos);
 		}
 	}
 
