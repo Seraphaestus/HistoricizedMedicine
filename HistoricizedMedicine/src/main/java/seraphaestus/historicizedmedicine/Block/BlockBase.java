@@ -66,6 +66,4 @@ public abstract class BlockBase extends Block {
 	public void registerItemBlock() {
 		ForgeRegistries.ITEMS.register(new ItemBlock(this).setRegistryName(this.id));
 	}
-
-	public abstract void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune, World world);
 }

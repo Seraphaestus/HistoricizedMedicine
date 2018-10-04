@@ -53,23 +53,4 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 		playerIn.openGui(HMedicineMod.instance, GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
-
-	@Override
-	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune, World world) {
-		TileEntity te = worldIn.getTileEntity(pos);
-		CraftingTableTileEntity ctte = (CraftingTableTileEntity) te;
-		for (int i = 0; i < 11; i++) {
-			ItemStack is = ctte.itemStackHandlerMain.getStackInSlot(i);
-			if (is != null && i != CraftingTableTileEntity.outputSlot) {
-				CraftingTableTileEntity se = world.getTileEntity(pos) instanceof CraftingTableTileEntity ? (CraftingTableTileEntity) world.getTileEntity(pos) : null;
-				if (se != null && ctte.itemStackHandlerMain.getStackInSlot(i) != null)
-					world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
-
-				if (hasTileEntity(state)) {
-					world.removeTileEntity(pos);
-				}
-			}
-
-		}
-	}
 }
