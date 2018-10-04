@@ -104,7 +104,7 @@ public class VillageStall1 extends Village {
 		int j1 = this.getYWithOffset(y);
 		int k1 = this.getZWithOffset(x, z);
 		BlockPos pos = new BlockPos(i1, j1, k1);
-		if (box.isVecInside(pos) && (world.getBlockState(pos) != Blocks.CHEST.getDefaultState())) {
+		if (box.isVecInside(pos) && (world.getBlockState(pos) != Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing))) {
 			world.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileEntityChest)
