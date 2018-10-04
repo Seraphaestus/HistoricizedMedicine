@@ -42,22 +42,6 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 		return new CraftingTableTileEntity();
 	}
 
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
-	{
-		if (!keepInventory)
-		{
-			TileEntity tileentity = worldIn.getTileEntity(pos);
-
-			if (tileentity instanceof CraftingTableTileEntity)
-			{
-				InventoryHelper.dropInventoryItems(worldIn, pos, (CraftingTableTileEntity)tileentity);
-				worldIn.updateComparatorOutputLevel(pos, this);
-			}
-		}
-
-		super.breakBlock(worldIn, pos, state);
-	}
-
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		//Only execute on the server
