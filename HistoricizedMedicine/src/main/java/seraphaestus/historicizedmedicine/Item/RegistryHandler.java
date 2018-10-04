@@ -88,9 +88,9 @@ public class RegistryHandler {
 		//knowledge sheets
 		List<ItemBase> sheets = new ArrayList<ItemBase>();
 		final Item[] knowledge1 = {iId("trephine")};
-		final Item[] knowledge2 = {iId("trephine")};
-		final Item[] knowledge3 = {iId("trephine")};
-		final Item[] knowledge4 = {iId("trephine")};
+		final Item[] knowledge2 = {iId("ligature")};
+		final Item[] knowledge3 = {iId("scalpel")};
+		final Item[] knowledge4 = {iId("cautery")};
 		ebers = new KnowledgeSheet("ebers_papyrus", 4, knowledge1, Config.commandRunOnEbersUse, 1);
 		corpus = new KnowledgeSheet("hippocratic_corpus", 8, knowledge2, Config.commandRunOnCorpusUse, 2);
 		canon = new KnowledgeSheet("canon_of_medicine", 12, knowledge3, Config.commandRunOnCanonUse, 3);
