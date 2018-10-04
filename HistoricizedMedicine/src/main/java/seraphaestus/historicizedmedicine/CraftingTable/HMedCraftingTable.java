@@ -55,20 +55,18 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 	}
 
 	@Override
-	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		TileEntity te = world.getTileEntity(pos);
-		World worldIn = worldIn;
+	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune, World world) {
+		TileEntity te = worldIn.getTileEntity(pos);
 		CraftingTableTileEntity ctte = (CraftingTableTileEntity) te;
 		for (int i = 0; i < 11; i++) {
 			ItemStack is = ctte.itemStackHandlerMain.getStackInSlot(i);
 			if (is != null && i != CraftingTableTileEntity.outputSlot) {
-				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), is));
+				world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), is));
 			}
 		}
-		drops.add(new EntityItem (worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(te, 1, 0);
 
 		if (hasTileEntity(state)) {
-			worldIn.removeTileEntity(pos);
+			world.removeTileEntity(pos);
 		}
 	}
 
