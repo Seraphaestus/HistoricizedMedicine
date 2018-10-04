@@ -73,7 +73,7 @@ public class VillageStall2 extends Village {
 		this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 0, stair, stair, false);
 		this.setBlockState(world, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(HMedicineMod.MODID, "crafting_table")).getDefaultState(), 1, 0, 0, box);
 
-		placeChest(world, box, rand, 2, 0, 0);
+		placeChest
 		//this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing)
 
 		this.setBlockState(world, Blocks.CRAFTING_TABLE.getDefaultState(), 3, 0, 0, box);
@@ -105,7 +105,7 @@ public class VillageStall2 extends Village {
 		int k1 = this.getZWithOffset(x, z);
 		BlockPos pos = new BlockPos(i1, j1, k1);
 		if (box.isVecInside(pos) && (world.getBlockState(pos) != Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing))) {
-			world.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
+			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing));
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileEntityChest)
 				((TileEntityChest) tile).setLootTable(new ResourceLocation(HMedicineMod.MODID, "village_stall"), i1 | j1 | k1);
