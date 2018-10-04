@@ -74,7 +74,7 @@ public class VillageStall1 extends Village {
 		this.setBlockState(world, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(HMedicineMod.MODID, "crafting_table")).getDefaultState(), 1, 0, 0, box);
 
 		placeChest(world, box, rand, 2, 0, 0);
-		this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2,0,0, box);
+		this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing.rotateY().rotateY().rotateY()), 2, 0, 0, box);
 
 		this.setBlockState(world, Blocks.CRAFTING_TABLE.getDefaultState(), 3, 0, 0, box);
 
@@ -96,7 +96,7 @@ public class VillageStall1 extends Village {
 
 	@Override
 	protected VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof) {
-			return VillagerProfessions.PlagueDoctorProfession;
+		return VillagerProfessions.PlagueDoctorProfession;
 	}
 
 	protected boolean placeChest(World world, StructureBoundingBox box, Random rand, int x, int y, int z) {
@@ -105,7 +105,7 @@ public class VillageStall1 extends Village {
 		int k1 = this.getZWithOffset(x, z);
 		BlockPos pos = new BlockPos(i1, j1, k1);
 		{
-			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing));
+			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.EAST));
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileEntityChest)
 				((TileEntityChest) tile).setLootTable(new ResourceLocation(HMedicineMod.MODID, "village_stall"), i1 | j1 | k1);

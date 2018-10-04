@@ -31,6 +31,7 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 	private String colour = "gray";
 	private boolean initializedPlague = false;
 	private boolean isFriendly = false;
+
 	public EntityRat(World par1World) {
 		super(par1World);
 		this.setSize(0.5f, 0.5f);

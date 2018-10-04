@@ -34,6 +34,7 @@ public class ItemBase extends Item implements IItemBaseData {
 		this(id);
 		this.stackSize = stackSize;
 	}
+
 	public ItemBase(String id, int stackSize, String oreDictName) {
 		this(id, stackSize);
 		this.oreDictName = oreDictName;
