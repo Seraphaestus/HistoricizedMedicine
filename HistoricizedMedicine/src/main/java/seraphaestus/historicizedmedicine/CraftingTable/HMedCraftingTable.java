@@ -61,13 +61,15 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 		for (int i = 0; i < 11; i++) {
 			ItemStack is = ctte.itemStackHandlerMain.getStackInSlot(i);
 			if (is != null && i != CraftingTableTileEntity.outputSlot) {
-				world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), is));
-			}
-		}
+				CraftingTableTileEntity se = world.getTileEntity(pos) instanceof CraftingTableTileEntity ? (CraftingTableTileEntity) world.getTileEntity(pos) : null;
+				if (se != null && ctte.itemStackHandlerMain.getStackInSlot(i) != null)
+					world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
 
-		if (hasTileEntity(state)) {
-			world.removeTileEntity(pos);
+				if (hasTileEntity(state)) {
+					world.removeTileEntity(pos);
+				}
+			}
+
 		}
 	}
-
 }
