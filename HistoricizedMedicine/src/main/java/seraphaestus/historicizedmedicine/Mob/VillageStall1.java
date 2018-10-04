@@ -104,14 +104,13 @@ public class VillageStall1 extends Village {
 		int j1 = this.getYWithOffset(y);
 		int k1 = this.getZWithOffset(x, z);
 		BlockPos pos = new BlockPos(i1, j1, k1);
-		if (box.isVecInside(pos) && (world.getBlockState(pos) != Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing))) {
+		{
 			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, this.facing));
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileEntityChest)
 				((TileEntityChest) tile).setLootTable(new ResourceLocation(HMedicineMod.MODID, "village_stall"), i1 | j1 | k1);
 			return true;
-		} else
-			return false;
+		}
 	}
 
 	public static class VillageManager implements IVillageCreationHandler {
