@@ -55,11 +55,27 @@
         {
           "conditions": [],
           "type": "item",
-          "name": "minecraft:web",
+          "name": "minecraft:ghast_tear",
           "functions": [],
-          "weight": 3,
+          "weight": 2,
+          "quality": 0
+        },		
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "functions": [],
+          "weight": 1,
           "quality": 0
         },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:web",
+          "functions": [],
+          "weight": 5,
+          "quality": 0
+        },		
         {
           "conditions": [],
           "type": "item",
@@ -67,15 +83,15 @@
           "functions": [],
           "weight": 3,
           "quality": 0
-        },
+        },		
         {
           "conditions": [],
           "type": "item",
-          "name": "minecraft:golden_apple",
+          "name": "minecraft:paper",
           "functions": [],
-          "weight": 2,
+          "weight": 4,
           "quality": 0
-        },
+        },		
         {
           "conditions": [],
           "type": "item",
@@ -93,11 +109,11 @@
       ],
       "rolls": {
         "min": 0,
-        "max": 5
+        "max": 6
       },
       "bonus_rolls": {
         "min": 0,
-        "max": 2
+        "max": 3
       }
     }
   ]
