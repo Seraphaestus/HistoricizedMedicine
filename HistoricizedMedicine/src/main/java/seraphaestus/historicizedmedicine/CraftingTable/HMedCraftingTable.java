@@ -5,11 +5,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -41,6 +41,22 @@ public class HMedCraftingTable extends BlockBase implements ITileEntityProvider 
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new CraftingTableTileEntity();
 	}
+
+	@Override
+	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
+		if (!worldIn.isRemote) {
+			TileEntity te = worldIn.getTileEntity(pos);
+			CraftingTableTileEntity ctte = (CraftingTableTileEntity) te;
+			for (int i = 0; i < 11; i++) {
+				ItemStack is = ctte.itemStackHandlerMain.getStackInSlot(i);
+				if (is != null && i != CraftingTableTileEntity.outputSlot) {
+					worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), is));
+				}
+			}
+		}
+		super.onBlockHarvested(worldIn, pos, state, player);
+	}
+
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
