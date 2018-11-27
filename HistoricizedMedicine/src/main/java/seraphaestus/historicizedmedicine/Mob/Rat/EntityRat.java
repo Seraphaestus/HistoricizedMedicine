@@ -6,6 +6,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -119,7 +120,7 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		if (entityIn instanceof EntityPlayer && Config.plagueCarriers && ((EntityPlayer) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
 			//apply plague
 			((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
-			((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(Potion.getPotionById(9), 1));
+			((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
 		}
 		return super.attackEntityAsMob(entityIn);
 	}
