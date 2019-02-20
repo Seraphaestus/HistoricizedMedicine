@@ -103,7 +103,7 @@ public class EntityUpdate {
 				for (Entity entity : player.getEntityWorld().loadedEntityList) {
 					if (HardCodedValues.catchesPlague(entity) && entity instanceof EntityLiving) {
 						if (!((EntityLiving) entity).isPotionActive(RegisterEffects.plague) && !((EntityLiving) entity).isPotionActive(RegisterEffects.plagueImmunity)) {
-							if (player.getDistanceToEntity(entity) <= Config.plagueRange) {
+							if (player.getDistance(entity) <= Config.plagueRange) {
 								((EntityLiving) entity).addPotionEffect(new PotionEffect(RegisterEffects.plague, Config.plagueDuration));
 								if (entity.hasCustomName() && !player.getEntityWorld().isRemote) {
 									TextComponentString message = new TextComponentString(entity.getCustomNameTag() + " has caught " + Config.plagueName);

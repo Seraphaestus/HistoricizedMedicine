@@ -105,7 +105,7 @@ public class VillageStall1 extends Village {
 		int k1 = this.getZWithOffset(x, z);
 		BlockPos pos = new BlockPos(i1, j1, k1);
 		{
-			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.getFront(4)));
+			world.setBlockState(pos, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.byIndex(4)));
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileEntityChest)
 				((TileEntityChest) tile).setLootTable(new ResourceLocation(HMedicineMod.MODID, "village_stall"), i1 | j1 | k1);

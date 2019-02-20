@@ -78,7 +78,7 @@ public class RegistryHandler {
 		for (IItemBaseData item : items) {
 			if (item instanceof Item) {
 				Item item2 = (Item) item;
-				ForgeRegistries.ITEMS.register(item2.setRegistryName(item.getId()).setUnlocalizedName(item.getName()).setMaxStackSize(item.getStackSize()));
+				ForgeRegistries.ITEMS.register(item2.setRegistryName(item.getId()).setTranslationKey(item.getName()).setMaxStackSize(item.getStackSize()));
 			}
 			if (item instanceof ItemBase) {
 				((ItemBase) item).init();
@@ -101,7 +101,7 @@ public class RegistryHandler {
 		sheets.add(magna);
 		//register k. sheets
 		for (ItemBase item : sheets) {
-			ForgeRegistries.ITEMS.register(item.setRegistryName(item.id).setUnlocalizedName(item.name).setMaxStackSize(item.stackSize));
+			ForgeRegistries.ITEMS.register(item.setRegistryName(item.id).setTranslationKey(item.name).setMaxStackSize(item.stackSize));
 		}
 	}
 

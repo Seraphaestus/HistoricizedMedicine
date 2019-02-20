@@ -21,7 +21,7 @@ public abstract class BlockBase extends Block {
 		super(materialIn);
 		this.id = id;
 		this.fullBlock = fullBlock;
-		setUnlocalizedName(HMedicineMod.MODID + "." + id);     // Used for localization (en_US.lang)
+		setTranslationKey(HMedicineMod.MODID + "." + id);     // Used for localization (en_US.lang)
 		setRegistryName(id);
 		if (Config.enableCreativeTab) {
 			setCreativeTab(HMedicineMod.creativeTab);

@@ -49,7 +49,7 @@ public class PlagueCure extends MedKitBase {
 		//use on entity
 		for (EntityLiving entity : worldIn.getEntities(EntityLiving.class, truePredicate())) {
 			//in range of player
-			if (entity.getDistanceToEntity(playerIn) < entity.getEntityBoundingBox().getAverageEdgeLength() + 1.5f) {
+			if (entity.getDistance(playerIn) < entity.getEntityBoundingBox().getAverageEdgeLength() + 1.5f) {
 				//
 				if (isBeingLookedAt(entity, playerIn)) {
 					//has plague

@@ -21,7 +21,7 @@ public class BlockDirectional extends BlockBase {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing facing = EnumFacing.getHorizontal(meta);
+		EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
 		return this.getDefaultState().withProperty(PROPERTYFACING, facing);
 	}
 

@@ -149,8 +149,8 @@ public class CraftingTableTileEntity extends TileEntity {
 		try {
 			ItemStack isCheck = itemStackHandlerMain.getStackInSlot(slot).copy();
 
-			if (isCheck.isEmpty() && nbt.hasNoTags()) return true;
-			if (isCheck.isEmpty() || nbt.hasNoTags()) return false;
+			if (isCheck.isEmpty() && nbt.isEmpty()) return true;
+			if (isCheck.isEmpty() || nbt.isEmpty()) return false;
 
 			Item check = isCheck.getItem();
 
