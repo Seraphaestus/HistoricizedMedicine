@@ -40,9 +40,9 @@ public class ModEntities {
 		ResourceLocation ratName = new ResourceLocation(HMedicineMod.MODID, "Rat");
 
 		event.getRegistry().registerAll(
-				EntityEntryBuilder.create().entity(EntityPlagueDoctor.class).id(plagueDoctorName.getResourcePath(), 0).name(plagueDoctorName.getResourceDomain() + "." + plagueDoctorName.getResourcePath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
-				EntityEntryBuilder.create().entity(EntityApothecarian.class).id(apothecarianName.getResourcePath(), 1).name(apothecarianName.getResourceDomain() + "." + apothecarianName.getResourcePath()).tracker(64, 3, true).egg(0xffffcc, 0xccff99).build(),
-				EntityEntryBuilder.create().entity(EntityRat.class).id(ratName.getResourcePath(), 2).name(ratName.getResourceDomain() + "." + ratName.getResourcePath()).tracker(18, 3, true).egg(0x333333, 0x666666).spawn(EnumCreatureType.MONSTER, 100, 3, 5, ForgeRegistries.BIOMES.getValuesCollection()).build()
+				EntityEntryBuilder.create().entity(EntityPlagueDoctor.class).id(plagueDoctorName.getPath(), 0).name(plagueDoctorName.getNamespace() + "." + plagueDoctorName.getPath()).tracker(64, 3, true).egg(0x000000, 0x588f30).build(),
+				EntityEntryBuilder.create().entity(EntityApothecarian.class).id(apothecarianName.getPath(), 1).name(apothecarianName.getNamespace() + "." + apothecarianName.getPath()).tracker(64, 3, true).egg(0xffffcc, 0xccff99).build(),
+				EntityEntryBuilder.create().entity(EntityRat.class).id(ratName.getPath(), 2).name(ratName.getNamespace() + "." + ratName.getPath()).tracker(18, 3, true).egg(0x333333, 0x666666).spawn(EnumCreatureType.MONSTER, 100, 3, 5, ForgeRegistries.BIOMES.getValuesCollection()).build()
 		);
 	}
 }

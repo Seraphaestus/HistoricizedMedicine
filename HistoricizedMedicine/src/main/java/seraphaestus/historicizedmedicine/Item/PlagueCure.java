@@ -24,7 +24,7 @@ public class PlagueCure extends MedKitBase {
 	private static boolean isBeingLookedAt(Entity target, EntityPlayer playerIn) {
 		Vec3d vec3d = playerIn.getLook(1.0F).normalize();
 		Vec3d vec3d1 = new Vec3d(target.posX - playerIn.posX, target.getEntityBoundingBox().minY + target.getEyeHeight() - (playerIn.posY + playerIn.getEyeHeight()), target.posZ - playerIn.posZ);
-		double d0 = vec3d1.lengthVector();
+		double d0 = vec3d1.length();
 		vec3d1 = vec3d1.normalize();
 		double d1 = vec3d.dotProduct(vec3d1);
 		return (d1 > 1.0D - 0.025D / d0);
