@@ -8,7 +8,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:nitrous_oxide",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -24,7 +24,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:ligature",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -40,7 +40,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:suture",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -56,7 +56,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:honey",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -72,7 +72,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:honey_poultice",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -88,7 +88,7 @@
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:plague_mask",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -104,7 +104,7 @@
           "conditions": [],
           "type": "item",
           "name": "minecraft:ghast_tear",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -115,12 +115,12 @@
           ],
           "weight": 2,
           "quality": 0
-        },		
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:golden_apple",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -136,7 +136,7 @@
           "conditions": [],
           "type": "item",
           "name": "minecraft:nether_wart",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -147,12 +147,12 @@
           ],
           "weight": 2,
           "quality": 0
-        },	
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "historicizedmedicine:leech",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -163,12 +163,12 @@
           ],
           "weight": 3,
           "quality": 0
-        },		
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:redstone",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -179,12 +179,12 @@
           ],
           "weight": 2,
           "quality": 0
-        },	
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:glowstone_dust",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -195,12 +195,12 @@
           ],
           "weight": 2,
           "quality": 0
-        },			
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:web",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -211,12 +211,12 @@
           ],
           "weight": 5,
           "quality": 0
-        },		
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:book",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -227,12 +227,12 @@
           ],
           "weight": 3,
           "quality": 0
-        },		
+        },
         {
           "conditions": [],
           "type": "item",
           "name": "minecraft:paper",
-		  "functions": [
+          "functions": [
             {
               "function": "set_count",
               "count": {
@@ -243,7 +243,7 @@
           ],
           "weight": 4,
           "quality": 0
-        },		
+        },
         {
           "conditions": [],
           "type": "item",
