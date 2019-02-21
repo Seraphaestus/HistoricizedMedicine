@@ -14,8 +14,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import seraphaestus.historicizedmedicine.Block.RegistryHandler;
@@ -164,7 +164,7 @@ public class EntityUpdate {
 
 	private void resetFoodTimer(FoodStats foodStats) {
 		if (foodTimerField == null)
-			foodTimerField = ReflectionHelper.findField(FoodStats.class, "field_75123_d", "foodTimer");
+			foodTimerField = ObfuscationReflectionHelper.findField(FoodStats.class, "field_75123_d");
 		if (foodStats.getFoodLevel() > 0) {
 			try {
 				foodTimerField.set(foodStats, 0);
