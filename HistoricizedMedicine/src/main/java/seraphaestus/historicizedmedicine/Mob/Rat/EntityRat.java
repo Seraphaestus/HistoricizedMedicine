@@ -130,6 +130,11 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 			((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
 			((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
 		}
+		if (entityIn instanceof EntityVillager && Config.plagueCarriers && ((EntityVillager) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
+			//apply plague
+			((EntityVillager) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			((EntityVillager) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
+		}
 		return super.attackEntityAsMob(entityIn);
 	}
 
