@@ -109,8 +109,6 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem || e instanceof EntityChicken || e instanceof EntityParrot));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		//this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
-		this.targetTasks.addTask(2, new AIRatAttackPlayer(this));
 	}
 
 	protected void applyEntityAttributes() {
