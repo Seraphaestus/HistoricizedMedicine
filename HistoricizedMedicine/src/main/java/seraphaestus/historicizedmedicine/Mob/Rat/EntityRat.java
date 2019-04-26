@@ -2,9 +2,16 @@ package seraphaestus.historicizedmedicine.Mob.Rat;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.AbstractIllager;
+import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityParrot;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -99,6 +106,10 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, (Class<?>[]) null));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem || e instanceof EntityChicken || e instanceof EntityParrot));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+		//this.tasks.addTask(3, new EntityAIAttackMelee(this, 0.5D, false));
 		this.targetTasks.addTask(2, new AIRatAttackPlayer(this));
 	}
 

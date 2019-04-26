@@ -72,10 +72,8 @@ public class EntityUpdate {
 				Integer bleedTick = currentBleedDur.get(player.getUniqueID());
 				if (bleedTick != null) {
 					bleedTick = bleedTick / (Config.bleedTotalAmount * (pot.getAmplifier() + 1));
-					if (pot.getDuration() % bleedTick == 0)
-					{
-						if(player.getHealth() < 1)
-						{
+					if (pot.getDuration() % bleedTick == 0) {
+						if (player.getHealth() < 1) {
 							player.setHealth(player.getHealth() - 1);
 						}
 					}
