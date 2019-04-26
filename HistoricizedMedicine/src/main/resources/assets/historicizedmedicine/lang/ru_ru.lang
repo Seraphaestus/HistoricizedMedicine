@@ -1,0 +1,53 @@
+#primative
+item.historicizedmedicine.trephine.name=Трефин
+item.historicizedmedicine.medicinal_clay.name=Лекарственная глина
+item.historicizedmedicine.ward_charm.name=Очарование злого отвращения
+item.historicizedmedicine.herbal_poultice.name=Травяные припарки
+item.historicizedmedicine.herbs.name=Травы
+
+#egyptian
+item.historicizedmedicine.ebers_papyrus.name=Папирус Эберса
+item.historicizedmedicine.meat_bandage.name=Сырая мясная повязка
+item.historicizedmedicine.honey.name=Мед
+item.historicizedmedicine.honey_poultice.name=Медовая припарка
+item.historicizedmedicine.suture.name=Шов
+item.historicizedmedicine.ligature.name=Лигатурный набор
+
+#greek/roman
+item.historicizedmedicine.hippocratic_corpus.name=Корпус Гиппократа
+item.historicizedmedicine.scalpel.name=Скальпель
+item.historicizedmedicine.reed_bandage.name=Тростниковая повязка
+
+#middle ages
+item.historicizedmedicine.canon_of_medicine.name=Канон медицины
+item.historicizedmedicine.leech.name=Пиявка
+item.historicizedmedicine.cautery.name=Плитка прижигания
+item.historicizedmedicine.razor.name=Парикмахерская бритва
+item.historicizedmedicine.theriac.name=Териак
+item.historicizedmedicine.unicorn_powder.name=Порошок единорога
+item.historicizedmedicine.plague_cure.name=Отрицание смерти
+item.historicizedmedicine.plague_mask.name=Маска чумного доктора
+
+#renaissance
+item.historicizedmedicine.chirurgia_magna.name=Хирургия Магна
+item.historicizedmedicine.urine.name=Моча
+item.historicizedmedicine.sample_glass.name=Образец стекла
+item.historicizedmedicine.ammonia.name=Аммиак
+item.historicizedmedicine.nitrous_oxide.name=Оксид азота
+
+#block
+tile.historicizedmedicine.statue_nether.name=Статуя Катониса
+tile.historicizedmedicine.statue_end.name=Статуя Эндериона
+tile.historicizedmedicine.statue_wise.name=Статуя Софии-Онитиды
+tile.historicizedmedicine.statue_base.name=Пустой постамент статуи
+tile.historicizedmedicine.crafting_table.name=Медицинский верстак
+
+#entities
+entity.historicizedmedicine.plaguedoctor.name=Чумной доктор
+entity.Villager.historicizedmedicine.plaguedoctor=Чумной доктор
+entity.historicizedmedicine.apothecarian.name=Аптекарь
+entity.Villager.historicizedmedicine.apothecarian=Аптекарь
+entity.historicizedmedicine.rat.name=Крыса
+
+#gui
+itemGroup.historicizedmedicine=Historicized Medicine
