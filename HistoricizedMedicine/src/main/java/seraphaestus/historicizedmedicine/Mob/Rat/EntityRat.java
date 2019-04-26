@@ -105,7 +105,6 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 		this.tasks.addTask(4, new EntityAIWanderAvoidWater(this, 0.4D));
 		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, (Class<?>[]) null));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem || e instanceof EntityChicken || e instanceof EntityParrot));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
@@ -134,6 +133,26 @@ public class EntityRat extends EntityMob implements IMCAnimatedEntity {
 			//apply plague
 			((EntityVillager) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
 			((EntityVillager) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
+		}
+		if (entityIn instanceof EntityWitch && Config.plagueCarriers && ((EntityWitch) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
+			//apply plague
+			((EntityWitch) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			((EntityWitch) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
+		}
+		if (entityIn instanceof AbstractIllager && Config.plagueCarriers && ((AbstractIllager) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
+			//apply plague
+			((AbstractIllager) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			((AbstractIllager) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
+		}
+		if (entityIn instanceof EntityChicken && Config.plagueCarriers && ((EntityChicken) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
+			//apply plague
+			((EntityChicken) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			((EntityChicken) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
+		}
+		if (entityIn instanceof EntityParrot && Config.plagueCarriers && ((EntityParrot) entityIn).getActivePotionEffect(RegisterEffects.plagueImmunity) == null) {
+			//apply plague
+			((EntityParrot) entityIn).addPotionEffect(new PotionEffect(RegisterEffects.plague, Integer.MAX_VALUE));
+			((EntityParrot) entityIn).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 25));
 		}
 		return super.attackEntityAsMob(entityIn);
 	}
