@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.2-1.4.28-17"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.2-1.4.7-1"
     //TOP dependencies:
     deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
 
