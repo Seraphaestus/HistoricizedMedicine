@@ -6,14 +6,13 @@ import seraphaestus.historicizedmedicine.Mob.Rat.EntityRat;
 
 public class MobSpawns {
 
-    @SubscribeEvent
-    public void onEntityUpdate(EntityJoinWorldEvent event)
-    {
-    	if(event.getEntity() instanceof EntityRat) {
-    		if(event.getEntity().dimension != 0) {
-        		event.setCanceled(true);		
-    		}
-    	}
-    }
-    	
+	@SubscribeEvent
+	public void onEntityUpdate(EntityJoinWorldEvent event) {
+		if (event.getEntity() instanceof EntityRat) {
+			if (event.getEntity().dimension != 0) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
 }

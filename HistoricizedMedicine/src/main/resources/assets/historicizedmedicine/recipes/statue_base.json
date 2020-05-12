@@ -3,31 +3,28 @@
     "item": "historicizedMedicine:statue_base"
   },
   "type": "minecraft:crafting_shaped",
-  
-  "pattern":[
-	" q ",
-	"p p",
-	"sss"
+  "pattern": [
+    " q ",
+    "p p",
+    "sss"
   ],
-  
-  "key":{
-	"q":{
-		"item": "minecraft:quartz_block",
-		"data": 0
-	},
-	"p":{
-		"item": "minecraft:quartz_block",
-		"data": 2
-	},
-	"s":{
-		"item": "minecraft:stone_slab",
-		"data": 7
-	}
+  "key": {
+    "q": {
+      "item": "minecraft:quartz_block",
+      "data": 0
+    },
+    "p": {
+      "item": "minecraft:quartz_block",
+      "data": 2
+    },
+    "s": {
+      "item": "minecraft:stone_slab",
+      "data": 7
+    }
   },
-  
   "conditions": [
-        {
-            "type": "historicizedMedicine:recipeToggle"
-        }
-    ]
+    {
+      "type": "historicizedMedicine:recipeToggle"
+    }
+  ]
 }

@@ -5,7 +5,7 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import seraphaestus.historicizedmedicine.CraftingTable.Recipe;
 
 @SuppressWarnings("deprecation")
-public class HMedRecipeHandler implements IRecipeHandler<Recipe>{
+public class HMedRecipeHandler implements IRecipeHandler<Recipe> {
 
 	@Override
 	public Class<Recipe> getRecipeClass() {
@@ -29,10 +29,10 @@ public class HMedRecipeHandler implements IRecipeHandler<Recipe>{
 			return false;
 		}
 		int inputCount = 0;
-		for(int i = 0; i < 3; i++) {
-			for(int ii = 0; ii < 3; ii++) {
+		for (int i = 0; i < 3; i++) {
+			for (int ii = 0; ii < 3; ii++) {
 				try {
-					if(recipe.grid[i][ii].getString("item") != "" || recipe.grid[i][ii].getString("ore") != "") {
+					if (recipe.grid[i][ii].getString("item") != "" || recipe.grid[i][ii].getString("ore") != "") {
 						inputCount++;
 					}
 				} catch (Exception e) {

@@ -1,20 +1,20 @@
 {
   "result": {
     "item": "historicizedMedicine:statue_nether",
-	"amount": 1
+    "amount": 1
   },
   "top1": {
-	"item": "minecraft:blaze_rod"
+    "item": "minecraft:blaze_rod"
   },
   "top3": {
-	"item": "minecraft:blaze_rod"
+    "item": "minecraft:blaze_rod"
   },
   "mid2": {
-	"item": "minecraft:stone",
-	"meta": 1
+    "item": "minecraft:stone",
+    "meta": 1
   },
   "low2": {
-	"item": "historicizedmedicine:statue_base"
+    "item": "historicizedmedicine:statue_base"
   },
   "knowledge": "historicizedmedicine:hippocratic_corpus"
 }

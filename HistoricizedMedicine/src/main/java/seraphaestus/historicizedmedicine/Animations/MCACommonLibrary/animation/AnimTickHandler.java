@@ -1,14 +1,14 @@
 package seraphaestus.historicizedmedicine.Animations.MCACommonLibrary.animation;
 
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import seraphaestus.historicizedmedicine.Animations.MCACommonLibrary.IMCAnimatedEntity;
+
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class AnimTickHandler {
 	private ArrayList<IMCAnimatedEntity> activeEntities = new ArrayList<IMCAnimatedEntity>();
@@ -25,26 +25,26 @@ public class AnimTickHandler {
 	//Called when the client ticks. 
 	@SubscribeEvent
 	public void onClientTick(TickEvent.ClientTickEvent event) {
-		if(!activeEntities.isEmpty()) {
-			if(event.phase == Phase.START) {
+		if (!activeEntities.isEmpty()) {
+			if (event.phase == Phase.START) {
 				try {
-					for(IMCAnimatedEntity entity : activeEntities) {
+					for (IMCAnimatedEntity entity : activeEntities) {
 						AnimationHandler animHandler = entity.getAnimationHandler();
-						if(animHandler != null) {
+						if (animHandler != null) {
 							animHandler.animationsUpdate();
 						}
-		
-						if(((Entity)entity).isDead) {
+
+						if (((Entity) entity).isDead) {
 							removableEntities.add(entity);
 						}
 					}
-		
-					for(IMCAnimatedEntity entity : removableEntities) {
+
+					for (IMCAnimatedEntity entity : removableEntities) {
 						activeEntities.remove(entity);
 					}
 					removableEntities.clear();
 				} catch (ConcurrentModificationException e) {
-					
+
 				}
 			}
 		}
@@ -53,26 +53,26 @@ public class AnimTickHandler {
 	//Called when the server ticks. Usually 20 ticks a second. 
 	@SubscribeEvent
 	public void onServerTick(TickEvent.ServerTickEvent event) {
-		if(!activeEntities.isEmpty()) {
-			if(event.phase == Phase.START) {
+		if (!activeEntities.isEmpty()) {
+			if (event.phase == Phase.START) {
 				try {
-					for(IMCAnimatedEntity entity : activeEntities) {
+					for (IMCAnimatedEntity entity : activeEntities) {
 						AnimationHandler animHandler = entity.getAnimationHandler();
-						if(animHandler != null) {
+						if (animHandler != null) {
 							animHandler.animationsUpdate();
 						}
-	
-						if(((Entity)entity).isDead) {
+
+						if (((Entity) entity).isDead) {
 							removableEntities.add(entity);
 						}
 					}
-	
-					for(IMCAnimatedEntity entity : removableEntities) {
+
+					for (IMCAnimatedEntity entity : removableEntities) {
 						activeEntities.remove(entity);
 					}
 					removableEntities.clear();
-				} catch(ConcurrentModificationException e) {
-					
+				} catch (ConcurrentModificationException e) {
+
 				}
 			}
 		}

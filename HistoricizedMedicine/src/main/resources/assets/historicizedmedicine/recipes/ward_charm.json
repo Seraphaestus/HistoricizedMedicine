@@ -3,24 +3,21 @@
     "item": "historicizedMedicine:ward_charm"
   },
   "type": "minecraft:crafting_shaped",
-  
-  "pattern":[
-	" s ",
-	"sfs"
+  "pattern": [
+    " s ",
+    "sfs"
   ],
-  
-  "key":{
-	"s":{
-		"item": "minecraft:string"
-	},
-	"f":{
-		"item": "minecraft:flint"
-	}
+  "key": {
+    "s": {
+      "item": "minecraft:string"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
   },
-  
   "conditions": [
-        {
-            "type": "historicizedMedicine:recipeToggle"
-        }
-    ]
+    {
+      "type": "historicizedMedicine:recipeToggle"
+    }
+  ]
 }

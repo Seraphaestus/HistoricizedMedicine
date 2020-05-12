@@ -9,25 +9,22 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 import seraphaestus.historicizedmedicine.HMedicineMod;
 
-public class HMedRecipeCategory implements IRecipeCategory<HMedRecipeWrapper>{
+public class HMedRecipeCategory implements IRecipeCategory<HMedRecipeWrapper> {
 
 	public final static String uid = "HMedCrafting";
-	private final String title = "Medical Crafting";
-	
+	public static final int width = 116;
+	public static final int height = 54;
 	private static final int craftOutputSlot = 10;
 	private static final int craftInputSlot1 = 0;
 	private static final int craftKnowledgeSlot = 9;
-	
-	public static final int width = 116;
-	public static final int height = 54;
-
+	private final String title = "Medical Crafting";
 	private final IDrawable background;
 
 	public HMedRecipeCategory(IGuiHelper guiHelper) {
 		ResourceLocation location = new ResourceLocation(HMedicineMod.MODID, "textures/gui/crafting.png");
 		background = guiHelper.createDrawable(location, 29, 16, width, height);
-}
-	
+	}
+
 	@Override
 	public String getUid() {
 		return this.uid;
@@ -59,13 +56,13 @@ public class HMedRecipeCategory implements IRecipeCategory<HMedRecipeWrapper>{
 				guiItemStacks.init(index, true, x * 18, y * 18);
 			}
 		}
-		
+
 		recipeLayout.setRecipeTransferButton(95, 40);
-		
+
 		guiItemStacks.init(craftKnowledgeSlot, true, 120, 36);
-		
+
 		HMedRecipeWrapper hMedRecipeWrapper = recipeWrapper;
-		for(int i = 0; i < 9; i++) {
+		for (int i = 0; i < 9; i++) {
 			recipeLayout.getItemStacks().set(craftInputSlot1 + i, hMedRecipeWrapper.inputs.get(i));
 		}
 		recipeLayout.getItemStacks().set(craftOutputSlot, hMedRecipeWrapper.output);

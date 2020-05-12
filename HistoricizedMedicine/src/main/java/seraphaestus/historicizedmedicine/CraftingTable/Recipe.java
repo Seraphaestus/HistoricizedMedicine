@@ -11,21 +11,22 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class Recipe implements IRecipe {
-	
+
 	public NBTTagCompound[][] grid = new NBTTagCompound[3][3];
 	public ItemStack output;
 	public Item requiredSheet = null;
-	
+	private ResourceLocation recipeRegistryName;
+
 	public Recipe() {
-		for(int i = 0; i < 3; i++) {
+		for (int i = 0; i < 3; i++) {
 			for (int ii = 0; ii < 3; ii++) {
 				grid[i][ii] = null;
 			}
 		}
 	}
-	
+
 	public Recipe(Recipe base) {
-		for(int i = 0; i < 3; i++) {
+		for (int i = 0; i < 3; i++) {
 			for (int ii = 0; ii < 3; ii++) {
 				grid[i][ii] = base.grid[i][ii].copy();
 			}
@@ -33,19 +34,37 @@ public class Recipe implements IRecipe {
 		this.output = base.output.copy();
 		this.requiredSheet = base.requiredSheet;
 	}
-	
+
 	public Recipe(NBTTagCompound[][] grid, ItemStack output) {
 		this.grid = grid;
 		this.output = output;
 	}
-	
+
 	public Recipe(NBTTagCompound[][] grid, ItemStack output, Item requiredSheet) {
 		this(grid, output);
 		this.requiredSheet = requiredSheet;
 	}
 
-	private ResourceLocation recipeRegistryName;
-	
+	public static Recipe getFromJson(String contents) {
+		try {
+			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
+			Recipe output = new Recipe();
+			NBTTagCompound outputTag = nbt.getCompoundTag("result");
+			output.output = new ItemStack(Item.getByNameOrId(outputTag.getString("item")), outputTag.getInteger("amount"));
+			output.requiredSheet = Item.getByNameOrId(nbt.getString("knowledge"));
+			for (int i = 0; i < 3; i++) {
+				output.grid[0][i] = nbt.getCompoundTag("top" + (i + 1));
+				output.grid[1][i] = nbt.getCompoundTag("mid" + (i + 1));
+				output.grid[2][i] = nbt.getCompoundTag("low" + (i + 1));
+			}
+			return output;
+
+		} catch (NBTException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public IRecipe setRegistryName(ResourceLocation name) {
 		this.recipeRegistryName = name;
@@ -80,26 +99,6 @@ public class Recipe implements IRecipe {
 	@Override
 	public ItemStack getRecipeOutput() {
 		return this.output;
-	}
-	
-	public static Recipe getFromJson(String contents) {
-		try {
-			NBTTagCompound nbt = JsonToNBT.getTagFromJson(contents);
-			Recipe output = new Recipe();
-			NBTTagCompound outputTag = nbt.getCompoundTag("result");
-			output.output = new ItemStack(Item.getByNameOrId(outputTag.getString("item")), outputTag.getInteger("amount"));
-			output.requiredSheet = Item.getByNameOrId(nbt.getString("knowledge"));
-			for(int i = 0; i < 3; i++) {
-				output.grid[0][i] = nbt.getCompoundTag("top" + (i + 1));
-				output.grid[1][i] = nbt.getCompoundTag("mid" + (i + 1));
-				output.grid[2][i] = nbt.getCompoundTag("low" + (i + 1));
-			}
-			return output;
-
-		} catch (NBTException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/*public static Recipe getFromJson(String contents) {

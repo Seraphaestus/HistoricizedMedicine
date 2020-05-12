@@ -1,64 +1,272 @@
 {
-    "pools": [
+  "pools": [
+    {
+      "name": "village_stall_1",
+      "conditions": [],
+      "entries": [
         {
-        	"name": "village_stall_1",
-            "conditions": [],
-            "entries": [
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:nitrous_oxide",
-                    "functions": [],
-                    "weight": 1,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:ligature",
-                    "functions": [],
-                    "weight": 4,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "historicizedmedicine:honey_poultice",
-                    "functions": [],
-                    "weight": 6,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "minecraft:golden_apple",
-                    "functions": [],
-                    "weight": 2,
-                    "quality": 0
-                },
-                {
-                    "conditions": [],
-                    "type": "item",
-                    "name": "minecraft:potion",
-                    "functions": [
-                        {
-                            "conditions": [],
-                            "function": "set_nbt",
-                            "tag": "{Potion:\"minecraft:healing\"}"
-                        }
-                    ],
-                    "weight": 5,
-                    "quality": 0
-                }
-            ],
-            "rolls": {
-                "min": 0,
-                "max": 5
-            },
-            "bonus_rolls": {
-                "min": 0,
-                "max": 0
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:nitrous_oxide",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
             }
+          ],
+          "weight": 1,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:ligature",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 4,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:suture",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 4,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:honey",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 4,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:honey_poultice",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ],
+          "weight": 6,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:plague_mask",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ],
+          "weight": 3,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:ghast_tear",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ],
+          "weight": 2,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ],
+          "weight": 1,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:nether_wart",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 2,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "historicizedmedicine:leech",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 6
+              }
+            }
+          ],
+          "weight": 3,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:redstone",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 2,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:glowstone_dust",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 2,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:web",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 6
+              }
+            }
+          ],
+          "weight": 5,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 3,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ],
+          "weight": 4,
+          "quality": 0
+        },
+        {
+          "conditions": [],
+          "type": "item",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "conditions": [],
+              "function": "set_nbt",
+              "tag": "{Potion:\"minecraft:healing\"}"
+            }
+          ],
+          "weight": 5,
+          "quality": 0
         }
-    ]
+      ],
+      "rolls": {
+        "min": 1,
+        "max": 7
+      },
+      "bonus_rolls": {
+        "min": 1,
+        "max": 4
+      }
+    }
+  ]
 }
